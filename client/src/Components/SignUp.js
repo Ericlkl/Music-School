@@ -1,44 +1,34 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
+// import {connect} from 'react-redux';
+// import {signUp} from '../Actions/index'
 
-import {signUp} from '../Actions/index'
+import {Field, reduxForm} from 'redux-form';
 
 class SignUp extends Component{
 
-    state = {
-        firstName: null,
-        lastName: null,
-        email: null,
-    }
-    componentDidMount(){
-
-    }
-
-    handleSubmit = (e) => {
-        e.preventDefault();
-        console.log("Works");
-        console.log(this.state.firstName);
+    submit = (values) => {
+        console.log('submit inside form');
+        console.log(values);
     }
 
     render(){
-        console.log(this.props.member);
         return(
         <div className="ui container">
-            <form onSubmit={this.handleSubmit} className="ui form">
+            <form onSubmit={this.props.handleSubmit(this.submit)} className="ui form">
 
                 <div className="field">
                     <label>First Name</label>
-                    <input type="text" value={this.state.firstName} placeholder="First Name"/>
+                    <Field type="text" name="firstname" component="input"/>
                 </div>
 
                 <div className="field">
                     <label>Last Name</label>
-                    <input type="text" value={this.state.lastName} placeholder="Last Name" />
+                    <Field type="text" name="lastname" component="input" />
                 </div>
 
                 <div className="field">
                     <label>Email</label>
-                    <input type="email" value={this.state.email} placeholder="Email" />
+                    <Field type="email" name="email" component="input"/>
                 </div> 
 
                 <div className="field">
@@ -63,12 +53,7 @@ class SignUp extends Component{
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        member: state.member
-    }
-}
 
-export default connect(mapStateToProps,{
-    signUp
+export default reduxForm({
+    form: 'contact' //must be a unique name for this form 
 })(SignUp);

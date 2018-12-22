@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import { REGISTER_MEMBER } from '../Actions/types'
+import { reducer as formReducer } from 'redux-form';
 
 const memberReducer = (state = {}, action) => {
     switch(action.type){
@@ -11,8 +12,7 @@ const memberReducer = (state = {}, action) => {
     }
 }
 
-const reducers = combineReducers({
-    member: memberReducer
+export default combineReducers({
+    member: memberReducer,
+    form: formReducer,
 });
-
-export default reducers
