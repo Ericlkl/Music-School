@@ -1,9 +1,15 @@
-const express = require('express');
 const path = require('path');
-const app = express();
+const express = require('express');
+const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
+const { mongoURI } = require('./config/keys')
+const app = express();
+
+mongoose.connect(mongoURI, { useNewUrlParser: true});
+
 app.use(bodyParser.json());
+require('./routes/index')(app);
 
 if(process.env.NODE_ENV === 'production'){
     app.use(express.static('client/build'));
