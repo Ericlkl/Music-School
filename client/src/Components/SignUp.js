@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-// import {connect} from 'react-redux';
-// import {signUp} from '../Actions/index'
+import {connect} from 'react-redux';
+import {signUp} from '../Actions/index'
 
 import {Field, reduxForm} from 'redux-form';
 
@@ -11,25 +11,50 @@ class SignUp extends Component{
         console.log(values);
     }
 
+    renderInput = ({input, label, meta}) => {
+        // input = input properties
+        // label = label field name
+        // meta = contain the error message
+        const className = `field ${meta.error && meta.touched? 'error' : ''}`
+
+        return (
+            <div>
+                <div className="field">
+                    <label>{label}</label>
+                    <input {...input} autoComplete="off"/>
+                </div>
+                {this.renderError(meta)}
+            </div>
+        )
+    }
+
+    renderError = ({error, touched}) => {
+        if(touched && error){
+            return (
+                <div className="ui error message">
+                    <p>
+                        {error}
+                    </p>
+                </div>
+            )
+        }
+    }
+
     render(){
         return(
-        <div className="ui container">
-            <form onSubmit={this.props.handleSubmit(this.submit)} className="ui form">
+            <form onSubmit={this.props.handleSubmit(this.submit)} className="ui form container error">
 
-                <div className="field">
-                    <label>First Name</label>
-                    <Field type="text" name="firstname" component="input"/>
-                </div>
-
-                <div className="field">
-                    <label>Last Name</label>
-                    <Field type="text" name="lastname" component="input" />
-                </div>
-
-                <div className="field">
-                    <label>Email</label>
-                    <Field type="email" name="email" component="input"/>
-                </div> 
+                <Field name="firstname" 
+                label="First Name" 
+                component={this.renderInput}/>
+                
+                <Field name="lastname" 
+                label="Last Name" 
+                component={this.renderInput}/>
+                
+                <Field name="email" 
+                label="Email" 
+                component={this.renderInput}/>   
 
                 <div className="field">
                     <select>
@@ -46,14 +71,34 @@ class SignUp extends Component{
                     </div>
                 </div>
 
-                <button className="ui button" type="submit">Submit</button>
+                <button className="ui button primary" type="submit">Submit</button>
             </form>
-        </div>
         )
     }
 }
 
+const validate = formValues => {
+    const errors = {};
+    if(!formValues.firstname){
+        errors.firstname = "You must enter your firstname"
+    }
 
-export default reduxForm({
-    form: 'contact' //must be a unique name for this form 
+    if(!formValues.lastname){
+        errors.lastname = "You must enter your lastname"
+    }
+
+    if(!formValues.email){
+        errors.email = "You must enter your email"
+    }
+
+    return errors
+}
+
+const FormWrapped = reduxForm({
+    form: 'signup', //must be a unique name for this form 
+    validate //middleWare before onSubmit
 })(SignUp);
+
+export default connect(null, {
+    signUp
+})(FormWrapped);
