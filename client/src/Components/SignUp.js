@@ -7,8 +7,9 @@ import {Field, reduxForm} from 'redux-form';
 class SignUp extends Component{
 
     submit = (values) => {
-        console.log('submit inside form');
-        console.log(values);
+        // This function only works when the validate function
+        // has no errors
+        this.props.signUp(values);
     }
 
     renderInput = ({input, label, meta}) => {
@@ -41,6 +42,8 @@ class SignUp extends Component{
     }
 
     render(){
+        console.log("Redux Store : member")
+        console.log(this.props.member);
         return(
             <form onSubmit={this.props.handleSubmit(this.submit)} className="ui form container error">
 
@@ -90,7 +93,6 @@ const validate = formValues => {
     if(!formValues.email){
         errors.email = "You must enter your email"
     }
-
     return errors
 }
 
@@ -99,6 +101,8 @@ const FormWrapped = reduxForm({
     validate //middleWare before onSubmit
 })(SignUp);
 
-export default connect(null, {
+const mapStateToProps = state => ({ member: state.member })
+
+export default connect(mapStateToProps, {
     signUp
 })(FormWrapped);
