@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const {Schema} = mongoose;
 
-const StudentSchema = new Schema({
+const MemberSchema = new Schema({
     firstname: {
         type: String,
         required: true
@@ -13,7 +13,10 @@ const StudentSchema = new Schema({
     email: {
         type: String,
         required: true
+    },
+    type: {
+        type: String,
     }
 })
 
-mongoose.model('students', StudentSchema);
+mongoose.model('members', MemberSchema);

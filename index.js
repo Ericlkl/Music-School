@@ -9,6 +9,9 @@ const app = express();
 mongoose.connect(mongoURI, { useNewUrlParser: true});
 
 app.use(bodyParser.json());
+
+// Create member model
+require('./models/Member');
 require('./routes/index')(app);
 
 if(process.env.NODE_ENV === 'production'){

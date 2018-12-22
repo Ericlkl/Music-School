@@ -3,8 +3,7 @@ import axios from 'axios';
 
 export const signUp = (member) => async dispatch => {
 
-    const res = await axios.post('/api/student', member);
-    console.log(res);
+    const res = await axios.post('/api/member', member);
 
     dispatch({
         type: REGISTER_MEMBER,
