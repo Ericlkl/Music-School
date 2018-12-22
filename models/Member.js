@@ -14,6 +14,16 @@ const MemberSchema = new Schema({
         type: String,
         required: true
     },
+    address:{
+        type: String,
+        required: true
+    },
+    facebook:{
+        type:String
+    },
+    parent:{
+        type:[String]
+    },
     type: {
         type: String,
     }
