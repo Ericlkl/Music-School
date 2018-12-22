@@ -12,6 +12,7 @@ app.use(bodyParser.json());
 
 // Create member model
 require('./models/Member');
+require('./models/Teacher');
 require('./routes/index')(app);
 
 if(process.env.NODE_ENV === 'production'){

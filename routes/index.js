@@ -1,3 +1,6 @@
 module.exports = app => {
-    require('./memberRoutes')(app);
+    // Import Route related to member
+    require('./membersRoutes')(app);
+
+    require('./teachersRoutes')(app);
 }

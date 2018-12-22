@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 const Member = mongoose.model('members');
 
 module.exports = app => {
+    
+    // Signup a new member
     app.post('/api/member', async (req,res) => {
         const { firstname, lastname, email } = req.body;
         const newMember = new Member({
@@ -12,5 +14,11 @@ module.exports = app => {
         const newObj = await newMember.save();
         res.status(200).send("Sign Up Successfully!");
         console.log(newObj);
-    })    
+    });
+    
+    // Get all members info
+    app.get('/api/member', async (req,res) => {
+        const members = await Member.find();
+        res.status(200).send(members);
+    });
 }
