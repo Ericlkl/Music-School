@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {signUp} from '../Actions/index'
-
 import {Field, reduxForm} from 'redux-form';
+import {signUp} from '../Actions/index'
 
 class SignUp extends Component{
 
