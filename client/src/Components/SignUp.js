@@ -1,27 +1,47 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+
+import {signUp} from '../Actions/index'
 
 class SignUp extends Component{
+
+    state = {
+        firstName: null,
+        lastName: null,
+        email: null,
+    }
+    componentDidMount(){
+
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+        console.log("Works");
+        console.log(this.state.firstName);
+    }
+
     render(){
+        console.log(this.props.member);
         return(
         <div className="ui container">
-            <form className="ui form">
+            <form onSubmit={this.handleSubmit} className="ui form">
 
                 <div className="field">
                     <label>First Name</label>
-                    <input type="text" name="firstname" placeholder="First Name"/>
+                    <input type="text" value={this.state.firstName} placeholder="First Name"/>
                 </div>
 
                 <div className="field">
                     <label>Last Name</label>
-                    <input type="text" name="lastname" placeholder="Last Name" />
+                    <input type="text" value={this.state.lastName} placeholder="Last Name" />
                 </div>
 
                 <div className="field">
                     <label>Email</label>
-                    <input type="email" name="email" placeholder="Email" />
+                    <input type="email" value={this.state.email} placeholder="Email" />
                 </div> 
 
-                <div class="field">
+                <div className="field">
                     <select>
                     <option value="">Gender</option>
                     <option value="1">Male</option>
@@ -43,4 +63,12 @@ class SignUp extends Component{
     }
 }
 
-export default SignUp;
+const mapStateToProps = (state) => {
+    return {
+        member: state.member
+    }
+}
+
+export default connect(mapStateToProps,{
+    signUp
+})(SignUp);

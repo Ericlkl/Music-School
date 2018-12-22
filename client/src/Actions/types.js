@@ -1,0 +1,1 @@
+export const REGISTER_MEMBER = 'REGISTER_MEMBER';
