@@ -55,7 +55,7 @@ class Events extends Component{
     }
 
     render(){
-        console.log(this.props.events);
+        const cardlistStyle = this.props.events.length != 0 ? "ui link cards" : "ui active centered inline loader";
 
         return(
             <div>
@@ -65,7 +65,7 @@ class Events extends Component{
                         subtitle="Jumb into Biggest Music Event in Aus"/>
 
                 <div style={{ margin: "50px"}} className="ui container">
-                    <div className="ui link cards">
+                    <div className={cardlistStyle}>
                     {this.props.events.map(event => <EventCard event={event} /> )}
                     </div>
                 </div>

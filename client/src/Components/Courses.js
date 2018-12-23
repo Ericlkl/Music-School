@@ -48,6 +48,7 @@ class Courses extends Component{
         this.props.fetchCourses();
     }
     render(){
+        const cardlistStyle = this.props.courses.length != 0 ? "ui link cards" : "ui active centered inline loader";
         return(
             <div className="ui">
                 <NavBar page="courses"
@@ -58,7 +59,7 @@ class Courses extends Component{
                     <div style={{
                         margin: "50px"
                     }} className="ui container">
-                        <div className="ui link cards">
+                        <div className={cardlistStyle}>
                         {this.props.courses.map(course => <CourseCard course={course} /> )}
                         </div>
                     </div>

@@ -45,7 +45,7 @@ class Teachers extends Component{
         this.props.fetchTeachers();
     }
     render(){
-        console.log(this.props.teachers);
+        const cardlistStyle = this.props.teachers.length != 0 ? "ui link cards" : "ui active centered inline loader";
         return(
             <div>
             <NavBar page="teachers"
@@ -54,7 +54,7 @@ class Teachers extends Component{
                     subtitle="Professional Teachers in Australia"/>
                 
                     <div style={{ margin: "50px"}} className="ui container">
-                        <div className="ui link cards">
+                        <div className={cardlistStyle}>
                             {this.props.teachers.map(teacher => <TeacherCard teacher={teacher}/>)}
                         </div>
                     </div>
