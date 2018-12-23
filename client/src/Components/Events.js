@@ -1,28 +1,16 @@
 import React, {Component} from 'react';
 import NavBar from './NavBar';
 import Footer from './Footer';
-
-const Hero = () => {
-    return (
-        <div style={{
-            padding: '150px'
-        }} className="ui text container">
-          <h1 className="ui inverted header">
-            Pineland Music School
-          </h1>
-          <h2>Learning Music is easier than you think.</h2>
-          <div className="ui huge primary button">Learn More<i className="right arrow icon"></i></div>
-        </div>
-    )
-}
+import bg_img from '../assets/img/event_bg.jpg'
 
 class Events extends Component{
     render(){
         return(
             <div>
-                <NavBar page="events">
-                    <Hero/>
-                </NavBar>
+            <NavBar page="events"
+                    backgroundImg={bg_img}
+                    title="Events"
+                    subtitle="Jumb into Biggest Music Event in Aus"/>
                 <h1>
                     Events
                 </h1>

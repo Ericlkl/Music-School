@@ -1,32 +1,17 @@
 import React, {Component} from 'react';
 import NavBar from './NavBar';
 import Footer from './Footer';
-import {Link} from 'react-router-dom';
-
-const Hero = () => {
-    return (
-        <div style={{
-            padding: '150px'
-        }} className="ui text container">
-          <h1 className="ui inverted header">
-            Pineland Music School
-          </h1>
-          <h2>Learning Music is easier than you think.</h2>
-          <div className="ui huge primary button">Learn More<i className="right arrow icon"></i></div>
-        </div>
-    )
-}
-
+import bg_img from '../assets/img/home_bg.jpg'
 
 
 class Home extends Component{
     render(){
         return(
             <div>
-                <NavBar page="home">
-                    <Hero/>
-                </NavBar>
-                
+                <NavBar page="home"
+                        backgroundImg={bg_img}
+                        title="Pineland Music School"
+                        subtitle="Learning Music is easier than you think"/>
                 <h1>Home</h1>
                 <Footer/>
             </div>

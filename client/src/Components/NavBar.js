@@ -3,10 +3,16 @@ import {Link} from 'react-router-dom'
 
 class NavBar extends Component{
     render(){
-        const page = this.props.page;
+        const {page, backgroundImg, title , subtitle} = this.props;
+
+        const backgroundStyle = {
+          backgroundImage: ` linear-gradient( rgba(0,0,0,0.75), rgba(0,0,0,0.75) ), url(${backgroundImg})`,
+          backgroundPosition: 'center',
+          backgroundSize: 'cover'
+        };
 
         return(
-          <div className="ui inverted vertical masthead center aligned segment">
+          <div style={backgroundStyle} className="ui inverted vertical masthead center aligned segment">
           <div className="ui container">
   
             <div className="ui large secondary inverted pointing menu">
@@ -36,7 +42,17 @@ class NavBar extends Component{
                 <Link to="/login" className="ui inverted button">Login</Link>
               </div>
             </div>
-          {this.props.children}
+
+            <div style={{
+              padding: '200px'
+            }} className="ui text container">
+
+              <h1 className="ui inverted header">
+                {title}
+              </h1>
+              <h2>{subtitle}</h2>
+            </div>
+
           </div>
         </div>
         )
