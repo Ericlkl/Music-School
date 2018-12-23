@@ -3,7 +3,6 @@ const Teacher = mongoose.model('teachers');
 
 module.exports = app => {
     app.post('/api/teacher', async (req,res) => {
-        console.log(req.body);
         const {firstname,lastname,gender,DoB,address,phoneNumber,facebook,qualification,musicSkill,language} = req.body;
 
         const newTeacher = new Teacher({
@@ -17,11 +16,8 @@ module.exports = app => {
             qualification,
             musicSkill,
             language
-        });
-
-        const obj = await newTeacher.save();
-        console.log(obj);
-        res.status(200).send(obj);
+        }).save();
+        res.status(200).send(newTeacher);
 
     });
 

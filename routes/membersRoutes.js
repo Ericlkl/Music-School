@@ -6,14 +6,14 @@ module.exports = app => {
     // Signup a new member
     app.post('/api/member', async (req,res) => {
         const { firstname, lastname, email } = req.body;
-        const newMember = new Member({
+        
+        const newMember = await new Member({
             firstname,
             lastname,
             email
-        });
-        const newObj = await newMember.save();
-        res.status(200).send("Sign Up Successfully!");
-        console.log(newObj);
+        }).save();
+
+        res.status(200).send(newMember);
     });
     
     // Get all members info

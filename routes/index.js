@@ -3,4 +3,5 @@ module.exports = app => {
     require('./membersRoutes')(app);
     require('./teachersRoutes')(app);
     require('./coursesRoutes')(app);
+    require('./eventsRoutes')(app);
 }
