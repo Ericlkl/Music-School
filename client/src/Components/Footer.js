@@ -29,8 +29,8 @@ class Footer extends Component{
                   </div>
                 </div>
                 <div className="seven wide column">
-                  <h4 className="ui inverted header">Footer Header</h4>
-                  <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
+                  <h4 className="ui inverted header">Developed By KA LONG LEE (Eric)</h4>
+                  <p>It is a profolio project for building a fullstack web application for music school. The school is not exist in the real world.</p>
                 </div>
               </div>
             </div>

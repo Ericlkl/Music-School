@@ -27,7 +27,7 @@ const CourseCard = (props) => {
             
             <div className="extra content">
                 <span >
-                    ${fee}
+                    <i className="dollar sign icon"></i>{fee}
                 </span>
                 <span className="right floated">
                     <i className="user icon"></i>

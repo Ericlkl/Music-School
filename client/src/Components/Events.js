@@ -20,8 +20,14 @@ const EventCard = (props) => {
 
                 <div className="meta">
                     <p>{tag.map(skill => skill)}</p>
-                    <p> <i className="calendar alternate outline icon"></i>
-                    { newDate.toLocaleTimeString() + " " + newDate.toLocaleDateString() }</p>
+                    <p>
+                        <i className="calendar alternate outline icon"></i>
+                        {newDate.toLocaleDateString()}
+                    </p>
+                    <p>
+                        <i className="clock outline icon"></i>
+                        {newDate.toLocaleTimeString()}
+                    </p>
                 </div>
 
                 <div className="description">
