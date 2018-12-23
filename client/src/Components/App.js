@@ -31,7 +31,8 @@ class App extends Component {
           <Route path="/joinus" component={JoinUs}/>
           <Route path="/signup" component={SignUp}/>
           <Route path="/login" component={Login}/>
-
+          
+          {/* Admin Page Route */}
           <Route path="/admin/courses" component={EditCourse}/>
           <Route path="/admin/teachers" component={EditTeacher}/>
           <Route path="/admin/events" component={EditEvent}/>

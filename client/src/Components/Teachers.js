@@ -7,16 +7,18 @@ import bg_img from '../assets/img/teachers_bg.jpg';
 import { fetchTeachers } from '../Actions/index';
 
 const TeacherCard = (props) => {
+    const {firstname, lastname, qualification, musicSkill} = props.teacher;
     return (
         <div className="card">
             <div className="image">
                 <img src="/images/avatar2/large/matthew.png" alt="teacher-img"/>
             </div>
             <div className="content">
-                <div className="header">Teacher Name</div>
+                <div className="header">{`${firstname} ${lastname}`}</div>
 
                 <div className="meta">
-                    <p>Bachelor</p>
+                    <p>{qualification}</p>
+                    <p>{musicSkill.map(skill => skill)}</p>
                 </div>
 
                 <div className="description">
@@ -51,14 +53,9 @@ class Teachers extends Component{
                     title="Teachers"
                     subtitle="Professional Teachers in Australia"/>
                 
-                    <div style={{
-                        margin: "50px"
-                    }} className="ui container">
+                    <div style={{ margin: "50px"}} className="ui container">
                         <div className="ui link cards">
-                        <TeacherCard/>
-                        <TeacherCard/>
-                        <TeacherCard/>
-                        <TeacherCard/>
+                            {this.props.teachers.map(teacher => <TeacherCard teacher={teacher}/>)}
                         </div>
                     </div>
 
