@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+
 import NavBar from './NavBar';
 import Footer from './Footer';
 import bg_img from '../assets/img/course_bg.jpg'
-
+import {fetchCourses} from '../Actions/index'
 const CourseCard = (props) => {
     return (
         <div className="card">
@@ -36,7 +38,11 @@ const CourseCard = (props) => {
 }
 
 class Courses extends Component{
+    componentDidMount(){
+        this.props.fetchCourses();
+    }
     render(){
+        console.log(this.props.courses);
         return(
             <div>
                 <NavBar page="courses"
@@ -59,5 +65,12 @@ class Courses extends Component{
         )
     }
 }
+const mapStateToProps = state => {
+    return {
+        courses: state.courses
+    }
+}
 
-export default Courses;
+export default connect(mapStateToProps, {
+    fetchCourses
+})(Courses);
