@@ -3,23 +3,42 @@ import {Link} from 'react-router-dom'
 
 class NavBar extends Component{
     render(){
-        return(
-            <div className="ui borderless main menu" >
-            <div className="ui text container">
-              <div className="header item">
-                <img className="logo" src=""/>
-                <Link to="/">Music School</Link>
-              </div>
-              <Link to="/courses" className="item">Courses</Link>
-              <Link to="/events" className="item">Events</Link>
-              <Link to="/teachers" className="item">Teachers</Link>
+        const page = this.props.page;
 
-              <div className="ui right floated item">
-                <Link to="/signup" className="item">Sign Up</Link>
-                <Link to="/login" className="item">Login</Link>
+        return(
+          <div className="ui inverted vertical masthead center aligned segment">
+          <div className="ui container">
+  
+            <div className="ui large secondary inverted pointing menu">
+
+              <Link to="/" className={ page === "home" ? "item active" : "item" }>
+                Home
+              </Link>
+
+              <Link to="/courses" className={ page === "courses" ? "item active" : "item" }>
+                Courses
+              </Link>
+
+              <Link to="/events" className={ page === "events" ? "item active" : "item" }>
+                Events
+              </Link>
+
+              <Link to="/teachers" className={ page === "teachers" ? "item active" : "item" }>
+                Teachers
+              </Link>
+
+              <Link to="/aboutus" className={ page === "aboutus" ? "item active" : "item" }>
+                AboutUs
+              </Link>
+  
+              <div className="right item">
+                <Link to="/signup" className="ui inverted button">Sign Up</Link>
+                <Link to="/login" className="ui inverted button">Login</Link>
               </div>
             </div>
+          {this.props.children}
           </div>
+        </div>
         )
     }
 }
