@@ -9,9 +9,14 @@ const CourseCard = (props) => {
     const { courseName, description, fee, instrument, imageURI } = props.course;
     return (
         <div className="card">
-            <div className="image">
+            <div class="ui fluid image">
+                <div class="ui red ribbon label">
+                  <i className="hotjar icon"></i>  Highest rated
+                </div>
                 <img src={imageURI} alt="course-img"/>
             </div>
+
+
             <div className="content">
                 <div className="header">{courseName}</div>
 
