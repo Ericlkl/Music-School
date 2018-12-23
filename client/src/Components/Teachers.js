@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+
 import NavBar from './NavBar';
 import Footer from './Footer';
-import bg_img from '../assets/img/teachers_bg.jpg'
+import bg_img from '../assets/img/teachers_bg.jpg';
+import { fetchTeachers } from '../Actions/index';
 
 const TeacherCard = (props) => {
     return (
@@ -36,7 +39,11 @@ const TeacherCard = (props) => {
 }
 
 class Teachers extends Component{
+    componentDidMount(){
+        this.props.fetchTeachers();
+    }
     render(){
+        console.log(this.props.teachers);
         return(
             <div>
             <NavBar page="teachers"
@@ -61,4 +68,12 @@ class Teachers extends Component{
     }
 }
 
-export default Teachers;
+const mapStateToProps = (state) => {
+    return {
+        teachers: state.teachers
+    }
+}
+
+export default connect(mapStateToProps, {
+    fetchTeachers
+})(Teachers);
