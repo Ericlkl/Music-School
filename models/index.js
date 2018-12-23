@@ -4,3 +4,4 @@ require('./Teacher');
 require('./Course');
 require('./Event');
 require('./Instrument');
+require('./Question');

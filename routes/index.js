@@ -5,4 +5,5 @@ module.exports = app => {
     require('./coursesRoutes')(app);
     require('./eventsRoutes')(app);
     require('./instrumentRoutes')(app);
+    require('./questionsRoutes')(app);
 }
