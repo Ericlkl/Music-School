@@ -55,7 +55,7 @@ class Events extends Component{
     }
 
     render(){
-        const cardlistStyle = this.props.events.length != 0 ? "ui link cards" : "ui active centered inline loader";
+        const cardlistStyle = this.props.events.length !== 0 ? "ui link cards" : "ui active centered inline loader";
 
         return(
             <div>
