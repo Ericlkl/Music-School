@@ -19,7 +19,7 @@ class SignUp extends Component{
 
         return (
             <div>
-                <div className="field">
+                <div className={className}>
                     <label>{label}</label>
                     <input {...input} autoComplete="off"/>
                 </div>

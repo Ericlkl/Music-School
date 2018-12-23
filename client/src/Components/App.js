@@ -11,6 +11,11 @@ import JoinUs from './JoinUs';
 import Login from './Login';
 import SignUp from './SignUp';
 
+// AdminPage Component
+import EditCourse from './admin/EditCourse';
+import EditEvent from './admin/EditEvent';
+import EditTeacher from './admin/EditTeacher';
+
 class App extends Component {
   render() {
     return (
@@ -26,6 +31,10 @@ class App extends Component {
           <Route path="/joinus" component={JoinUs}/>
           <Route path="/signup" component={SignUp}/>
           <Route path="/login" component={Login}/>
+
+          <Route path="/admin/courses" component={EditCourse}/>
+          <Route path="/admin/teachers" component={EditTeacher}/>
+          <Route path="/admin/events" component={EditEvent}/>
         </Switch>
       </div>
       </BrowserRouter>

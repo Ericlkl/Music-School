@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom'
 class NavBar extends Component{
     render(){
         const {page, backgroundImg, title , subtitle} = this.props;
-
         const backgroundStyle = {
           backgroundImage: ` linear-gradient( rgba(0,0,0,0.75), rgba(0,0,0,0.75) ), url(${backgroundImg})`,
           backgroundPosition: 'center',
@@ -44,7 +43,7 @@ class NavBar extends Component{
             </div>
 
             <div style={{
-              padding: '200px'
+              padding: '120px'
             }} className="ui text container">
 
               <h1 className="ui inverted header">

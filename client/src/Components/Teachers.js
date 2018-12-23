@@ -10,7 +10,7 @@ const TeacherCard = (props) => {
     return (
         <div className="card">
             <div className="image">
-                <img src="/images/avatar2/large/matthew.png"/>
+                <img src="/images/avatar2/large/matthew.png" alt="teacher-img"/>
             </div>
             <div className="content">
                 <div className="header">Teacher Name</div>
@@ -54,7 +54,7 @@ class Teachers extends Component{
                     <div style={{
                         margin: "50px"
                     }} className="ui container">
-                        <div class="ui link cards">
+                        <div className="ui link cards">
                         <TeacherCard/>
                         <TeacherCard/>
                         <TeacherCard/>

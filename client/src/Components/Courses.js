@@ -6,29 +6,30 @@ import bg_img from '../assets/img/course_bg.jpg'
 import {fetchCourses} from '../Actions/index'
 
 const CourseCard = (props) => {
+    const { courseName, description, fee, instrument, imageURI } = props.course;
     return (
         <div className="card">
             <div className="image">
-                <img src="/images/avatar2/large/matthew.png"/>
+                <img src={imageURI} alt="course-img"/>
             </div>
             <div className="content">
-                <div className="header">Teacher Name</div>
+                <div className="header">{courseName}</div>
 
                 <div className="meta">
-                    <p>Bachelor</p>
+                    <p>{instrument}</p>
                 </div>
 
                 <div className="description">
-                    This is the description box.
+                    {description}
                 </div>
 
             </div>
             
             <div className="extra content">
-                <span className="right floated">
-                    1 Years+ Experiences
+                <span >
+                    ${fee}
                 </span>
-                <span>
+                <span className="right floated">
                     <i className="user icon"></i>
                     75 Students
                 </span>
@@ -54,10 +55,7 @@ class Courses extends Component{
                         margin: "50px"
                     }} className="ui container">
                         <div className="ui link cards">
-                        <CourseCard/>
-                        <CourseCard/>
-                        <CourseCard/>
-                        <CourseCard/>
+                        {this.props.courses.map(course => <CourseCard course={course} /> )}
                         </div>
                     </div>
                 <Footer/>
