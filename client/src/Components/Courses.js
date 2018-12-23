@@ -48,9 +48,8 @@ class Courses extends Component{
         this.props.fetchCourses();
     }
     render(){
-        console.log(this.props.courses);
         return(
-            <div>
+            <div className="ui">
                 <NavBar page="courses"
                     backgroundImg={bg_img}
                     title="Courses"
