@@ -6,7 +6,6 @@ import { reducer as formReducer } from 'redux-form';
 const memberReducer = (state = {}, action) => {
     switch(action.type){
         case REGISTER_MEMBER:
-            console.log(state);
             return action.payload;
         default:
             return state;
@@ -31,11 +30,20 @@ const teachersReducer = (state = [], action) => {
     }
 }
 
+const eventsReducer = (state = [], action) => {
+    switch(action.type){
+        case FETCH_EVENTS:
+            return action.payload
+        default:
+            return state;
+    }
+}
 
 
 export default combineReducers({
     member: memberReducer,
     courses: coursesReducer,
     teachers: teachersReducer,
+    events: eventsReducer,
     form: formReducer,
 });

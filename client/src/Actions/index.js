@@ -28,3 +28,12 @@ export const fetchTeachers = () => async dispatch => {
         payload: res.data
     });
 }
+
+export const fetchEvents = () => async dispatch => {
+    const res = await axios.get('/api/event');
+
+    dispatch({
+        type: FETCH_EVENTS,
+        payload: res.data
+    });
+}

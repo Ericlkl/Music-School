@@ -68,11 +68,7 @@ class Teachers extends Component{
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        teachers: state.teachers
-    }
-}
+const mapStateToProps = ({teachers}) => ({teachers})
 
 export default connect(mapStateToProps, {
     fetchTeachers
