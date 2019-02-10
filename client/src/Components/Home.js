@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import NavBar from './NavBar';
+import Hero from './Hero';
 import Footer from './Footer';
 import bg_img from '../assets/img/home_bg.jpg'
 import intro_img from '../assets/img/intro.jpg'
@@ -44,6 +45,7 @@ class Home extends Component{
                         backgroundImg={bg_img}
                         title="Pineland Music School"
                         subtitle="Learning Music is easier than you think"/>
+                <Hero/>
                 <Intro/>
                 <Footer/>
             </div>
