@@ -1,3 +1,6 @@
+:root{
+    --primary-color: #e67e22;
+}
 *{
     padding: 0;
     margin: 0;
@@ -11,7 +14,17 @@
     overflow: hidden;
     padding: 0 1rem;
 }
+
+.udl-heading:after{
+    display: block;
+    height: 2px;
+    background-color: #e67e22;
+    content: "";
+    width: 10rem;
+    margin: 1rem auto;
+}
 @import './navbar.scss';
 @import './hero.scss';
 @import './footer.scss';
 @import './info_section.scss';
+@import './features.scss';

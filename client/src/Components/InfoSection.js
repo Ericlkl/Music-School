@@ -4,7 +4,7 @@ const InfoSection = (props) =>{
     return (
         <div style={props.bg_color} className="info-section">
             <div className="container">
-                <h1 className="ui header info-title">{props.title}</h1>
+                <h1 className="ui header info-title udl-heading">{props.title}</h1>
                 <div className="info-box">
                     {props.children}
                 </div>
