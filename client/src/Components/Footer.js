@@ -29,7 +29,7 @@ class Footer extends Component{
               </div>
 
               <div className="copyright">
-                <h1>Developed By KA LONG LEE (Eric)</h1>
+                <h1>Developed By KA LONG LEE &copy; All Right Reserved</h1>
                 <h3>It is a profolio project for building a fullstack web application for music school. The school is not exist in the real world.</h3>
               </div>
 
