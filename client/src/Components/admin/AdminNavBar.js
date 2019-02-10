@@ -7,7 +7,7 @@ class AdminNavBar extends Component{
             <div className="ui borderless main menu" >
             <div className="ui text container">
               <div className="header item">
-                <img className="logo" src=""/>
+                
                 <Link to="/">Music School</Link>
               </div>
               <Link to="/admin/courses" className="item">Edit Courses</Link>

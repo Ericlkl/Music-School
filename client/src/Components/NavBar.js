@@ -12,7 +12,6 @@ class NavBar extends Component{
                 <Link className={this.props.pages === "events" ? "active route" : "route"} to="/events">Events</Link>
                 <Link className={this.props.pages === "teachers" ? "active route" : "route"} to="/teachers">Teachers</Link>
                 <Link className={this.props.pages === "aboutus" ? "active route" : "route"} to="/aboutus">About Us</Link>
-                <Link className={this.props.pages === "joinus" ? "active route" : "route"} to="/joinus">Join Us</Link>
               </div>
 
               <div className="members-sections">

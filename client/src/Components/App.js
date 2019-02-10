@@ -7,7 +7,6 @@ import Teachers from './Teachers';
 import Instrument from './Instrument';
 import Courses from './Courses';
 import AboutUs from './AboutUs';
-import JoinUs from './JoinUs';
 import Login from './Login';
 import SignUp from './SignUp';
 
@@ -28,7 +27,6 @@ class App extends Component {
           <Route path="/instrument" component={Instrument}/>
           <Route path="/courses" component={Courses}/>
           <Route path="/aboutus" component={AboutUs}/>
-          <Route path="/joinus" component={JoinUs}/>
           <Route path="/signup" component={SignUp}/>
           <Route path="/login" component={Login}/>
           
