@@ -1,0 +1,84 @@
+// Mobile
+.navbar {
+    width: 100%;
+    text-align: center;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../img/home_bg.jpg') no-repeat center center/cover;
+    height: 50vh;
+    color: white;
+    >.container{
+        >.route-section{
+            display: flex;
+            position: sticky;
+            justify-content: space-between;
+            height: 10vh;
+            >.page-links{
+                display: flex;
+                >.route{
+                    font-size: 1.8rem;
+                    margin: 1rem;
+                    padding: 1rem;
+                    color: white;
+                    border-bottom: 3px solid transparent;
+                }
+                >.route:hover{
+                    border-bottom: 3px solid white;
+                }
+            }
+            >.members-sections{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0rem 1rem;
+            }
+        }
+
+        >.text-section{
+            margin: 10vh 0px ;
+        }
+
+    }
+}
+
+// Tablet
+@media (min-width: 750px){
+    .navbar {
+        >.container{
+            >.route-section{
+                display: flex;
+                justify-content: space-between;
+                >.page-links{
+                    display: flex;
+                    >.route{
+                        font-size: 1.8rem;
+                        margin: 1rem;
+                        padding: 1rem;
+                        color: white;
+                        border-bottom: 3px solid transparent;
+                    }
+                    >.route:hover{
+                        border-bottom: 3px solid white;
+                    }
+                }
+                >.members-sections{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+    
+            >.title{
+                padding-top: 5rem;
+                grid-column: 1 / span 3;
+            }
+    
+            // >.subtitle{
+    
+            // }
+        }
+    }
+}
+
+// Laptop
+@media (min-width: 1022px){
+
+}
