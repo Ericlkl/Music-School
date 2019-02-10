@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import NavBar from './NavBar';
+import Hero from './Hero';
 import Footer from './Footer';
 import bg_img from '../assets/img/course_bg.jpg'
 import {fetchCourses} from '../Actions/index'
@@ -47,14 +48,15 @@ class Courses extends Component{
     componentDidMount(){
         this.props.fetchCourses();
     }
+
     render(){
         const cardlistStyle = this.props.courses.length !== 0 ? "ui link cards" : "ui active centered inline loader";
         return(
             <div className="ui">
-                <NavBar page="courses"
-                    backgroundImg={bg_img}
-                    title="Courses"
-                    subtitle="Make the change Today!"/>
+            <NavBar pages="courses"/>
+            <Hero bg_img={bg_img}
+                title="Courses"
+                subtitle="Make the change Today!"/>
 
                     <div style={{
                         margin: "50px"

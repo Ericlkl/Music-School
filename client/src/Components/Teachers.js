@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
 import NavBar from './NavBar';
+import Hero from './Hero';
 import Footer from './Footer';
 import bg_img from '../assets/img/teachers_bg.jpg';
 import { fetchTeachers } from '../Actions/index';
@@ -48,10 +49,10 @@ class Teachers extends Component{
         const cardlistStyle = this.props.teachers.length !== 0 ? "ui link cards" : "ui active centered inline loader";
         return(
             <div>
-            <NavBar page="teachers"
-                    backgroundImg={bg_img}
-                    title="Teachers"
-                    subtitle="Professional Teachers in Australia"/>
+            <NavBar pages="teachers"/>
+            <Hero bg_img={bg_img}
+                title="Teachers"
+                subtitle="Professional Teachers in Australia"/>
                 
                     <div style={{ margin: "50px"}} className="ui container">
                         <div className={cardlistStyle}>

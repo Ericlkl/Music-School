@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import NavBar from './NavBar';
+import Hero from './Hero';
 import Footer from './Footer';
 import { fetchEvents} from '../Actions/index'
 
@@ -59,10 +60,10 @@ class Events extends Component{
 
         return(
             <div>
-                <NavBar page="events"
-                        backgroundImg={bg_img}
-                        title="Events"
-                        subtitle="Jumb into Biggest Music Event in Aus"/>
+            <NavBar pages="events"/>
+            <Hero bg_img={bg_img}
+                title="Events"
+                subtitle="Jumb into Biggest Music Event in Aus"/>
 
                 <div style={{ margin: "50px"}} className="ui container">
                     <div className={cardlistStyle}>

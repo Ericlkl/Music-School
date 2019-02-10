@@ -15,10 +15,14 @@
             align-items: center;
             >.route{
                 font-size: 1.7rem;
-                color: white;
+                color: rgba(255,255,255,0.6);
                 border-bottom: 3px solid transparent;
-                margin: 1rem;
-                padding: 1rem;
+                margin: 0.5rem;
+                padding: 1rem 0.5rem;
+            }
+
+            >.active{
+                color: white;
             }
 
             >.route:hover{

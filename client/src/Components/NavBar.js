@@ -7,10 +7,12 @@ class NavBar extends Component{
           <div className="navbar">
             <div className="container">
               <div className="page-links">
-                <Link className="route" to="/">Home</Link>
-                <Link className="route" to="/">Course</Link>
-                <Link className="route" to="/">Events</Link>
-                <Link className="route" to="/">Teachers</Link>
+                <Link className={this.props.pages === "home" ? "active route" : "route"} to="/">Home</Link>
+                <Link className={this.props.pages === "courses" ? "active route" : "route"} to="/courses">Course</Link>
+                <Link className={this.props.pages === "events" ? "active route" : "route"} to="/events">Events</Link>
+                <Link className={this.props.pages === "teachers" ? "active route" : "route"} to="/teachers">Teachers</Link>
+                <Link className={this.props.pages === "aboutus" ? "active route" : "route"} to="/aboutus">About Us</Link>
+                <Link className={this.props.pages === "joinus" ? "active route" : "route"} to="/joinus">Join Us</Link>
               </div>
 
               <div className="members-sections">
