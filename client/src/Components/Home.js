@@ -15,17 +15,13 @@ class Home extends Component{
                 <Hero bg_img={bg_img}
                     title="Pineland Music School"
                     subtitle="Learning Music is easier than you think"/>
-                <InfoSection img={intro_img} 
-                            infoArray={[
-                                <h2>The best learning experience for music</h2>,
-                                <p>Experience music lessons at their best. Guitar lessons, piano lessons, singing lessons, drum lessons, it's all here at Forte School of Music.</p>,
-                                <h2>The best learning experience for music</h2>,
-                                <p>Experience music lessons at their best. Guitar lessons, piano lessons, singing lessons, drum lessons, it's all here at Forte School of Music.</p>,
-                                <h2>The best learning experience for music</h2>,
-                                <p>Experience music lessons at their best. Guitar lessons, piano lessons, singing lessons, drum lessons, it's all here at Forte School of Music.</p>
-                            ]}
-                            floatImgLeft={true}
-                            title="What We do..."/>
+                <InfoSection img={intro_img} imgPosition="left" title="What We do...">
+                    <h2>The best learning experience for music</h2>
+                    <p>Experience music lessons at their best. Guitar lessons, piano lessons, singing lessons, drum lessons, it's all here at Forte School of Music.</p>
+                    <h2>The best learning experience for music</h2>
+                    <p>Experience music lessons at their best. Guitar lessons, piano lessons, singing lessons, drum lessons, it's all here at Forte School of Music.</p>
+                </InfoSection>
+                
                 <Footer/>
             </div>
         )

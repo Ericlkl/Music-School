@@ -3,13 +3,13 @@ import React, {Component} from 'react';
 class InfoSection extends Component{
     render(){
         return (
-            <div className="info-section">
+            <div style={this.props.bg_color} className="info-section">
                 <div className="container">
                     <h1 className="ui header info-title">{this.props.title}</h1>
                     <div className="info-box">
-                        {this.props.infoArray.map( info => info)}
+                        {this.props.children}
                     </div>
-                    <div style={ this.props.floatImgLeft === true ? {
+                    <div style={ this.props.imgPosition === "left" ? {
                         gridColumn: 1,
                         gridRow: 2
                     } : {}} className="image-box">
