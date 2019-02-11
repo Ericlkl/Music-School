@@ -37,7 +37,7 @@ const Features = () => {
                     if that's your style."
                 />
                 <Feature icon="fa-drum" 
-                    title="No need BYO instrument"
+                    title="No BYO instrument"
                     paragraph="Never cook again! We really mean that. 
                     Our subscription plans include up to 365 days/year 
                     coverage. You can also choose to order more flexibly 

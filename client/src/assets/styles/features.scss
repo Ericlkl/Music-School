@@ -18,7 +18,9 @@
         >.feature{
             display: flex;
             flex-direction: column;
+            justify-content: center;
             align-items: center;
+            text-align: center;
             padding: 2rem;
             >i{
                 color: #e67e22;
