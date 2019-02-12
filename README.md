@@ -8,6 +8,23 @@ ExpressJS
 NodeJS
 ReactJS
 Redux
+Sass
+```
+
+## Client Side Package Include
+```
+  react
+  react-dom
+  react-redux
+  react-router
+  react-router-dom
+  react-scripts
+  redux
+  redux-form
+  redux-thunk
+  axios
+  http-proxy-middleware
+  node-sass
 ```
 
 ## Getting Started
