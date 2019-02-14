@@ -8,7 +8,7 @@ const InfoSection = (props) =>{
                 <div className="info-box">
                     {props.children}
                 </div>
-                <div style={ props.imgPosition === "left" ? {
+            <div style={ props.imgPosition === "left" ? {
                     gridColumn: 1,
                     gridRow: 2
                 } : {}} className="image-box">

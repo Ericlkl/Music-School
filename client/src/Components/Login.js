@@ -3,43 +3,32 @@ import React, {Component} from 'react';
 class Login extends Component{
     render(){
         return(
-            <div style={{
-                height: '100vh'
-            }} className="ui placeholder segment">
-            <div className="ui two column very relaxed stackable grid">
-              <div className="column">
-                <div className="ui form">
-                  <div className="field">
-                    <label>Username</label>
-                    <div className="ui left icon input">
-                      <input type="text" placeholder="Username"/>
-                      <i className="user icon"></i>
-                    </div>
-                  </div>
-                  <div className="field">
-                    <label>Password</label>
-                    <div className="ui left icon input">
-                      <input type="password"/>
-                      <i className="lock icon"></i>
-                    </div>
-                  </div>
-                  <div className="ui blue submit button">Login</div>
-                </div>
-              </div>
-              <div className="middle aligned column">
-                <div className="ui big button">
-                  <i className="signup icon"></i>
-                  Sign Up
-                </div>
+          <div className="login">
+            <div className="login-form">
+              <h1 className="company-name">Pineland Music School</h1>
 
-                <div className="ui big button">
-                <i className="signup icon"></i>
-                    Go Back
-                </div>
+              <label htmlFor="username" >Email or Username</label>
+              <input type="text" name="username"/>
+
+              <label htmlFor="password" >Password</label>
+              <input type="text" name="password"/>
+
+              <button className="ui button">Sign In</button>
+              <a href="#">forget password?</a>
+
+              <div className="social-login">
+                <button>Google</button>
+                <button>Facebook</button>
               </div>
+
+              <button>Create Account</button>
+
             </div>
-            <div className="ui vertical divider">
-              Or
+
+            <div className="login-img">
+              <div className="container">
+                <h1>Reaching the bright Music future today!</h1>
+              </div>
             </div>
           </div>
         )
