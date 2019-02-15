@@ -27,7 +27,7 @@ class Login extends Component{
             <form className="ui form login-form py-5 error" 
                   onSubmit={this.props.handleSubmit(this.onSubmit)}
               >
-              <h1 className="udl-heading company-name">Pineland Music School</h1>
+              <h1 className="udl-heading logo">Pineland Music School</h1>
 
               <Field name="username"
                 label="Username :"

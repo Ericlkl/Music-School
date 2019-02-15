@@ -58,17 +58,27 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            >.hamburger-menu{
+            >.menu-bar{
                 display: flex;
-                flex-direction: column;
                 justify-content: space-between;
-                height: 2rem;
-                width: 2rem;
-                margin: 2rem;
-                justify-self: flex-end;
-                align-self: flex-end;
-                .line{
-                    border: 1px solid white;
+                align-items: center;
+
+                >.logo{
+                    color: #e67e22;
+                    justify-content: center;
+                    
+                    margin: 1.25rem 0rem;
+                }
+                >.hamburger-menu{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    height: 2rem;
+                    width: 2rem;
+                    margin: 2rem;
+                    .line{
+                        border: 1px solid white;
+                    }
                 }
             }
             >.page-links{

@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import LazyLoad from 'react-lazyload';
 import {Link} from 'react-router-dom'
 
 class NavBar extends Component{
@@ -54,15 +53,21 @@ class NavBar extends Component{
             <div className="container">
 
               <div className={this.state.navbarOrientation}>
+
+              <div className="menu-bar"
+                  style={ this.state.navbarOrientation === "vertical" ? 
+                  { display: 'flex' } : { display : 'none' }}>
+                <h1 className="logo">Pineland Music School</h1>
+                
                 <div className="hamburger-menu" 
                     onClick={this.hamburgerMenuClicked}
-                style={ this.state.navbarOrientation === "vertical" ? 
-                  { display: 'flex' } : { display : 'none' }
-                }>
+                    >
+
                   <div className="line"/>
                   <div className="line"/>
                   <div className="line"/>
                 </div>
+              </div>
 
                 <div style={ this.state.appendMenu === false ? {display: 'none'} : {} } 
                     className="page-links">

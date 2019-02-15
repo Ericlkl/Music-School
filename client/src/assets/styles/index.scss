@@ -1,3 +1,4 @@
+
 :root{
     --primary-color: #e67e22;
 }
@@ -13,6 +14,12 @@
     margin: auto;
     overflow: hidden;
     padding: 0 1rem;
+}
+
+.logo{
+    font-family: 'Miss Fajardose', cursive;
+    font-size: 3.5rem;
+    font-weight: 100;
 }
 
 .py-1{
@@ -45,3 +52,4 @@
 @import './info_section.scss';
 @import './features.scss';
 @import './login.scss';
+@import url('https://fonts.googleapis.com/css?family=Miss+Fajardose');

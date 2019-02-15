@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css?family=Miss+Fajardose');
 // Mobile
 .login{
     display: grid;
@@ -14,12 +13,6 @@
         background-color: #444;
         color: white;
         grid-template-columns: 1fr;
-
-        h1{
-            font-family: 'Miss Fajardose', cursive;
-            font-size: 3.5rem;
-            font-weight: 100;
-        }
 
         >.field{
             display: flex;
