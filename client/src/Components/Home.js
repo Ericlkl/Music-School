@@ -71,7 +71,9 @@ class Home extends Component{
                     title="Pineland Music School"
                     subtitle="Learning Music is easier than you think"/>
                     
-                <InfoSection img={intro_img} imgPosition="left" title="What We do...">
+                <InfoSection img={intro_img} 
+                        imgPosition="left" 
+                        title="What We do...">
                     <h2>The best learning experience for music</h2>
                     <p>Experience music lessons at their best. Guitar lessons, piano lessons, singing lessons, drum lessons, it's all here at Forte School of Music.</p>
                     <h2>Professional Teacher for all kind of instruments</h2>

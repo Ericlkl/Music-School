@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Field , reduxForm} from 'redux-form'
-import axios from 'axios'
-
+import axios from 'axios';
 
 class Login extends Component{
     renderInput = ({input, label , meta}) => {
@@ -15,8 +14,10 @@ class Login extends Component{
       )
     }
 
-    onSubmit = (formValues) => {
-      console.log(formValues);
+    onSubmit = async (formValues) => {
+      console.log("Forms Value Sent !");
+
+      await axios.post('/api/login', formValues);
     }
 
 
@@ -38,7 +39,7 @@ class Login extends Component{
                 component={this.renderInput}
               />
 
-              <button className="ui button">Submit</button>
+              <button className="ui button">Login </button>
 
               <a href="#">forget password?</a>
 
