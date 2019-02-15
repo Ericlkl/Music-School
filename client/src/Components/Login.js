@@ -1,39 +1,62 @@
 import React, {Component} from 'react';
+import {Field , reduxForm} from 'redux-form'
+import axios from 'axios'
+
 
 class Login extends Component{
+    renderInput = ({input, label , meta}) => {
+      const className = `field ui input ${meta.error && meta.touched ? 'error' : '' }`
+
+      return (
+        <div className={className}>  
+          <label>{label}</label>
+          <input {...input}/>
+        </div>
+      )
+    }
+
+    onSubmit = (formValues) => {
+      console.log(formValues);
+    }
+
+
     render(){
         return(
           <div className="login">
-            <form className="login-form py-5">
+            <form className="ui form login-form py-5 error" 
+                  onSubmit={this.props.handleSubmit(this.onSubmit)}
+              >
               <h1 className="udl-heading company-name">Pineland Music School</h1>
 
-              <div className="field ui input">  
-                <label htmlFor="username" >Email or Username </label>
-                <input type="text" name="username"/>
-              </div>
+              <Field name="username"
+                label="Username :"
+                component={this.renderInput}
+              />
 
-              <div className="field ui input">
-                <label htmlFor="password" >Password </label>
-                <input type="text" name="password"/>
-              </div>
+              <Field name="password"
+                label="Password :"
+                component={this.renderInput}
+              />
 
-              <button className="ui button">Sign In</button>
+              <button className="ui button">Submit</button>
+
               <a href="#">forget password?</a>
 
               <div className="social-login">
-                <button class="ui facebook button">
-                  <i class="facebook icon"></i>
+                <button className="ui facebook button">
+                  <i className="facebook icon"></i>
                   Facebook
                 </button>
 
-                <button class="ui google plus button">
-                  <i class="google icon"></i>
+                <button className="ui google plus button">
+                  <i className="google icon"></i>
                   Google
                 </button>
               </div>
 
-              <button className="ui button primary">Create Account</button>
-
+              <button className="ui button primary">
+                Create Account
+              </button>
             </form>
 
             <div className="login-img">
@@ -46,4 +69,25 @@ class Login extends Component{
     }
 }
 
-export default Login;
+const validate = (formsValue) => {
+  const errors = {};
+  if (!formsValue.username){
+    errors.username = "You Must insert username !"
+  }
+
+  if(!formsValue.password){
+    errors.password = "You Must enter your password !"
+  }
+  else if (formsValue.password.length < 8){
+    errors.password = "Password Length is less than 8 digit"
+  }
+
+  return errors
+}
+
+const formWrapped = reduxForm({
+  form: "loginForm",
+  validate
+})(Login)
+
+export default formWrapped;
