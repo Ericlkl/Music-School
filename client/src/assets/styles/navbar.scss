@@ -1,6 +1,18 @@
+#transfromNavbar{
+    background-color: rgba(0,0,0,0.9);
+    transform: background;
+    transition-duration: 2s;
+}
+
+#normalNavbar{
+    background-color: transparent;
+    transform: background;
+    transition-duration: 2s;
+}
+
 // Mobile
 .navbar {
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 10vh;
     background: transparent;

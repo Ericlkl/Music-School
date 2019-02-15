@@ -1,10 +1,34 @@
 import React, {Component} from 'react';
+import LazyLoad from 'react-lazyload';
 import {Link} from 'react-router-dom'
 
 class NavBar extends Component{
+
+    state= {
+      transformNavbar : false
+    }
+    
+    componentDidMount = () => {
+      window.addEventListener('scroll', this.handleScroll);
+    };
+    
+    componentWillUnmount = () => {
+      window.removeEventListener('scroll', this.handleScroll);
+    };
+    
+    handleScroll = (event) => {
+      console.log('the scroll things', event.path[1].scrollY);
+
+      if(event.path[1].scrollY > 450){
+        this.setState({ transformNavbar: true })
+      } else {
+        this.setState({ transformNavbar: false })
+      }
+    };
+
     render(){
         return (
-          <div className="navbar">
+          <div id={this.state.transformNavbar === true ? "transfromNavbar" : "normalNavbar"} className="navbar">
             <div className="container">
               <div className="page-links">
                 <Link className={this.props.pages === "home" ? "active route" : "route"} to="/">Home</Link>
