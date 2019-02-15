@@ -36,10 +36,11 @@
     
                 >.active{
                     color: white;
+                    border-bottom: 3px solid white;
                 }
     
                 >.route:hover{
-                    border-bottom: 3px solid white;
+                    color: rgba(255,255,255,0.8)
                 }
             }
             
@@ -57,6 +58,19 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            >.hamburger-menu{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                height: 2rem;
+                width: 2rem;
+                margin: 2rem;
+                justify-self: flex-end;
+                align-self: flex-end;
+                .line{
+                    border: 1px solid white;
+                }
+            }
             >.page-links{
                 display: flex;
                 flex-direction: column;
