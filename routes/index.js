@@ -1,10 +1,15 @@
+const instrument = require('./api/instrument');
+const questions = require('./api/questions');
+const teachers = require('./api/teachers');
+const courses = require('./api/courses');
+const events = require('./api/events');
+const users = require('./api/users');
+
 module.exports = app => {
-    require('./loginRoutes')(app);
-    // Import Route related to member
-    require('./membersRoutes')(app);
-    require('./teachersRoutes')(app);
-    require('./coursesRoutes')(app);
-    require('./eventsRoutes')(app);
-    require('./instrumentRoutes')(app);
-    require('./questionsRoutes')(app);
+    app.use('/api/courses', courses);
+    app.use('/api/events', events);
+    app.use('/api/users', users);
+    app.use('/api/teachers', teachers);
+    app.use('/api/questions', questions);
+    app.use('/api/instrument', instrument);
 }
