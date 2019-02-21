@@ -7,7 +7,7 @@ const { mongoURI } = require('./config/keys')
 const app = express();
 
 mongoose.connect(mongoURI, { useNewUrlParser: true});
-
+app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
 
 // Load MongoDb Models
