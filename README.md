@@ -9,6 +9,10 @@ NodeJS
 ReactJS
 Redux
 Sass
+JsonWebToken
+PassportJS
+BcryptJS
+Gravatar
 ```
 
 ## Client Side Package Include
