@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const {Schema} = mongoose;
 
-const MemberSchema = new Schema({
+const UserSchema = new Schema({
     firstname: {
         type: String,
         required: true
@@ -15,8 +15,7 @@ const MemberSchema = new Schema({
         required: true
     },
     address:{
-        type: String,
-        required: true
+        type: String
     },
     facebook:{
         type:String
@@ -26,7 +25,18 @@ const MemberSchema = new Schema({
     },
     type: {
         type: String,
+    },
+    avator: {
+        type: String
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    date: {
+        type: Date,
+        default: Date.now
     }
 })
 
-mongoose.model('members', MemberSchema);
+mongoose.model('users', UserSchema);

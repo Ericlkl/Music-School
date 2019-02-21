@@ -10,9 +10,12 @@ mongoose.connect(mongoURI, { useNewUrlParser: true});
 
 app.use(bodyParser.json());
 
+// Load MongoDb Models
 require('./models');
-require('./routes/index')(app);
+// Plug the routes to the express routers
+require('./routes')(app);
 
+// If we are in production mode
 if(process.env.NODE_ENV === 'production'){
     app.use(express.static('client/build'));
     app.get('*', (req,res) => {

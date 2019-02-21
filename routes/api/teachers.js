@@ -3,7 +3,6 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const Teacher = mongoose.model('teachers');
 
-
 router.post('/teacher', async (req,res) => {
     const {firstname,lastname,gender,DoB,address,phoneNumber,facebook,qualification,musicSkill,language} = req.body;
 

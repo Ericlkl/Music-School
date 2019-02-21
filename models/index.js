@@ -1,5 +1,5 @@
 // Create member model
-require('./Member');
+require('./User');
 require('./Teacher');
 require('./Course');
 require('./Event');
