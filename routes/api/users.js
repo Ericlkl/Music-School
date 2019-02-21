@@ -1,8 +1,14 @@
+// Route Related
 const express = require('express');
 const router = express.Router();
+
+// Register Related
+const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
-const gravatar = require('gravatar');
+
+// Login JWT Releated
+const passport = require('passport');
 const jwt = require('jsonwebtoken');
 
 const User = mongoose.model('users');
@@ -78,8 +84,17 @@ router.post('/login', async (req,res) => {
     }
 });
 
-router.get('/current', (req, res) => {
-    res.json({ msg: "Current"});
-})
+router.get(
+    '/current',
+    passport.authenticate('jwt', { session: false}),
+    (req,res) => {
+        console.log(req.user);
+        res.json({
+            id: req.user.id,
+            name: req.user.name,
+            email: req.user.email
+        });
+    }
+)
 
 module.exports = router;

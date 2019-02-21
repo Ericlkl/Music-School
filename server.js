@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const passport = require('passport');
 
 const { mongoURI } = require('./config/keys')
 const app = express();
@@ -9,11 +10,13 @@ const app = express();
 mongoose.connect(mongoURI, { useNewUrlParser: true});
 app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
+app.use(passport.initialize());
 
 // Load MongoDb Models
 require('./models');
 // Plug the routes to the express routers
 require('./routes')(app);
+require('./config/passport')(passport);
 
 // If we are in production mode
 if(process.env.NODE_ENV === 'production'){
