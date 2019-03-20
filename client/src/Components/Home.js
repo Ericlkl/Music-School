@@ -11,7 +11,7 @@ import child_img from '../assets/img/teach_children.jpg';
 const Feature = (props) => {
     return (
         <div className="feature">
-            <i class={props.icon + " fas fa-3x"}></i>
+            <i className={props.icon + " fas fa-3x"}></i>
             <h1>{props.title}</h1>
             <p>{props.paragraph}</p>
         </div>
