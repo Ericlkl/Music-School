@@ -8,7 +8,7 @@ const users = require('./api/users');
 module.exports = app => {
     app.use('/api', courses);
     app.use('/api', events);
-    app.use('/api/users', users);
+    // app.use('/api/users', users);
     app.use('/api', teachers);
     app.use('/api', questions);
     app.use('/api', instrument);
