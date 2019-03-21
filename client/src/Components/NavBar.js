@@ -39,7 +39,7 @@ class NavBar extends Component{
     }
     
     handleScroll = (event) => {
-      if(event.pageY > 300){
+      if(event.pageY > 180){
         this.setState({ transformNavbar: true })
       } else {
         this.setState({ transformNavbar: false })
