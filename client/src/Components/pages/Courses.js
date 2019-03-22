@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import NavBar from './NavBar';
-import Hero from './Hero';
-import Footer from './Footer';
-import bg_img from '../assets/img/course_bg.jpg'
-import {fetchCourses} from '../Actions/index'
+
+import NavBar from '../public/NavBar';
+import Hero from '../public/Hero';
+import Footer from '../public/Footer';
+import bg_img from '../../assets/img/course_bg.jpg'
+import {fetchCourses} from '../../Actions/index'
 
 const CourseCard = (props) => {
     const { courseName, description, fee, instrument, imageURI } = props.course;

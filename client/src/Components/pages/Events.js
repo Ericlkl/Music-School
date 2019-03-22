@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import NavBar from './NavBar';
-import Hero from './Hero';
-import Footer from './Footer';
-import { fetchEvents} from '../Actions/index'
 
-import bg_img from '../assets/img/event_bg.jpg'
+import NavBar from '../public/NavBar';
+import Hero from '../public/Hero';
+import Footer from '../public/Footer';
+import { fetchEvents} from '../../Actions/index'
+
+import bg_img from '../../assets/img/event_bg.jpg'
 
 const EventCard = (props) => {
     const {eventName, imageURI, date, place, description, tag, company} = props.event;

@@ -3,15 +3,15 @@ import axios from 'axios';
 
 import {Field, reduxForm} from 'redux-form';
 
-import NavBar from './NavBar';
-import InfoSection from './InfoSection';
-import Hero from './Hero';
-import Footer from './Footer';
+import NavBar from '../public/NavBar';
+import InfoSection from '../public/InfoSection';
+import Hero from '../public/Hero';
+import Footer from '../public/Footer';
 
-import school_img from '../assets/img/road.jpg'
-import contact_img from '../assets/img/mailbox.jpg'
-import bg_img from '../assets/img/aboutus_bg.jpg'
-import join_us from '../assets/img/join_us.jpg'
+import school_img from '../../assets/img/road.jpg'
+import contact_img from '../../assets/img/mailbox.jpg'
+import bg_img from '../../assets/img/aboutus_bg.jpg'
+import join_us from '../../assets/img/join_us.jpg'
 
 class JoinUsForm extends Component{
 

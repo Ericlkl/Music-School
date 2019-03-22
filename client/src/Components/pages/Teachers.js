@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
-import NavBar from './NavBar';
-import Hero from './Hero';
-import Footer from './Footer';
-import bg_img from '../assets/img/teachers_bg.jpg';
-import { fetchTeachers } from '../Actions/index';
+import NavBar from '../public/NavBar';
+import Hero from '../public/Hero';
+import Footer from '../public/Footer';
+
+import bg_img from '../../assets/img/teachers_bg.jpg';
+import { fetchTeachers } from '../../Actions/index';
 
 const TeacherCard = (props) => {
     const {firstname, lastname, qualification, musicSkill} = props.teacher;

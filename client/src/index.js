@@ -5,7 +5,7 @@ import {createStore, applyMiddleware, compose} from 'redux';
 import redux_thunk from 'redux-thunk';
 import './assets/styles/index.scss'
 
-import App from './Components/App';
+import App from './App';
 import reducers from './Reducers/'
 
 // Enable Redux Dev tools

@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
-import NavBar from './NavBar';
-import Hero from './Hero';
-import Footer from './Footer';
-import InfoSection from './InfoSection';
-import bg_img from '../assets/img/home_bg.jpg'
 
-import intro_img from '../assets/img/intro.jpg'
-import child_img from '../assets/img/teach_children.jpg';
+import NavBar from '../public/NavBar';
+import Hero from '../public/Hero';
+import Footer from '../public/Footer';
+import InfoSection from '../public/InfoSection';
+
+import bg_img from '../../assets/img/home_bg.jpg'
+import intro_img from '../../assets/img/intro.jpg'
+import child_img from '../../assets/img/teach_children.jpg';
 
 const Feature = (props) => {
     return (
