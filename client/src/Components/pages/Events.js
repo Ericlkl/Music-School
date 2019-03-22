@@ -11,41 +11,19 @@ import bg_img from '../../assets/img/event_bg.jpg'
 const EventCard = (props) => {
     const {eventName, imageURI, date, place, description, tag, company} = props.event;
     var newDate = new Date(date.toString());
-
     return (
-        <div className="card">
-            <div className="image">
-                <img src={imageURI} alt="event-img"/>
-            </div>
-            <div className="content">
-                <div className="header">{eventName}</div>
-
-                <div className="meta">
-                    <p>{tag.map(skill => skill)}</p>
-                    <p>
-                        <i className="calendar alternate outline icon"></i>
-                        {newDate.toLocaleDateString()}
-                    </p>
-                    <p>
-                        <i className="clock outline icon"></i>
-                        {newDate.toLocaleTimeString()}
-                    </p>
-                </div>
-
-                <div className="description">
-                    {description}
-                </div>
-                
+        <div className="event-card">      
+            <div className="event-card__content">
+            <img className="event-card_img" src={imageURI} alt="event-img"/>
+            <h1 className="event-card__content_title">{eventName}</h1>
+            <h3 className="event-card__content_location"><i className="building outline icon"></i>{place}</h3>
+            <h3 className="event-card__content_date"><i className="clock outline icon"></i>{Date().current}</h3>
+            <p className="event-card__content_description">{description}</p>
             </div>
             
-            <div className="extra content">
-                <span className="right floated">
-                    By {company}
-                </span>
-                <span>
-                    <i className="map marker icon"></i>
-                    {place}
-                </span>
+            <div className="event-card__footer">
+            <p className="event-card__footer_host">{company}</p>
+            <p className="event-card__footer_city">{tag}</p>
             </div>
         </div>
     )
@@ -57,20 +35,24 @@ class Events extends Component{
     }
 
     render(){
-        const cardlistStyle = this.props.events.length !== 0 ? "ui link cards" : "ui active centered inline loader";
-
         return(
             <div>
-            <NavBar pages="events"/>
-            <Hero bg_img={bg_img}
-                title="Events"
-                subtitle="Jumb into Biggest Music Event in Aus"/>
+                <NavBar pages="events"/>
+                <Hero bg_img={bg_img}
+                    title="Events"
+                    subtitle="Jumb into Biggest Music Event in Aus"/>
 
-                <div style={{ margin: "50px"}} className="ui container">
-                    <div className={cardlistStyle}>
-                    {this.props.events.map(event => <EventCard event={event} /> )}
-                    </div>
-                </div>
+                    <section className="events">
+                        <h1>Includes all events</h1>
+                        <div className="events__content">
+                            {
+                                this.props.events.map(
+                                    event => 
+                                        <EventCard event={event}/>
+                                )
+                            }
+                        </div>
+                    </section>
                 <Footer/>
             </div>
         )

@@ -1,0 +1,69 @@
+// Mobile
+.events{
+    margin: 3rem;
+    >h1{
+        margin: 2rem 0;
+        text-align: center;
+    }
+    &__content{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}
+
+// Card
+.event-card {
+    border-radius: 1rem;
+    margin: 0.5rem;
+    min-width: 300px;
+    min-height: 300px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+  
+    &:hover {
+      border: 1px solid red;
+      .event-card__content_title{
+        color:red;
+      }
+    }
+  
+    &_img {
+      width: 100%;
+      border-radius: 1rem;
+    }
+  
+    &__content {
+      margin: 1rem 0.5rem;
+      height: 90%;
+    }
+  
+    &__footer {
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid black;
+      height: 10%;
+      >*{
+        margin: 0.5rem;
+      }
+    }
+  }
+  
+
+// Tablet
+@media (min-width: 750px){
+    .events{
+        &__content{
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+}
+
+// Laptop
+@media (min-width: 1250px){
+    .events{
+        &__content{
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+}
