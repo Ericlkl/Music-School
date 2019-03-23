@@ -79,7 +79,7 @@ class NavBar extends Component{
                 </div>
                 <div style={ this.state.appendMenu === false ? {display: 'none'} : {} }
                  className="members-sections">
-                  <Link className="ui large inverted button" to="/signup">Sign Up</Link>
+                  <Link className="ui large inverted button orange" to="/signup">Sign Up</Link>
                   <Link className="ui large inverted button" to="/login">Login</Link>
                 </div>
               </div>
