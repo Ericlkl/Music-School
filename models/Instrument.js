@@ -27,4 +27,4 @@ const InstrumentSchema = new Schema({
     }
 });
 
-mongoose.model('instruments', InstrumentSchema);
+module.exports = mongoose.model('instruments', InstrumentSchema);

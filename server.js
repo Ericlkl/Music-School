@@ -11,8 +11,6 @@ mongoose.connect(mongoURI, { useNewUrlParser: true});
 app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
 
-// Load MongoDb Models
-require('./models');
 // Plug the routes to the express routers
 require('./routes')(app);
 

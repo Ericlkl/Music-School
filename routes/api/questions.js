@@ -1,8 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
-const Question = mongoose.model('questions');
-    
+const Question = require('../../models/Question');
+
+// Get all question route
+router.get('/', async (req,res) => {
+    const questions = await Question.find();
+    res.status(200).send(questions);
+});
+
+// Add question route
 router.post('/', async (req,res) => {
     const { provider, phoneNumber, email, message } = req.body;
     
@@ -14,11 +20,6 @@ router.post('/', async (req,res) => {
     }).save();
 
     res.status(200).send(newQuestion);
-});
-
-router.get('/', async (req,res) => {
-    const questions = await Question.find();
-    res.status(200).send(questions);
 });
 
 module.exports = router;

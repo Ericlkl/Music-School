@@ -3,8 +3,8 @@ const questions = require('./api/questions');
 const teachers = require('./api/teachers');
 const courses = require('./api/courses');
 const events = require('./api/events');
-const users = require('./api/users');
-const auth = require('./api/auth');
+const users = require('./auth/users');
+const auth = require('./auth/auth');
 
 module.exports = app => {
     app.use('/api/course', courses);
