@@ -1,18 +1,18 @@
 import React from 'react';
 
-const InfoSection = (props) =>{
+const InfoSection = ({title, bg_color, imgPosition, img, children}) =>{
     return (
-        <div style={props.bg_color} className="info-section">
+        <div style={bg_color} className="info-section">
             <div className="container">
-                <h1 className="ui header info-title udl-heading">{props.title}</h1>
+                <h1 className="ui header info-title udl-heading">{title}</h1>
                 <div className="info-box">
-                    {props.children}
+                    {children}
                 </div>
-            <div style={ props.imgPosition === "left" ? {
+            <div style={ imgPosition === "left" ? {
                     gridColumn: 1,
                     gridRow: 2
                 } : {}} className="image-box">
-                    <img src={props.img} alt="section-img"/>
+                    <img src={img} alt="section-img"/>
                 </div>
             </div>
         </div>

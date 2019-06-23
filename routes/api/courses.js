@@ -3,12 +3,12 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const Course = mongoose.model('courses');
 
-router.get('/course', async (req,res) => {
+router.get('/', async (req,res) => {
     const courses = await Course.find();
     res.send(courses);
 });
 
-router.post('/course', async (req,res) => {
+router.post('/', async (req,res) => {
     const {courseName,description,requirement,fee,startDate,endDate,instrument,imageURI} = req.body;
     const newCourse = await new Course({
         courseName,

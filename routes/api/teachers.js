@@ -1,9 +1,10 @@
 const express = require('express');
-const router = express.Router();
 const mongoose = require('mongoose');
+const router = express.Router();
+
 const Teacher = mongoose.model('teachers');
 
-router.post('/teacher', async (req,res) => {
+router.post('/', async (req,res) => {
     const {firstname,lastname,gender,DoB,address,phoneNumber,facebook,qualification,musicSkill,language} = req.body;
 
     const newTeacher = new Teacher({
@@ -22,7 +23,7 @@ router.post('/teacher', async (req,res) => {
 
 });
 
-router.get('/teacher', async (req,res) => {
+router.get('/', async (req,res) => {
     const teachers = await Teacher.find();
     res.status(200).send(teachers);
 });

@@ -3,7 +3,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const Question = mongoose.model('questions');
     
-router.post('/question', async (req,res) => {
+router.post('/', async (req,res) => {
     const { provider, phoneNumber, email, message } = req.body;
     
     const newQuestion = await new Question({
@@ -16,7 +16,7 @@ router.post('/question', async (req,res) => {
     res.status(200).send(newQuestion);
 });
 
-router.get('/question', async (req,res) => {
+router.get('/', async (req,res) => {
     const questions = await Question.find();
     res.status(200).send(questions);
 });
