@@ -9,7 +9,6 @@ const authMiddleware = require('../../middleware/auth');
 const User = require('../../models/User');
 
 // Register Route
-
 router.post('/',[
     check('firstname', 'firstname can not be empty').not().isEmpty(),
     check('lastname', 'lastname can not be empty').not().isEmpty(),
