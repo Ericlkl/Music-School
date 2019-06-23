@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Teacher = require('../../models/Teacher');
+const {check, validationResult} = require('express-validator');
 
 // Get all teacher route
 router.get('/', async (req,res) => {
