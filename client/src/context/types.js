@@ -1,0 +1,8 @@
+export const FETCH_TEACHERS = "FETCH_TEACHERS";
+export const FETCH_TEACHER = "FETCH_TEACHER";
+
+export const FETCH_COURSES = "FETCH_COURSES";
+export const FETCH_COURSE = "FETCH_COURSE";
+
+export const FETCH_EVENTS = "FETCH_EVENTS";
+export const FETCH_EVENT = "FETCH_EVENT";

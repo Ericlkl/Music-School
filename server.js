@@ -6,9 +6,12 @@ const bodyParser = require('body-parser');
 const { mongoURI } = require('./config/keys')
 const app = express();
 
-mongoose.connect(mongoURI, { useNewUrlParser: true});
+// Connect MongoDB Server
+mongoose.connect(mongoURI, { 
+    useNewUrlParser: true,
+    useCreateIndex: true
+}, () => console.log("Mongo DB server connected!"));
 
-app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
 
 // Plug the routes to the express routers

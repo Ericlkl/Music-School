@@ -1,9 +1,10 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useContext, useEffect} from 'react';
 
 import NavBar from '../public/NavBar';
 import Hero from '../public/Hero';
 import Footer from '../public/Footer';
 import bg_img from '../../assets/img/course_bg.jpg'
+import CoursesContext from '../../context/Courses/CoursesContext';
 
 const CourseCard = ({ courseName, description, fee, instrument, imageURI }) => {
     return (
@@ -25,6 +26,13 @@ const CourseCard = ({ courseName, description, fee, instrument, imageURI }) => {
 
 
 const Courses = (props) => {
+
+    const {courses, fetchCourses} = useContext(CoursesContext);
+
+    useEffect(() => {
+        fetchCourses();
+    // eslint-disable-next-line
+    }, [])
 
     return(
         <Fragment>

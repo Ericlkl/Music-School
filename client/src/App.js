@@ -9,20 +9,24 @@ import AboutUs from './Components/pages/AboutUs';
 import Login from './Components/pages/Login';
 import SignUp from './Components/pages/SignUp';
 
+import CoursesState from './context/Courses/CoursesState';
+
 const App = () => {
   return (
+    <CoursesState>
     <BrowserRouter>
-    <Fragment>
-      <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/events" component={Events}/>
-        <Route path="/teachers" component={Teachers}/>
-        <Route path="/courses" component={Courses}/>
-        <Route path="/aboutus" component={AboutUs}/>
-        <Route path="/login" component={Login}/>
-      </Switch>
-    </Fragment>
+      <Fragment>
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/events" component={Events}/>
+          <Route path="/teachers" component={Teachers}/>
+          <Route path="/courses" component={Courses}/>
+          <Route path="/aboutus" component={AboutUs}/>
+          <Route path="/login" component={Login}/>
+        </Switch>
+      </Fragment>
     </BrowserRouter>
+    </CoursesState>
   );
 }
 
