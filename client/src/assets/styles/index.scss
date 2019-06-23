@@ -46,6 +46,7 @@
     width: 10rem;
     margin: 1rem auto;
 }
+@import './animations.scss';
 @import './navbar.scss';
 @import './hero.scss';
 @import './footer.scss';
@@ -53,4 +54,5 @@
 @import './features.scss';
 @import './login.scss';
 @import './events.scss';
+@import './courses.scss';
 @import url('https://fonts.googleapis.com/css?family=Miss+Fajardose');

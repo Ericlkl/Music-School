@@ -1,0 +1,22 @@
+// Mobile
+.hero{
+    display: flex;
+    flex-direction: column;
+    height: 65vh;
+    color: white;
+    text-align: center;
+    box-shadow: inset 0 0 20px #000000;
+    >.text-section{
+        margin: auto;
+    }
+}
+
+// Tablet
+@media (min-width: 750px){
+
+}
+
+// Laptop
+@media (min-width: 1022px){
+
+}

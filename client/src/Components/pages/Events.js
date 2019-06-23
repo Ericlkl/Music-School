@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
 
 import NavBar from '../public/NavBar';
 import Hero from '../public/Hero';
 import Footer from '../public/Footer';
-import { fetchEvents} from '../../Actions/index'
 
 import bg_img from '../../assets/img/event_bg.jpg'
 
@@ -29,9 +27,6 @@ const EventCard = (props) => {
 }
 
 class Events extends Component{
-    componentDidMount(){
-        this.props.fetchEvents();
-    }
 
     render(){
         return(
@@ -44,12 +39,6 @@ class Events extends Component{
                     <section className="events">
                         <h1 className="udl-heading">Includes all events</h1>
                         <div className="events__content">
-                            {
-                                this.props.events.map(
-                                    event => 
-                                        <EventCard event={event}/>
-                                )
-                            }
                         </div>
                     </section>
                 <Footer/>
@@ -58,8 +47,4 @@ class Events extends Component{
     }
 }
 
-const mapStateToProps = ({events}) => ({events})
-
-export default connect( mapStateToProps, {
-    fetchEvents
-})(Events);
+export default Events;

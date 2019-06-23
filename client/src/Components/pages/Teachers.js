@@ -1,12 +1,10 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
 
 import NavBar from '../public/NavBar';
 import Hero from '../public/Hero';
 import Footer from '../public/Footer';
 
 import bg_img from '../../assets/img/teachers_bg.jpg';
-import { fetchTeachers } from '../../Actions/index';
 
 const TeacherCard = (props) => {
     const {firstname, lastname, qualification, musicSkill} = props.teacher;
@@ -57,7 +55,7 @@ class Teachers extends Component{
                 
                     <div style={{ margin: "50px"}} className="ui container">
                         <div className={cardlistStyle}>
-                            {this.props.teachers.map(teacher => <TeacherCard teacher={teacher}/>)}
+                        
                         </div>
                     </div>
 
@@ -67,8 +65,5 @@ class Teachers extends Component{
     }
 }
 
-const mapStateToProps = ({teachers}) => ({teachers})
 
-export default connect(mapStateToProps, {
-    fetchTeachers
-})(Teachers);
+export default Teachers;

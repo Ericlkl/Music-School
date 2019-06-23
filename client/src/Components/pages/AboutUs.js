@@ -1,7 +1,4 @@
 import React, {Component} from 'react';
-import axios from 'axios';
-
-import {Field, reduxForm} from 'redux-form';
 
 import NavBar from '../public/NavBar';
 import InfoSection from '../public/InfoSection';
@@ -13,94 +10,6 @@ import contact_img from '../../assets/img/mailbox.jpg'
 import bg_img from '../../assets/img/aboutus_bg.jpg'
 import join_us from '../../assets/img/join_us.jpg'
 
-class JoinUsForm extends Component{
-
-    renderInput = ({input, label, meta}) => {
-        const className =  `field ${meta.error && meta.touched ? 'error' : '' }`
-
-        return (
-            <div className={className}>
-                <label>{label}</label>
-                <input {...input} />
-                {this.renderError(meta)}
-            </div>
-        )
-    }
-
-    // Deserialize Error and touched
-    renderError = ({error, touched}) => {
-        if (error && touched) {
-            return (
-                <div className="ui error message">
-                    <div className="header">
-                        {error}
-                    </div>
-                </div>
-            )
-        }
-    }
-
-    submit = (formValues) => {
-        console.log(formValues);
-        axios.post('/api/course', formValues);
-    }
-
-    render(){
-        return(
-            <div className="ui">
-                <form className="ui form error" onSubmit={this.props.handleSubmit(this.submit)}>
-                    <Field name="firstname"
-                        label="FirstName"
-                        component={this.renderInput} />
-
-                    <Field name="lastname"
-                        label="lastName"
-                        component={this.renderInput} />
-
-                    <Field name="gender"
-                        label="gender"
-                        component={this.renderInput} />
-
-                    <Field name="facebook"
-                        label="FaceBook"
-                        component={this.renderInput} />
-
-                    <Field name="qualification"
-                        label="Qualification : "
-                        component={this.renderInput} />
-
-                    <Field name="musicSkill"
-                        label="Music Skill : "
-                        component={this.renderInput} />
-
-                    <Field name="language"
-                        label="Language : "
-                        component={this.renderInput} />
-
-
-                    <button className="ui primary button">
-                        Submit
-                    </button>
-                </form>
-            </div>
-        )
-    }
-}
-
-const validate = formValues => {
-    const errors = {};
-
-    if(!formValues.name){
-        errors.name = "You Must enter a name"
-    }
-
-    return errors
-}
-
-const FormWrapped = reduxForm({
-    form : 'JoinUsForm',
-    validate
-})(JoinUsForm)
 
 class AboutUs extends Component{
     render(){
@@ -126,7 +35,7 @@ class AboutUs extends Component{
                 </InfoSection>
 
                 <InfoSection title="Join Us" img={join_us} imgPosition="left">
-                    <FormWrapped/>
+                    <h1>Join US Form</h1>
                 </InfoSection>
                 
                 <Footer/>

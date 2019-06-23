@@ -1,0 +1,40 @@
+// Mobile
+.features{
+    background-color: rgba(226, 226, 226, 0.774);
+    padding: 3rem 0;
+    .container{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        .feature-title{
+            grid-column: 1 / span 2;
+            text-align: center;
+        }
+        .feature-description{
+            grid-column: 1 / span 2;
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        >.feature{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            >i{
+                color: #e67e22;
+            }
+        }
+    }
+}
+
+// Tablet
+@media (min-width: 750px){
+
+}
+
+// Laptop
+@media (min-width: 1022px){
+
+}
