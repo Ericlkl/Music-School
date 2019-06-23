@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 import NavBar from '../public/NavBar';
 import Hero from '../public/Hero';
@@ -6,8 +6,8 @@ import Footer from '../public/Footer';
 
 import bg_img from '../../assets/img/event_bg.jpg'
 
-const EventCard = (props) => {
-    const {eventName, imageURI, date, place, description, tag, company} = props.event;
+const EventCard = ({eventName, imageURI, date, place, description, tag, company}) => {
+
     var newDate = new Date(date.toString());
     return (
         <div className="event-card">   
@@ -26,25 +26,23 @@ const EventCard = (props) => {
     )
 }
 
-class Events extends Component{
+const Events = (props) => {
 
-    render(){
-        return(
-            <div>
-                <NavBar pages="events"/>
-                <Hero bg_img={bg_img}
-                    title="Events"
-                    subtitle="Jumb into Biggest Music Event in Aus"/>
+    return(
+        <div>
+            <NavBar pages="events"/>
+            <Hero bg_img={bg_img}
+                title="Events"
+                subtitle="Jumb into Biggest Music Event in Aus"/>
 
-                    <section className="events">
-                        <h1 className="udl-heading">Includes all events</h1>
-                        <div className="events__content">
-                        </div>
-                    </section>
-                <Footer/>
-            </div>
-        )
-    }
+                <section className="events">
+                    <h1 className="udl-heading">Includes all events</h1>
+                    <div className="events__content">
+                    </div>
+                </section>
+            <Footer/>
+        </div>
+    )
 }
 
 export default Events;

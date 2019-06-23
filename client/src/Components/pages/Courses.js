@@ -1,12 +1,11 @@
-import React, {Component} from 'react';
+import React, {Fragment} from 'react';
 
 import NavBar from '../public/NavBar';
 import Hero from '../public/Hero';
 import Footer from '../public/Footer';
 import bg_img from '../../assets/img/course_bg.jpg'
 
-const CourseCard = (props) => {
-    const { courseName, description, fee, instrument, imageURI } = props.course;
+const CourseCard = ({ courseName, description, fee, instrument, imageURI }) => {
     return (
         <div style={{
             background: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(${imageURI}) center center/cover`
@@ -25,28 +24,25 @@ const CourseCard = (props) => {
 }
 
 
-class Courses extends Component{
+const Courses = (props) => {
 
-    render(){
+    return(
+        <Fragment>
+            <NavBar pages="courses"/>
+            <Hero bg_img={bg_img}
+                title="Courses"
+                subtitle="Make the change Today!"/>
 
-        return(
-            <div className="ui">
-                <NavBar pages="courses"/>
-                <Hero bg_img={bg_img}
-                    title="Courses"
-                    subtitle="Make the change Today!"/>
+            <section className="courses">
+                <h1 className="udl-heading">Includes all Course</h1>
+                <div className="courses__content">
+                    
+                </div>
+            </section>
 
-                <section className="courses">
-                    <h1 className="udl-heading">Includes all Course</h1>
-                    <div className="courses__content">
-                        
-                    </div>
-                </section>
-
-                <Footer/>
-            </div>
-        )
-    }
+            <Footer/>
+        </Fragment>
+    )
 }
 
 export default Courses;

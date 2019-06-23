@@ -1,93 +1,106 @@
-import React, {Component} from 'react';
+import React, { useState, useEffect }from 'react';
 import {Link} from 'react-router-dom'
 
-class NavBar extends Component{
+const NavBar = (props) => {
 
-    state= {
-      width: 0,
-      transformNavbar : false,
-      navbarOrientation: "vertical",
-      appendMenu: false
+  const [ apperance , setApperance ] = useState({
+    width: 0,
+    transformNavbar : false,
+    navbarOrientation: "vertical",
+    appendMenu: false
+  });
+
+
+  const hamburgerMenuClicked = () => setApperance({ 
+    ...apperance ,
+    appendMenu : !apperance.appendMenu
+  });
+  
+  const handleScroll = (event) => {
+    if(event.pageY > 180){
+      setApperance({ ...apperance, transformNavbar: true })
+    } else {
+      setApperance({ ...apperance, transformNavbar: false })
     }
-    
-    componentDidMount = () => {
-      this.updateWindowDimensions();
-      window.addEventListener('scroll', this.handleScroll);
-      window.addEventListener('resize', this.updateWindowDimensions);
-    };
-    
-    componentWillUnmount = () => {
-      window.removeEventListener('scroll', this.handleScroll);
-      window.removeEventListener('resize', this.updateWindowDimensions);
-    };
+  };
 
-    updateWindowDimensions = () => {
-      // Call when the vh is changed
-      this.setState({ 
-        width: window.innerWidth
-      });
+  const updateWindowDimensions = () => {
+    // Call when the vh is changed
+    setApperance({ 
+      ...apperance,
+      width: window.innerWidth
+    });
 
-      if (window.innerWidth > 854){
-        this.setState({navbarOrientation: "horizontial", appendMenu: true })
-      } else {
-        this.setState({navbarOrientation: "vertical", appendMenu: false , transformNavbar: true})
-      }
+    if (window.innerWidth > 854){
+      setApperance({
+        ...apperance,
+        navbarOrientation: "horizontial", appendMenu: true 
+      })
+    } 
+    else {
+      setApperance({
+        ...apperance,
+        navbarOrientation: "vertical",
+        appendMenu: false , 
+        transformNavbar: true
+      })
     }
+  }
 
-    hamburgerMenuClicked = () => {
-      this.setState({appendMenu : !this.state.appendMenu});
+  useEffect(() => {
+    // ComponentDidMount
+      updateWindowDimensions();
+      window.addEventListener('scroll', handleScroll);
+      window.addEventListener('resize', updateWindowDimensions);
+
+    // ComponentWillUnMount
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', updateWindowDimensions);
     }
-    
-    handleScroll = (event) => {
-      if(event.pageY > 180){
-        this.setState({ transformNavbar: true })
-      } else {
-        this.setState({ transformNavbar: false })
-      }
-    };
+    // eslint-disable-next-line
+  }, [])
 
-    render(){
-        return (
-          <div id={this.state.transformNavbar === true || 
-            this.state.navbarOrientation === "vertical" ? "transfromNavbar" : "normalNavbar"} className="navbar">
-            <div className="container">
+  return (
+    <div id={apperance.transformNavbar === true || 
+      apperance.navbarOrientation === "vertical" ? "transfromNavbar" : "normalNavbar"} className="navbar">
+      <div className="container">
 
-              <div className={this.state.navbarOrientation}>
+        <div className={apperance.navbarOrientation}>
 
-              <div className="menu-bar"
-                  style={ this.state.navbarOrientation === "vertical" ? 
-                  { display: 'flex' } : { display : 'none' }}>
-                <h1 className="logo">Pineland Music School</h1>
-                
-                <div className="hamburger-menu" 
-                    onClick={this.hamburgerMenuClicked}
-                    >
+        <div className="menu-bar"
+            style={ apperance.navbarOrientation === "vertical" ? 
+            { display: 'flex' } : { display : 'none' }}>
+          <h1 className="logo">Pineland Music School</h1>
+          
+          <div className="hamburger-menu" 
+              onClick={hamburgerMenuClicked}
+              >
 
-                  <div className="line"/>
-                  <div className="line"/>
-                  <div className="line"/>
-                </div>
-              </div>
-
-                <div style={ this.state.appendMenu === false ? {display: 'none'} : {} } 
-                    className="page-links">
-                  <Link className={this.props.pages === "home" ? "active route" : "route"} to="/">Home</Link>
-                  <Link className={this.props.pages === "courses" ? "active route" : "route"} to="/courses">Course</Link>
-                  <Link className={this.props.pages === "events" ? "active route" : "route"} to="/events">Events</Link>
-                  <Link className={this.props.pages === "teachers" ? "active route" : "route"} to="/teachers">Teachers</Link>
-                  <Link className={this.props.pages === "aboutus" ? "active route" : "route"} to="/aboutus">About Us</Link>
-                </div>
-                <div style={ this.state.appendMenu === false ? {display: 'none'} : {} }
-                 className="members-sections">
-                  <Link className="ui large inverted button orange" to="/signup">Sign Up</Link>
-                  <Link className="ui large inverted button" to="/login">Login</Link>
-                </div>
-              </div>
-
-            </div>
+            <div className="line"/>
+            <div className="line"/>
+            <div className="line"/>
           </div>
-        )
-    }
+        </div>
+
+          <div style={ apperance.appendMenu === false ? {display: 'none'} : {} } 
+              className="page-links">
+            <Link className={props.pages === "home" ? "active route" : "route"} to="/">Home</Link>
+            <Link className={props.pages === "courses" ? "active route" : "route"} to="/courses">Course</Link>
+            <Link className={props.pages === "events" ? "active route" : "route"} to="/events">Events</Link>
+            <Link className={props.pages === "teachers" ? "active route" : "route"} to="/teachers">Teachers</Link>
+            <Link className={props.pages === "aboutus" ? "active route" : "route"} to="/aboutus">About Us</Link>
+          </div>
+          <div style={ apperance.appendMenu === false ? {display: 'none'} : {} }
+            className="members-sections">
+            <Link className="ui large inverted button orange" to="/signup">Sign Up</Link>
+            <Link className="ui large inverted button" to="/login">Login</Link>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  )
 }
 
 export default NavBar;
