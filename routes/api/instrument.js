@@ -4,23 +4,25 @@ const Instrument = require('../../models/Instrument');
 
 // Get All Instruments Route
 router.get('/', async (req,res) => {
-    const instruments = await Instrument.find();
-    res.send(instruments);
+    try {
+        const instruments = await Instrument.find();
+        res.send(instruments);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({errors: "Server Error !"});
+    }
 });
 
 // Add new Instrument route
+// {name,status,description,price,instock,imageURI}
 router.post('/', async (req,res) => {
-    const {name,status,description,price,instock,imageURI} = req.body;
-    const newInstrument = await new Instrument({
-        name,
-        status,
-        description,
-        price,
-        instock,
-        imageURI
-    }).save();
-
-    res.send(newInstrument);
+    try {
+        const newInstrument = await new Instrument(req.body).save();
+        res.send(newInstrument);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({errors: "Server Error !"});
+    }
 });
 
 module.exports = router;

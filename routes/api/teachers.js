@@ -4,30 +4,27 @@ const Teacher = require('../../models/Teacher');
 
 // Get all teacher route
 router.get('/', async (req,res) => {
-    const teachers = await Teacher.find();
-    res.status(200).send(teachers);
+    try {
+        const teachers = await Teacher.find();
+        res.json(teachers);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({errors: "Server Error !"});
+    }
 });
 
 // Add teacher route
+// {firstname,lastname,gender,DoB,address,phoneNumber,
+// facebook,qualification,musicSkill,language} 
 router.post('/', async (req,res) => {
 
-    const {firstname,lastname,gender,DoB,address,phoneNumber,
-        facebook,qualification,musicSkill,language} = req.body;
-
-    const newTeacher = new Teacher({
-        firstname,
-        lastname,
-        gender,
-        DoB,
-        address,
-        phoneNumber,
-        facebook,
-        qualification,
-        musicSkill,
-        language
-    }).save();
-
-    res.status(200).send(newTeacher);
+    try {
+        const newTeacher = new Teacher(req.body).save();
+        res.json(newTeacher);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({errors: "Server Error !"});
+    }
 
 });
 module.exports = router;

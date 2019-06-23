@@ -4,25 +4,30 @@ const Event = require('../../models/Event');
 
 // Get All Event Route
 router.get('/', async (req,res) => {
-    const events = await Event.find();
-    res.send(events);
+
+    try {
+        const events = await Event.find();
+        res.json(events);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({errors: "Server Error !"});
+    }
+
 });
 
-// Add new Event route
+// Add new Event route 
+// { eventName,company, description, place,
+// date, tag, imageURI }
 router.post('/', async (req,res) => {
-    const { eventName,company, description, place,
-        date, tag, imageURI } = req.body;
 
-    const newEvent = await new Event({
-        eventName,
-        company,
-        description,
-        place,
-        date,
-        tag,
-        imageURI
-    }).save();
-    res.send(newEvent);
+    try {
+        const newEvent = await new Event(req.body).save();
+        res.json(newEvent);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({errors: "Server Error !"});
+    }
+    
 })
 
 module.exports = router;

@@ -4,28 +4,28 @@ const Course = require('../../models/Course');
 
 // Get All Course route
 router.get('/', async (req,res) => {
-    const courses = await Course.find();
-    res.send(courses);
+    try {
+        const courses = await Course.find();
+        res.json(courses);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({errors: "Server Error !"});
+    }
+
 });
 
 // Add new Course route
+// { courseName,description,requirement,fee,
+//  startDate,endDate,instrument,imageURI }
 router.post('/', async (req,res) => {
+    try {
+        const newCourse = await new Course(req.body).save();
+        res.json(newCourse);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({errors: "Server Error !"});
+    }
 
-    const {courseName,description,requirement,fee,
-        startDate,endDate,instrument,imageURI} = req.body;
-
-    const newCourse = await new Course({
-        courseName,
-        description,
-        requirement,
-        fee,
-        startDate,
-        endDate,
-        instrument,
-        imageURI
-    }).save();
-
-    res.status(200).send(newCourse);
 });
 
 module.exports = router;

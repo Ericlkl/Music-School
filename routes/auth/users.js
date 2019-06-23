@@ -9,6 +9,9 @@ const authMiddleware = require('../../middleware/auth');
 const User = require('../../models/User');
 
 // Register Route
+// { firstname, lastname, email, address, 
+// facebook, parent, type, avator, password }
+
 router.post('/',[
     check('firstname', 'firstname can not be empty').not().isEmpty(),
     check('lastname', 'lastname can not be empty').not().isEmpty(),
@@ -21,16 +24,14 @@ router.post('/',[
         return res.status(400).json({errors: errors.array() })
     }
 
-    const { firstname, lastname, email, address, 
-        facebook, parent, type, avator, password } = req.body;
+    const { email, password } = req.body;
 
     try {
         let user = await User.findOne({email});
 
         if (user) return res.status(400).json({ errors: "User already exist !"});
 
-        user = new User({ firstname, lastname, email, address, 
-            facebook, parent, type, avator, password });
+        user = new User(req.body);
 
         const salt = await bcrypt.genSalt(10);
         user.password = await bcrypt.hash(password,salt);
