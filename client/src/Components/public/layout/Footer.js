@@ -14,10 +14,9 @@ const Footer = () => {
         </div>
 
         <div className="page-links">
-          <h1>Admin Portal</h1>
-          <Link to="/admin/register" className="link">Register Admin</Link>
-          <Link to="/admin/login" className="link">Login Admin</Link>
-          <Link to="/admin/courses" className="link">CMS</Link>
+          <h1>Portal</h1>
+          <Link to="/student/" className="link">Student Portal</Link>
+          <Link to="/admin/" className="link">Admin CMS</Link>
         </div>
 
         <div className="social-medias">

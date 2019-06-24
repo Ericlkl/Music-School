@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
+import Navbar from '../layout/Navbar';
 
 const AdminHome = () => {
     return (
         <div>
-            Admin Home Page
+            <h1>Hello</h1>
+            <Navbar/>
         </div>
     )
 }

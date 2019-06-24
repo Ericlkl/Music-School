@@ -12,6 +12,7 @@ import Courses from './Components/public/pages/Courses';
 import AboutUs from './Components/public/pages/AboutUs';
 import Login from './Components/public/pages/Login';
 import Register from './Components/public/pages/Register';
+import Alert from './Components/public/layout/Alert';
 
 // Students Pages Components
 
@@ -42,6 +43,7 @@ const App = () => {
     <ContextState>
       <BrowserRouter>
         <Fragment>
+          <Alert/>
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/events" component={Events}/>
