@@ -1,8 +1,10 @@
-import React, { useState, useEffect }from 'react';
-import {Link} from 'react-router-dom'
+import React, { useState, useEffect, useContext, Fragment }from 'react';
+import {Link} from 'react-router-dom';
+import AuthContext from '../../context/Auth/AuthContext';
 
 const NavBar = (props) => {
 
+  // Navbar State
   const [ apperance , setApperance ] = useState({
     width: 0,
     transformNavbar : false,
@@ -10,14 +12,24 @@ const NavBar = (props) => {
     appendMenu: false
   });
 
+  const guestLinks = <Fragment>
+    <Link className="ui large inverted button orange" to="/signup">Sign Up</Link>
+    <Link className="ui large inverted button" to="/login">Login</Link>
+  </Fragment>;
 
+  // Context State
+  const {isAuthenticated, user, loadUser,logout } = useContext(AuthContext);
+
+  const userLinks = <Link className="ui large inverted button orange" onClick={logout} to="/">Logout</Link>;
+
+  // Navbar function
   const hamburgerMenuClicked = () => setApperance({ 
     ...apperance ,
     appendMenu : !apperance.appendMenu
   });
   
   const handleScroll = (event) => {
-    if(event.pageY > 180){
+    if(event.pageY > 300){
       setApperance({ ...apperance, transformNavbar: true })
     } else {
       setApperance({ ...apperance, transformNavbar: false })
@@ -52,6 +64,7 @@ const NavBar = (props) => {
       updateWindowDimensions();
       window.addEventListener('scroll', handleScroll);
       window.addEventListener('resize', updateWindowDimensions);
+      loadUser();
 
     // ComponentWillUnMount
     return () => {
@@ -91,10 +104,10 @@ const NavBar = (props) => {
             <Link className={props.pages === "teachers" ? "active route" : "route"} to="/teachers">Teachers</Link>
             <Link className={props.pages === "aboutus" ? "active route" : "route"} to="/aboutus">About Us</Link>
           </div>
+
           <div style={ apperance.appendMenu === false ? {display: 'none'} : {} }
             className="members-sections">
-            <Link className="ui large inverted button orange" to="/signup">Sign Up</Link>
-            <Link className="ui large inverted button" to="/login">Login</Link>
+              { !isAuthenticated ? guestLinks : userLinks }
           </div>
         </div>
 

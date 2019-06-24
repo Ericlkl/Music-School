@@ -40,8 +40,8 @@ const LoginForm = () => {
       </div>
 
       <div className="field">
-        <input type="submit" className="ui button" value="Submit" />
-        <Link to="/register" className="ui button primary">Register</Link>
+        <input type="submit" className="ui button" value="Login" />
+        <Link to="/register" className="ui button primary">Sign Up</Link>
       </div>
 
     </form>
@@ -57,7 +57,7 @@ const Poster = () => (
 )
 
 const Login = (props) => {
-  
+
   // Context State
   const {isAuthenticated} = useContext(AuthContext);
 
