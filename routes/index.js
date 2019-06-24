@@ -7,7 +7,7 @@ const users = require('./auth/users');
 const auth = require('./auth/auth');
 
 module.exports = app => {
-    app.use('/api/course', courses);
+    app.use('/api/courses', courses);
     app.use('/api/events', events);
     app.use('/api/users', users);
     app.use('/api/auth', auth);

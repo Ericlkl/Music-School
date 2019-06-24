@@ -14,7 +14,7 @@ const CoursesState = (props) => {
     const [state,dispatch] = useReducer(CoursesReducer, initialState);
 
     const fetchCourses = async () => {
-        const res = await axios.get('/api/course');
+        const res = await axios.get('/api/courses');
         dispatch({
             type: FETCH_COURSES,
             payload: res.data

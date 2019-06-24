@@ -1,12 +1,14 @@
-import React from 'react';
+import React , {useContext, useEffect} from 'react';
 
 import NavBar from '../public/NavBar';
 import Hero from '../public/Hero';
 import Footer from '../public/Footer';
+import TeachersContext from '../../context/Teachers/TeachersContext';
 
 import bg_img from '../../assets/img/teachers_bg.jpg';
 
-const TeacherCard = ({firstname, lastname, qualification, musicSkill}) => {
+const TeacherCard = (props) => {
+    const { firstname, lastname, qualification, musicSkill } = props.teacher;
 
     return (
         <div className="card">
@@ -42,6 +44,18 @@ const TeacherCard = ({firstname, lastname, qualification, musicSkill}) => {
 
 const Teachers = (props) => {
 
+    const {teachers, fetchTeachers} = useContext(TeachersContext);
+
+    useEffect(() => {
+
+        fetchTeachers();
+
+        return () => {
+
+        }
+    // eslint-disable-next-line
+    }, [])
+
     return(
         <div>
         <NavBar pages="teachers"/>
@@ -50,7 +64,7 @@ const Teachers = (props) => {
             subtitle="Professional Teachers in Australia"/>
             
                 <div style={{ margin: "50px"}} className="ui container">
-                    
+                    {/* {teachers.map(teacher => <TeacherCard teacher={teacher} /> )} */}
                 </div>
 
             <Footer/>

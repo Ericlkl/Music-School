@@ -1,35 +1,35 @@
 import React, {useReducer} from 'react';
-import CoursesContext from './CoursesContext';
-import CoursesReducer from './TeachersReducer';
-import {FETCH_EVENT,FETCH_EVENTS} from '../types';
+import TeachersContext from './TeachersContext';
+import TeachersReducer from './TeachersReducer';
+import {FETCH_TEACHER,FETCH_TEACHERS} from '../types';
 import axios from 'axios';
 
-const EventsState = (props) => {
+const TeachersState = (props) => {
 
     const initialState = {
-        events: [],
+        teachers: [],
         current: null
     };
 
-    const [state,dispatch] = useReducer(CoursesReducer, initialState);
+    const [state,dispatch] = useReducer(TeachersReducer, initialState);
 
-    const fetchEvents = async () => {
-        const res = await axios.get('/api/course');
+    const fetchTeachers = async () => {
+        const res = await axios.get('/api/teachers');
         dispatch({
-            type: FETCH_EVENTS,
+            type: FETCH_TEACHERS,
             payload: res.data
         });
     }
 
     return (
-        <CoursesContext.Provider value = {{
-            events: state.courses,
+        <TeachersContext.Provider value = {{
+            teachers: state.teachers,
             current: state.current,
-            fetchEvents
-        }}>
+            fetchTeachers }}>
+                
             {props.children}
-        </CoursesContext.Provider>
+        </TeachersContext.Provider>
     )
 }
 
-export default EventsState;
+export default TeachersState;

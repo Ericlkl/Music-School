@@ -11,25 +11,39 @@ import SignUp from './Components/pages/SignUp';
 
 import CoursesState from './context/Courses/CoursesState';
 import EventsState from './context/Events/EventsState';
+import TeachersState from './context/Teachers/TeachersState';
+import AuthState from './context/Auth/AuthState';
+
+const ContextState = (props) => {
+  return(
+    <AuthState>
+      <TeachersState>
+        <CoursesState>
+          <EventsState>
+            {props.children}
+          </EventsState>
+        </CoursesState>
+      </TeachersState>
+    </AuthState>
+  )
+};
 
 const App = () => {
   return (
-    <CoursesState>
-    <EventsState>
-    <BrowserRouter>
-      <Fragment>
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/events" component={Events}/>
-          <Route path="/teachers" component={Teachers}/>
-          <Route path="/courses" component={Courses}/>
-          <Route path="/aboutus" component={AboutUs}/>
-          <Route path="/login" component={Login}/>
-        </Switch>
-      </Fragment>
-    </BrowserRouter>
-    </EventsState>
-    </CoursesState>
+    <ContextState>
+      <BrowserRouter>
+        <Fragment>
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/events" component={Events}/>
+            <Route path="/teachers" component={Teachers}/>
+            <Route path="/courses" component={Courses}/>
+            <Route path="/aboutus" component={AboutUs}/>
+            <Route path="/login" component={Login}/>
+          </Switch>
+        </Fragment>
+      </BrowserRouter>
+    </ContextState>
   );
 }
 
