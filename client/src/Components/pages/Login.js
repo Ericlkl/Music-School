@@ -21,7 +21,7 @@ const LoginForm = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(form);
+    login(form);
   };
 
   return (
@@ -56,7 +56,18 @@ const Poster = () => (
   </div>
 )
 
-const Login = () => {
+const Login = (props) => {
+  
+  // Context State
+  const {isAuthenticated} = useContext(AuthContext);
+
+  // ComponentDidMount
+  useEffect(() => {
+    if (isAuthenticated){
+      props.history.push("/");
+    }
+  },[isAuthenticated])
+
   return(
     <div className="login">
       <LoginForm/>
