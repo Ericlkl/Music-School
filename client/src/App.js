@@ -1,6 +1,10 @@
 import React, {Fragment} from 'react';
 import { BrowserRouter, Route , Switch} from 'react-router-dom'
 
+// Routing Components
+import AdminRoute from './Components/routing/AdminRoute';
+
+// Public Pages Components
 import Home from './Components/public/pages/Home';
 import Events from './Components/public/pages/Events';
 import Teachers from './Components/public/pages/Teachers';
@@ -8,6 +12,11 @@ import Courses from './Components/public/pages/Courses';
 import AboutUs from './Components/public/pages/AboutUs';
 import Login from './Components/public/pages/Login';
 import Register from './Components/public/pages/Register';
+
+// Students Pages Components
+
+// Admin Pages Components
+import AdminHome from './Components/admin/pages/Home';
 
 import CoursesState from './context/Courses/CoursesState';
 import EventsState from './context/Events/EventsState';
@@ -41,6 +50,7 @@ const App = () => {
             <Route path="/aboutus" component={AboutUs}/>
             <Route path="/register" component={Register}/>
             <Route path="/login" component={Login}/>
+            <AdminRoute path="/admin/" exact component={AdminHome}/>
           </Switch>
         </Fragment>
       </BrowserRouter>
