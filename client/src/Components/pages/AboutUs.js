@@ -11,6 +11,7 @@ import bg_img from '../../assets/img/aboutus_bg.jpg'
 import join_us from '../../assets/img/join_us.jpg'
 
 
+
 const AboutUs = () => { 
     return(
         <Fragment>

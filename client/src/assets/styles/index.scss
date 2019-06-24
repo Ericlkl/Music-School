@@ -8,6 +8,13 @@
     box-sizing: border-box;
 }
 
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {
+
+font-size: 1em;
+
+}
+
 // Utilities class
 .container{
     max-width: 1100px;

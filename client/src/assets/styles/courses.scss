@@ -40,13 +40,14 @@
       display: flex;
       justify-content: space-between;
       margin: 0.5rem;
+
       &_titlebox{
         align-self: flex-end;
       }
       
       >.logo{
-        width: 3.5rem;
-        height: 3.5rem; 
+        font-size: 3rem;
+        margin: 0rem 1rem;
       }
     }
 }

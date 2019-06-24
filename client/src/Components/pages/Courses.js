@@ -6,19 +6,30 @@ import Footer from '../public/Footer';
 import bg_img from '../../assets/img/course_bg.jpg'
 import CoursesContext from '../../context/Courses/CoursesContext';
 
-const CourseCard = ({ courseName, description, fee, instrument, imageURI }) => {
+const CourseCard = ({ courseName, fee, instrument, imageURI }) => {
+    let icon = "";
+
+    if(instrument.trim() === 'Piano') 
+        icon = "flaticon-grand-piano";
+    else if (instrument.trim() === 'Gita')
+        icon = "flaticon-acoustic-guitar"
+    else if (instrument.trim() === 'violin')
+        icon = "flaticon-violin";
+
     return (
         <div style={{
             background: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(${imageURI}) center center/cover`
-        }} class="course-card">
-        <p class="course-card__level">Level1</p>
+        }} className="course-card">
+        <p className="course-card__level">Level1</p>
         
-        <div class="course-card__content">
-            <div class="course-card__content_titlebox">
+        <div className="course-card__content">
+            <div className="course-card__content_titlebox">
             <h3>{courseName}</h3>
             <p>{fee}</p>
             </div>
-            <img class="logo" src="https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png" alt="logo"/>
+        
+        <i className={" logo " + icon}></i>
+        
         </div>
         </div>
     )
@@ -31,6 +42,10 @@ const Courses = (props) => {
 
     useEffect(() => {
         fetchCourses();
+
+        return () => {
+
+        }
     // eslint-disable-next-line
     }, [])
 
@@ -44,6 +59,12 @@ const Courses = (props) => {
             <section className="courses">
                 <h1 className="udl-heading">Includes all Course</h1>
                 <div className="courses__content">
+                    {courses.map(course => 
+                        <CourseCard courseName={course.courseName}
+                            instrument={course.instrument}
+                            imageURI={course.imageURI}
+                            fee = {course.fee}
+                        />)}
                     
                 </div>
             </section>
