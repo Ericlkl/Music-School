@@ -8,13 +8,13 @@
     .login-form{
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: center;
         align-items: center;
         background-color: #444;
         color: white;
-        grid-template-columns: 1fr;
+        // grid-template-columns: 1fr;
 
-        >.field{
+        >.input-field{
             display: flex;
             flex-direction: column;
             >label{

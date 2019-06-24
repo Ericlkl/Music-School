@@ -1,4 +1,52 @@
-import React from 'react';
+import React, {useState, useContext, useEffect} from 'react';
+import {Link} from 'react-router-dom';
+
+import AuthContext from '../../context/Auth/AuthContext';
+
+const LoginForm = () => {
+
+  // State
+  const formInitState = {
+    email: "",
+    password: ""
+  };
+
+  const [form, setForm] = useState({...formInitState});
+
+  // Context State
+  const {login, isAuthenticated} = useContext(AuthContext);
+
+  // Form Component Function
+  const onChange = (e) => setForm({...form, [e.target.name] : e.target.value });
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    console.log(form);
+  };
+
+  return (
+    <form onSubmit={onSubmit} className="ui form login-form">
+      
+      <h1 className="udl-heading logo">Pineland Music School</h1>
+
+      <div className="field input-field">
+        <label>Account</label>
+        <input type="email" name="email" onChange={onChange} required/>
+      </div>
+
+      <div className="field input-field">
+        <label>Password</label>
+        <input type="password" name="password" onChange={onChange} required minLength="6"/>
+      </div>
+
+      <div className="field">
+        <input type="submit" className="ui button" value="Submit" />
+        <Link to="/register" className="ui button primary">Register</Link>
+      </div>
+
+    </form>
+  )
+}
 
 const Poster = () => (
   <div className="login-img">
@@ -9,22 +57,9 @@ const Poster = () => (
 )
 
 const Login = () => {
-
   return(
     <div className="login">
-      <form className="ui form login-form py-5 error">
-
-        <h1 className="udl-heading logo">Pineland Music School</h1>
-
-        <button className="ui button">Login </button>
-
-        <a href="#">forget password?</a>
-
-        <button className="ui button primary">
-          Create Account
-        </button>
-      </form>
-      
+      <LoginForm/>
       <Poster/>
     </div>
   )
