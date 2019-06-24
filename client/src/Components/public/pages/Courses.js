@@ -1,10 +1,9 @@
-import React, {Fragment, useContext, useEffect} from 'react';
+import React, {useContext, useEffect} from 'react';
 
-import NavBar from '../public/NavBar';
-import Hero from '../public/Hero';
-import Footer from '../public/Footer';
-import bg_img from '../../assets/img/course_bg.jpg'
-import CoursesContext from '../../context/Courses/CoursesContext';
+import PageFrame from '../layout/PageFrame';
+
+import bg_img from '../../../assets/img/course_bg.jpg'
+import CoursesContext from '../../../context/Courses/CoursesContext';
 
 const CourseCard = ({ courseName, fee, instrument, imageURI }) => {
     let icon = "";
@@ -50,11 +49,10 @@ const Courses = (props) => {
     }, [])
 
     return(
-        <Fragment>
-            <NavBar pages="courses"/>
-            <Hero bg_img={bg_img}
-                title="Courses"
-                subtitle="Make the change Today!"/>
+        <PageFrame page="courses" 
+            heroImg={bg_img} 
+            heroTitle="Courses"
+            heroSubtitle="Make the change Today!" >
 
             <section className="courses">
                 <h1 className="udl-heading">Includes all Course</h1>
@@ -68,9 +66,7 @@ const Courses = (props) => {
                     
                 </div>
             </section>
-
-            <Footer/>
-        </Fragment>
+        </PageFrame>
     )
 }
 

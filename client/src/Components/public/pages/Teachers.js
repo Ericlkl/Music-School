@@ -1,11 +1,8 @@
 import React , {useContext, useEffect} from 'react';
 
-import NavBar from '../public/NavBar';
-import Hero from '../public/Hero';
-import Footer from '../public/Footer';
-import TeachersContext from '../../context/Teachers/TeachersContext';
-
-import bg_img from '../../assets/img/teachers_bg.jpg';
+import PageFrame from '../layout/PageFrame';
+import TeachersContext from '../../../context/Teachers/TeachersContext';
+import bg_img from '../../../assets/img/teachers_bg.jpg';
 
 const TeacherCard = (props) => {
     const { firstname, lastname, qualification, musicSkill } = props.teacher;
@@ -42,7 +39,7 @@ const TeacherCard = (props) => {
     )
 }
 
-const Teachers = (props) => {
+const Teachers = () => {
 
     const {teachers, fetchTeachers} = useContext(TeachersContext);
 
@@ -57,18 +54,11 @@ const Teachers = (props) => {
     }, [])
 
     return(
-        <div>
-        <NavBar pages="teachers"/>
-        <Hero bg_img={bg_img}
-            title="Teachers"
-            subtitle="Professional Teachers in Australia"/>
-            
-                <div style={{ margin: "50px"}} className="ui container">
-                    {/* {teachers.map(teacher => <TeacherCard teacher={teacher} /> )} */}
-                </div>
-
-            <Footer/>
-        </div>
+        <PageFrame page="teachers" heroImg={bg_img} heroTitle="Teachers" heroSubtitle="Professional Teachers in Australia">
+            <div style={{ margin: "50px"}} className="ui container">
+                {/* {teachers.map(teacher => <TeacherCard teacher={teacher} /> )} */}
+            </div>
+        </PageFrame>
     )
 }
 

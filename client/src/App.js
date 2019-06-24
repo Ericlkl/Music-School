@@ -1,13 +1,13 @@
 import React, {Fragment} from 'react';
 import { BrowserRouter, Route , Switch} from 'react-router-dom'
 
-import Home from './Components/pages/Home';
-import Events from './Components/pages/Events';
-import Teachers from './Components/pages/Teachers';
-import Courses from './Components/pages/Courses';
-import AboutUs from './Components/pages/AboutUs';
-import Login from './Components/pages/Login';
-import SignUp from './Components/pages/SignUp';
+import Home from './Components/public/pages/Home';
+import Events from './Components/public/pages/Events';
+import Teachers from './Components/public/pages/Teachers';
+import Courses from './Components/public/pages/Courses';
+import AboutUs from './Components/public/pages/AboutUs';
+import Login from './Components/public/pages/Login';
+import Register from './Components/public/pages/Register';
 
 import CoursesState from './context/Courses/CoursesState';
 import EventsState from './context/Events/EventsState';
@@ -39,7 +39,7 @@ const App = () => {
             <Route path="/teachers" component={Teachers}/>
             <Route path="/courses" component={Courses}/>
             <Route path="/aboutus" component={AboutUs}/>
-            <Route path="/register" component={SignUp}/>
+            <Route path="/register" component={Register}/>
             <Route path="/login" component={Login}/>
           </Switch>
         </Fragment>

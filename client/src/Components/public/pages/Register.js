@@ -1,7 +1,5 @@
 import React, {useState, useContext, useEffect} from 'react';
-import {Link} from 'react-router-dom';
-
-import AuthContext from '../../context/Auth/AuthContext';
+import AuthContext from '../../../context/Auth/AuthContext';
 
 const RegisterForm = () => {
 
@@ -95,17 +93,18 @@ const RegisterForm = () => {
   )
 }
 
-const SignUp = (props) => {
+const Register = ({history}) => {
 
   // Context State
-  const {isAuthenticated} = useContext(AuthContext);
+  const {isAuthenticated, loadUser} = useContext(AuthContext);
 
   // ComponentDidMount
   useEffect(() => {
+    loadUser();
     if (isAuthenticated){
-      props.history.push("/");
+      history.push("/");
     }
-  },[isAuthenticated])
+  },[isAuthenticated,history])
 
   return(
     <div className="signup">
@@ -115,4 +114,4 @@ const SignUp = (props) => {
   )
 }
 
-export default SignUp;
+export default Register;

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext, Fragment }from 'react';
 import {Link} from 'react-router-dom';
-import AuthContext from '../../context/Auth/AuthContext';
+import AuthContext from '../../../context/Auth/AuthContext';
 
 const NavBar = (props) => {
 
@@ -18,7 +18,7 @@ const NavBar = (props) => {
   </Fragment>;
 
   // Context State
-  const {isAuthenticated, user, loadUser,logout } = useContext(AuthContext);
+  const {isAuthenticated,loadUser,logout } = useContext(AuthContext);
 
   const userLinks = <Link className="ui large inverted button orange" onClick={logout} to="/">Logout</Link>;
 

@@ -1,13 +1,11 @@
 import React from 'react';
 
-import NavBar from '../public/NavBar';
-import Hero from '../public/Hero';
-import Footer from '../public/Footer';
-import InfoSection from '../public/InfoSection';
+import InfoSection from '../layout/InfoSection';
+import PageFrame from '../layout/PageFrame';
 
-import bg_img from '../../assets/img/home_bg.jpg'
-import intro_img from '../../assets/img/intro.jpg'
-import child_img from '../../assets/img/teach_children.jpg';
+import bg_img from '../../../assets/img/home_bg.jpg';
+import intro_img from '../../../assets/img/intro.jpg';
+import child_img from '../../../assets/img/teach_children.jpg';
 
 const Feature = ({icon, title, desc}) => {
     return (
@@ -64,12 +62,11 @@ const Features = () => {
 
 const Home = () => {
     return(
-        <div>
-            <NavBar pages="home"/>
-            <Hero bg_img={bg_img}
-                title="Pineland Music School"
-                subtitle="Learning Music is easier than you think"/>
-                
+        <PageFrame page="home" 
+            heroImg={bg_img} 
+            heroTitle="Pineland Music School"
+            heroSubtitle="Learning Music is easier than you think" >
+
             <InfoSection img={intro_img} 
                     imgPosition="left" 
                     title="What We do...">
@@ -90,9 +87,7 @@ const Home = () => {
                 <p>You don't need to purchase any instrument for tutorials.</p>
             </InfoSection>
 
-            
-            <Footer/>
-        </div>
+        </PageFrame>
     )
 }
 

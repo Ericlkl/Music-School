@@ -1,7 +1,7 @@
 import React, {useState, useContext, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 
-import AuthContext from '../../context/Auth/AuthContext';
+import AuthContext from '../../../context/Auth/AuthContext';
 
 const LoginForm = () => {
 
@@ -14,7 +14,7 @@ const LoginForm = () => {
   const [form, setForm] = useState({...formInitState});
 
   // Context State
-  const {login, isAuthenticated} = useContext(AuthContext);
+  const {login} = useContext(AuthContext);
 
   // Form Component Function
   const onChange = (e) => setForm({...form, [e.target.name] : e.target.value });
@@ -56,17 +56,18 @@ const Poster = () => (
   </div>
 )
 
-const Login = (props) => {
+const Login = ({history}) => {
 
   // Context State
-  const {isAuthenticated} = useContext(AuthContext);
+  const {isAuthenticated, loadUser} = useContext(AuthContext);
 
   // ComponentDidMount
   useEffect(() => {
+    loadUser();
     if (isAuthenticated){
-      props.history.push("/");
+      history.push("/");
     }
-  },[isAuthenticated])
+  },[isAuthenticated,history])
 
   return(
     <div className="login">

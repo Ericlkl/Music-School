@@ -1,11 +1,8 @@
 import React, {useEffect, useContext} from 'react';
 
-import NavBar from '../public/NavBar';
-import Hero from '../public/Hero';
-import Footer from '../public/Footer';
-
-import bg_img from '../../assets/img/event_bg.jpg';
-import EventsContext from '../../context/Events/EventsContext';
+import PageFrame from '../layout/PageFrame';
+import bg_img from '../../../assets/img/event_bg.jpg';
+import EventsContext from '../../../context/Events/EventsContext';
 
 const EventCard = (props) => {
     const {eventName, imageURI, date, place, description, tag, company} = props.event;
@@ -41,21 +38,19 @@ const Events = (props) => {
     }, [])
 
     return(
-        <div>
-            <NavBar pages="events"/>
-            <Hero bg_img={bg_img}
-                title="Events"
-                subtitle="Jumb into Biggest Music Event in Aus"/>
+        <PageFrame page="events" 
+            heroImg={bg_img} 
+            heroTitle="Events" 
+            heroSubtitle="Jumb into Biggest Music Event in Aus">
 
-                <section className="events">
-                    <h1 className="udl-heading">Includes all events</h1>
-                    <div className="events__content">
-                        {events.map(event => 
-                            <EventCard event={event}/>)}
-                    </div>
-                </section>
-            <Footer/>
-        </div>
+            <section className="events">
+                <h1 className="udl-heading">Includes all events</h1>
+                <div className="events__content">
+                    {events.map(event => 
+                        <EventCard event={event}/>)}
+                </div>
+            </section>              
+        </PageFrame>
     )
 }
 

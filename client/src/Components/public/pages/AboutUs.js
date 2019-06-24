@@ -1,14 +1,12 @@
-import React, {Fragment, useState} from 'react';
+import React, {useState} from 'react';
 
-import NavBar from '../public/NavBar';
-import InfoSection from '../public/InfoSection';
-import Hero from '../public/Hero';
-import Footer from '../public/Footer';
+import InfoSection from '../layout/InfoSection';
+import PageFrame from '../layout/PageFrame';
 
-import school_img from '../../assets/img/road.jpg'
-import contact_img from '../../assets/img/mailbox.jpg'
-import bg_img from '../../assets/img/aboutus_bg.jpg'
-import join_us from '../../assets/img/join_us.jpg'
+import school_img from '../../../assets/img/road.jpg'
+import contact_img from '../../../assets/img/mailbox.jpg'
+import bg_img from '../../../assets/img/aboutus_bg.jpg'
+import join_us from '../../../assets/img/join_us.jpg'
 import axios from 'axios';
 
 const QuestionForm = () => {
@@ -29,7 +27,7 @@ const QuestionForm = () => {
     const onSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post('/api/questions', form);
+            await axios.post('/api/questions', form);
             
             alert("Form Submited Successfully !");
             setForm({...formInitState});
@@ -71,11 +69,10 @@ const QuestionForm = () => {
 
 const AboutUs = () => { 
     return(
-        <Fragment>
-            <NavBar pages="aboutus"/>
-            <Hero bg_img={bg_img}
-                title="About US"
-                subtitle="Professional Music Insititute in Australia"/>
+        <PageFrame page="aboutus"
+            heroImg={bg_img} 
+            heroTitle="About Us" 
+            heroSubtitle="Professional Music Insititute in Australia">
 
             <InfoSection title="Our History" imgPosition="left" img={school_img} >
                 <h2>35 Years Teaching Experience</h2>
@@ -91,8 +88,7 @@ const AboutUs = () => {
                 <h3> pineland_music_school@gmail.com </h3>
             </InfoSection>
             <QuestionForm/>
-            <Footer/>
-        </Fragment>
+        </PageFrame>
     )
 
 }
