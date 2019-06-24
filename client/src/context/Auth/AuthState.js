@@ -68,9 +68,11 @@ const AuthState = (props) => {
     const logout = () => dispatch({ type: LOGOUT })
 
     const register = async (formData) => {
+        console.log(formData);
         try {
             const res = await axios.post('/api/users', formData);
 
+            console.log("SuCCESS!");
             dispatch({
                 type: REGISTER_SUCCESS,
                 payload: res.data

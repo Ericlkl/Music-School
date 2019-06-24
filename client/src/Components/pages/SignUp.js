@@ -3,25 +3,39 @@ import {Link} from 'react-router-dom';
 
 import AuthContext from '../../context/Auth/AuthContext';
 
-const LoginForm = () => {
+const RegisterForm = () => {
 
   // State
   const formInitState = {
+    firstname : "",
+    lastname: "",
+    facebook: "",
+    address: "",
     email: "",
-    password: ""
+    type: "Student",
+    password: "",
+    password2: ""
   };
 
   const [form, setForm] = useState({...formInitState});
 
+  const { password, password2 } = form;
+
   // Context State
-  const {login, isAuthenticated} = useContext(AuthContext);
+  const {register} = useContext(AuthContext);
 
   // Form Component Function
   const onChange = (e) => setForm({...form, [e.target.name] : e.target.value });
 
   const onSubmit = (e) => {
     e.preventDefault();
-    login(form);
+    if (password === password2){
+        register(form);
+        setForm(formInitState);
+    }
+    else {
+        alert("Confirm password doesnot match the first password");
+    }
   };
 
   return (
@@ -34,42 +48,42 @@ const LoginForm = () => {
 
             <div className="two fields">
                 <div className="field">
-                    <input type="text" name="firstName" placeholder="First Name" required/>
+                    <input className="text-field" type="text" name="firstname" onChange={onChange} placeholder="First Name" required/>
                 </div>
 
                 <div className="field">
-                    <input type="text" name="lastName" placeholder="Last Name" required/>
+                    <input className="text-field" type="text" name="lastname" onChange={onChange} placeholder="Last Name" required/>
                 </div>
             </div>
         </div>
 
         <div className="field input-field">
             <label>* Email</label>
-            <input type="email" name="email" placeholder="abc@email.com" onChange={onChange} required/>
+            <input className="text-field" type="email" name="email" placeholder="abc@email.com" onChange={onChange} required/>
         </div>
 
         <div className="field input-field">
             <label>Facebook</label>
-            <input type="text" name="facebook" placeholder="Facebook Username" onChange={onChange}/>
+            <input className="text-field" type="text" name="facebook" placeholder="Facebook Username" onChange={onChange}/>
         </div>
 
         <div className="field input-field">
             <label>Address</label>
-            <input type="text" name="address" placeholder="Street/Suburb/City/Nation" onChange={onChange}/>
+            <input className="text-field" type="text" name="address" placeholder="Street/Suburb/City/Nation" onChange={onChange}/>
         </div>
 
         <div className="field input-field">
             <label>* Password</label>
-            <input type="password" name="password" onChange={onChange} required minLength="6"/>
+            <input className="text-field" type="password" name="password" onChange={onChange} required minLength="6"/>
         </div>
 
         <div className="field input-field">
             <label>* Confirm Password</label>
-            <input type="password" name="password2" onChange={onChange} required minLength="6"/>
+            <input className="text-field" type="password" name="password2" onChange={onChange} required minLength="6"/>
         </div>
 
         <div className="terms-field">
-            <input type="checkbox" tabindex="0" class="hidden"/>
+            <input type="checkbox" required className="hidden"/>
             <label>I agree to the Terms and Conditions</label>
         </div>
 
@@ -96,7 +110,7 @@ const SignUp = (props) => {
   return(
     <div className="signup">
       <h1 className="udl-heading logo">Pineland Music School</h1>
-      <LoginForm/>
+      <RegisterForm/>
     </div>
   )
 }

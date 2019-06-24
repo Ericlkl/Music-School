@@ -23,6 +23,15 @@
         .field{
             display: flex;
             flex-direction: column;
+
+            .text-field,
+            .text-field:active,
+            .text-field:focus
+            {
+                background-color: #363636;
+                color: white;
+            }
+
             >label{
                 color: white;
             }
