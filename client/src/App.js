@@ -10,10 +10,12 @@ import Login from './Components/pages/Login';
 import SignUp from './Components/pages/SignUp';
 
 import CoursesState from './context/Courses/CoursesState';
+import EventsState from './context/Events/EventsState';
 
 const App = () => {
   return (
     <CoursesState>
+    <EventsState>
     <BrowserRouter>
       <Fragment>
         <Switch>
@@ -26,6 +28,7 @@ const App = () => {
         </Switch>
       </Fragment>
     </BrowserRouter>
+    </EventsState>
     </CoursesState>
   );
 }

@@ -1,16 +1,16 @@
-import {FETCH_COURSE,FETCH_COURSES} from '../types';
+import {FETCH_EVENT,FETCH_EVENTS} from '../types';
 
 export default (state, action) => {
     switch(action.type){
-        case FETCH_COURSE:
+        case FETCH_EVENT:
             return {
                 ...state,
                 current: action.payload
             };
-        case FETCH_COURSES:
+        case FETCH_EVENTS:
             return {
                 ...state,
-                courses: action.payload
+                events: action.payload
             };
         default:
             return state;

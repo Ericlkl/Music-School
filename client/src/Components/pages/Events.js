@@ -1,14 +1,15 @@
-import React from 'react';
+import React, {useEffect, useContext} from 'react';
 
 import NavBar from '../public/NavBar';
 import Hero from '../public/Hero';
 import Footer from '../public/Footer';
 
-import bg_img from '../../assets/img/event_bg.jpg'
+import bg_img from '../../assets/img/event_bg.jpg';
+import EventsContext from '../../context/Events/EventsContext';
 
-const EventCard = ({eventName, imageURI, date, place, description, tag, company}) => {
+const EventCard = (props) => {
+    const {eventName, imageURI, date, place, description, tag, company} = props.event;
 
-    var newDate = new Date(date.toString());
     return (
         <div className="event-card">   
             <div className="event-card__header">
@@ -28,6 +29,17 @@ const EventCard = ({eventName, imageURI, date, place, description, tag, company}
 
 const Events = (props) => {
 
+    const {events, fetchEvents} = useContext(EventsContext);
+
+    useEffect(() => {
+        
+        fetchEvents();
+        return () => {
+
+        }
+    // eslint-disable-next-line
+    }, [])
+
     return(
         <div>
             <NavBar pages="events"/>
@@ -38,6 +50,8 @@ const Events = (props) => {
                 <section className="events">
                     <h1 className="udl-heading">Includes all events</h1>
                     <div className="events__content">
+                        {events.map(event => 
+                            <EventCard event={event}/>)}
                     </div>
                 </section>
             <Footer/>
