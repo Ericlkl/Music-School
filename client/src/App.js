@@ -39,6 +39,7 @@ const App = () => {
             <Route path="/teachers" component={Teachers}/>
             <Route path="/courses" component={Courses}/>
             <Route path="/aboutus" component={AboutUs}/>
+            <Route path="/register" component={SignUp}/>
             <Route path="/login" component={Login}/>
           </Switch>
         </Fragment>

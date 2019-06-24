@@ -1,0 +1,55 @@
+// Mobile
+.signup{
+    height: 100vh;
+    background-color: #181818;
+    >.logo{
+        color: white;
+        text-align: center;
+        padding: 2rem;
+    }
+
+    >.register-form{
+        display: flex;
+        flex-direction: column;
+        background-color: #222222;
+        padding: 2rem;
+        margin: 2rem;
+
+        >.form-title{
+            color: white;
+            text-align: center;
+        }
+
+        .field{
+            display: flex;
+            flex-direction: column;
+            >label{
+                color: white;
+            }
+        }
+
+        .terms-field{
+            display: flex;
+            align-content: center;
+            color: white;
+            margin: 1rem 0;
+            input{
+                padding: 0.5rem;
+            }
+            label{
+                padding: 0 0.5rem;
+            }
+        }
+    }
+
+}
+
+// Tablet
+@media (min-width: 750px){
+
+}
+
+// Laptop
+@media (min-width: 1022px){
+
+}

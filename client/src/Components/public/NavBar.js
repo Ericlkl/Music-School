@@ -13,7 +13,7 @@ const NavBar = (props) => {
   });
 
   const guestLinks = <Fragment>
-    <Link className="ui large inverted button orange" to="/signup">Sign Up</Link>
+    <Link className="ui large inverted button orange" to="/register">Sign Up</Link>
     <Link className="ui large inverted button" to="/login">Login</Link>
   </Fragment>;
 
