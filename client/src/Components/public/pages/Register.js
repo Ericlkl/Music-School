@@ -1,5 +1,7 @@
 import React, {useState, useContext, useEffect} from 'react';
+
 import AuthContext from '../../../context/Auth/AuthContext';
+import MsgboxContext from '../../../context/MsgBox/MsgboxContext';
 
 const RegisterForm = () => {
 
@@ -20,7 +22,8 @@ const RegisterForm = () => {
   const { password, password2 } = form;
 
   // Context State
-  const {register} = useContext(AuthContext);
+  const { showMsgBox } = useContext(MsgboxContext);
+  const {register, errors} = useContext(AuthContext);
 
   // Form Component Function
   const onChange = (e) => setForm({...form, [e.target.name] : e.target.value });
@@ -35,6 +38,13 @@ const RegisterForm = () => {
         alert("Confirm password doesnot match the first password");
     }
   };
+
+  useEffect(() => {
+    console.log(errors);
+    if(errors){
+      showMsgBox("negative", errors, 4000);
+    }
+  }, [errors])
 
   return (
     <form onSubmit={onSubmit} className="ui form register-form">

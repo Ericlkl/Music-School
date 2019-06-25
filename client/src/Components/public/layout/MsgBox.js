@@ -15,7 +15,7 @@ const MsgBox = () => {
     return (
         <div style={ isShow === false ? { display: "none" } : {} } id="msgbox">
             <div className={"ui message compact floating " + type}>
-                <i onClick={clearMsgBox} className="close icon"></i>
+                <i id="close-icon" onClick={clearMsgBox} className="close icon"></i>
                 {msgContent}
             </div>
         </div>

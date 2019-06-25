@@ -4,8 +4,9 @@ import MsgboxReducer from './MsgboxReducer';
 import { SHOW_MSGBOX, CLEAR_MSGBOX } from '../types';
 
 const MsgboxState = (props) => {
+    
     const initState = {
-        isShow: true,
+        isShow: false,
         messages: null,
         type: "positive"
     };
@@ -22,7 +23,7 @@ const MsgboxState = (props) => {
         });
 
         setTimeout(() => clearMsgBox() , dismissIn);
-    }
+    };
 
     const clearMsgBox = () => dispatch({ type: CLEAR_MSGBOX });
 

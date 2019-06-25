@@ -43,8 +43,10 @@ const AuthState = (props) => {
         } catch (error) {
             dispatch({
                 type: AUTH_ERROR,
-                payload: error.message
+                payload:  error.response.data.errors
             });
+
+            setTimeout(() => clearError(), 4000);
         }
     }
 
@@ -57,12 +59,14 @@ const AuthState = (props) => {
             });
 
             loadUser();
+
         } catch (error) {
-            console.log(error.response.data);
             dispatch({
                 type: LOGIN_FAIL,
-                payload: error.message
+                payload: error.response.data.errors
             });
+
+            setTimeout(() => clearError(), 4000);
         }
     };
 
@@ -73,20 +77,24 @@ const AuthState = (props) => {
         try {
             const res = await axios.post('/api/users', formData);
 
-            console.log("SuCCESS!");
             dispatch({
                 type: REGISTER_SUCCESS,
                 payload: res.data
             });
             // Get User details
             loadUser();
+
         } catch (error) {
             dispatch({
                 type: REGISTER_FAIL,
-                payload: error.message
+                payload: error.response.data.errors
             });
+
+            setTimeout(() => clearError(), 4000);
         }
     }
+
+    const clearError = () => dispatch({ type: CLEAR_ERROR });
 
     return (
         <AuthContext.Provider value = {{
@@ -98,7 +106,8 @@ const AuthState = (props) => {
             loadUser,
             login,
             logout,
-            register
+            register,
+            clearError
         }}>
             {props.children}
         </AuthContext.Provider>

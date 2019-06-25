@@ -2,6 +2,7 @@ import React, {useState, useContext, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 
 import AuthContext from '../../../context/Auth/AuthContext';
+import MsgboxContext from '../../../context/MsgBox/MsgboxContext';
 
 const LoginForm = () => {
 
@@ -14,7 +15,8 @@ const LoginForm = () => {
   const [form, setForm] = useState({...formInitState});
 
   // Context State
-  const {login} = useContext(AuthContext);
+  const {login, errors} = useContext(AuthContext);
+  const { showMsgBox } = useContext(MsgboxContext);
 
   // Form Component Function
   const onChange = (e) => setForm({...form, [e.target.name] : e.target.value });
@@ -23,6 +25,13 @@ const LoginForm = () => {
     e.preventDefault();
     login(form);
   };
+
+  useEffect(() => {
+    console.log(errors);
+    if(errors){
+      showMsgBox("negative", errors, 4000);
+    }
+  }, [errors])
 
   return (
     <form onSubmit={onSubmit} className="ui form login-form">
