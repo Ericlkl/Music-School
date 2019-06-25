@@ -18,3 +18,6 @@ export const LOGIN_FAIL = "LOGIN_FAIL";
 
 export const LOGOUT = "LOGOUT";
 export const CLEAR_ERROR = "CLEAR_ERROR";
+
+export const SHOW_MSGBOX = "SHOW_MSGBOX";
+export const CLEAR_MSGBOX = "CLEAR_MSGBOX";

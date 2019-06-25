@@ -12,7 +12,7 @@ import Courses from './Components/public/pages/Courses';
 import AboutUs from './Components/public/pages/AboutUs';
 import Login from './Components/public/pages/Login';
 import Register from './Components/public/pages/Register';
-import Alert from './Components/public/layout/Alert';
+import MsgBox from './Components/public/layout/MsgBox';
 
 // Students Pages Components
 
@@ -23,6 +23,7 @@ import CoursesState from './context/Courses/CoursesState';
 import EventsState from './context/Events/EventsState';
 import TeachersState from './context/Teachers/TeachersState';
 import AuthState from './context/Auth/AuthState';
+import MsgboxState from './context/MsgBox/MsgboxState';
 
 const ContextState = (props) => {
   return(
@@ -30,7 +31,9 @@ const ContextState = (props) => {
       <TeachersState>
         <CoursesState>
           <EventsState>
-            {props.children}
+            <MsgboxState>
+              {props.children}
+            </MsgboxState>
           </EventsState>
         </CoursesState>
       </TeachersState>
@@ -43,7 +46,7 @@ const App = () => {
     <ContextState>
       <BrowserRouter>
         <Fragment>
-          <Alert/>
+          <MsgBox/>
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/events" component={Events}/>
