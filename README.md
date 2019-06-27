@@ -3,14 +3,15 @@ This is a profolio project for building full stack react application. Currently,
 
 ## Key Technology Include
 ```
+ReactJS
+React Context
+React Hook
+Sass
+Semantic UI
+NodeJS
 MongoDB
 ExpressJS
-NodeJS
-ReactJS
-Redux
-Sass
 JsonWebToken
-PassportJS
 BcryptJS
 Gravatar
 ```
@@ -19,15 +20,10 @@ Gravatar
 ```
   react
   react-dom
-  react-redux
   react-router
   react-router-dom
   react-scripts
-  redux
-  redux-form
-  redux-thunk
   axios
-  http-proxy-middleware
   node-sass
 ```
 
