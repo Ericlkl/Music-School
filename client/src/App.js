@@ -19,7 +19,7 @@ import MsgBox from './Components/public/layout/MsgBox';
 // Admin Pages Components
 import AdminHome from './Components/admin/pages/Home';
 import AdminPageFrame from './Components/admin/layout/AdminPageFrame';
-import CourseForm from './Components/admin/Forms/Course';
+import AdminCourse from './Components/admin/pages/Courses';
 import EventForm from './Components/admin/Forms/Event';
 import TeacherForm from './Components/admin/Forms/Teacher';
 
@@ -61,11 +61,7 @@ const App = () => {
             <Route path="/login" component={Login}/>
             <Route path="/admin/" exact component={AdminHome}/>
 
-            <Route path="/admin/add_course" exact component={() => 
-              <AdminPageFrame>
-                <CourseForm/>
-              </AdminPageFrame>
-            }/>
+            <Route path="/admin/courses" exact component={AdminCourse}/>
 
             <Route path="/admin/add_event" exact component={(props) => 
               <AdminPageFrame>

@@ -57,7 +57,6 @@ router.put('/:id',[
     };
 
     const id = req.params.id;
-    console.log(id);
 
     try {
         const event = await Event.findByIdAndUpdate(id,req.body);
@@ -70,7 +69,6 @@ router.put('/:id',[
 
 router.delete('/:id', async (req,res) => {
     const id = req.params.id;
-    console.log(id);
 
     try {
         await Event.findByIdAndDelete(id);

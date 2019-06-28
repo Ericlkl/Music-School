@@ -53,8 +53,6 @@ router.put('/:id',[
     };
 
     const id = req.params.id;
-    console.log(id);
-
     try {
         const course = await Course.findByIdAndUpdate(id,req.body);
         res.json(course);
@@ -65,13 +63,12 @@ router.put('/:id',[
 
 router.delete('/:id', async (req,res) => {
     const id = req.params.id;
-    console.log(id);
-    // try {
-    //     await Course.findByIdAndDelete(id);
-    //     res.json({msg: "Courses deleted Success!"});
-    // } catch (error) {
-    //     res.status(500).json({errors: "Server Error!"});
-    // }
+    try {
+        await Course.findByIdAndDelete(id);
+        res.json({msg: "Courses deleted Success!"});
+    } catch (error) {
+        res.status(500).json({errors: "Server Error!"});
+    }
 })
 
 module.exports = router;
