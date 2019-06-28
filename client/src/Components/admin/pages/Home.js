@@ -4,8 +4,10 @@ import Navbar from '../layout/Navbar';
 const AdminHome = () => {
     return (
         <div>
-            <h1>Hello</h1>
             <Navbar/>
+            <h1 style={{
+                display: "inline-block"
+            }}>Hello</h1>
         </div>
     )
 }

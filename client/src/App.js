@@ -18,6 +18,10 @@ import MsgBox from './Components/public/layout/MsgBox';
 
 // Admin Pages Components
 import AdminHome from './Components/admin/pages/Home';
+import AdminNavbar from './Components/admin/layout/Navbar';
+import CourseForm from './Components/admin/Forms/Course';
+import EventForm from './Components/admin/Forms/Event';
+import TeacherForm from './Components/admin/Forms/Teacher';
 
 import CoursesState from './context/Courses/CoursesState';
 import EventsState from './context/Events/EventsState';
@@ -55,7 +59,35 @@ const App = () => {
             <Route path="/aboutus" component={AboutUs}/>
             <Route path="/register" component={Register}/>
             <Route path="/login" component={Login}/>
-            <AdminRoute path="/admin/" exact component={AdminHome}/>
+            <Route path="/admin/" exact component={AdminHome}/>
+
+            <Route path="/admin/add_course" exact component={() => 
+              <div style={{
+                display: "flex"
+              }}>
+                <AdminNavbar/>
+                <CourseForm/>
+              </div>
+            }/>
+
+            <Route path="/admin/add_event" exact component={(props) => 
+              <div style={{
+                display: "flex"
+              }}>
+                <AdminNavbar/>
+                <EventForm/>
+              </div>
+            }/>
+            <Route path="/admin/add_teacher" exact component={(props) => 
+              <div style={{
+                display: "flex"
+              }}>
+                <AdminNavbar/>
+                <TeacherForm/>
+              </div>
+            }/>
+
+
           </Switch>
         </Fragment>
       </BrowserRouter>
