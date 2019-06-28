@@ -4,6 +4,8 @@ export default () => {
     
     return (
         <form className="ui form">
+            <h1>Course Information</h1>
+
             <div className="field">
                 <label>Course Name</label>
                 <input type="text" name="first-name" placeholder="First Name"/>

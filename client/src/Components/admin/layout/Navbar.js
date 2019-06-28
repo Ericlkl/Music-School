@@ -21,12 +21,8 @@ const Navbar = (props) => {
     }, [isAuthenticated]);
 
     return (
-        <nav className="admin-navbar">
+        <nav className="admin-page_navbar">
             <div className="nav-content">
-
-                {/* <div className="nav-control-box">
-                    <i className="fas fa-times"></i>
-                </div> */}
                 
                 <div className="user-box">
                     <h3>Welcome Back! Eric!</h3>
@@ -34,12 +30,12 @@ const Navbar = (props) => {
                 
                 <div className="nav-item">
                     <i className="fas fa-2x fa-calendar-alt"/>
-                    <h2>Events</h2>
+                    <Link to="/admin/add_event"><h2>Events</h2></Link>
                 </div>
                 
                 <div className="nav-item">
                     <i className="fas fa-2x fa-book-open"></i>
-                    <h2>Courses</h2>
+                    <Link to="/admin/add_course"><h2>Courses</h2></Link>
                 </div>
                 
                 <div className="nav-item">
