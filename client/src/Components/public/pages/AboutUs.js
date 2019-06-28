@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 
 import InfoSection from '../layout/InfoSection';
 import PageFrame from '../layout/PageFrame';
@@ -8,6 +8,8 @@ import contact_img from '../../../assets/img/mailbox.jpg'
 import bg_img from '../../../assets/img/aboutus_bg.jpg'
 import join_us from '../../../assets/img/join_us.jpg'
 import axios from 'axios';
+import MsgBoxContext from '../../../context/MsgBox/MsgboxContext';
+
 
 const QuestionForm = () => {
 
@@ -20,6 +22,8 @@ const QuestionForm = () => {
 
     const [form,setForm] = useState({...formInitState});
 
+    const { showMsgBox } = useContext(MsgBoxContext);
+
     const { provider, phoneNumber, email, message } = form;
 
     const onChange = (e) => setForm({ ...form, [e.target.name] : e.target.value});
@@ -29,11 +33,11 @@ const QuestionForm = () => {
         try {
             await axios.post('/api/questions', form);
             
-            alert("Form Submited Successfully !");
+            showMsgBox("positive", "Form Submited Successfully !");
             setForm({...formInitState});
             
-        } catch (err) {
-            alert("Server Error !");
+        } catch (error) {
+            showMsgBox("positive", error.response.data.errors );
         }
     }
 

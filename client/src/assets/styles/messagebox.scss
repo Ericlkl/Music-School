@@ -1,10 +1,10 @@
 #msgbox{
-    position: absolute;
+    position: fixed;
     padding-top: 2vh;
     display: flex;
     justify-content: center;
     width: 100%;
-    z-index: 10;
+    z-index: 1000;
 };
 
 #close-icon{

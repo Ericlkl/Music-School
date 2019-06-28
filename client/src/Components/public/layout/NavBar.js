@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext, Fragment }from 'react';
 import {Link} from 'react-router-dom';
 import AuthContext from '../../../context/Auth/AuthContext';
+import MsgBoxContext from '../../../context/MsgBox/MsgboxContext';
 
 const NavBar = (props) => {
 
@@ -20,7 +21,14 @@ const NavBar = (props) => {
   // Context State
   const {isAuthenticated,loadUser,logout } = useContext(AuthContext);
 
-  const userLinks = <Link className="ui large inverted button orange" onClick={logout} to="/">Logout</Link>;
+  const {showMsgBox} = useContext(MsgBoxContext);
+
+  const onLogout = () => {
+    logout();
+    showMsgBox("positive", "Logout Successfully!");
+  }
+
+  const userLinks = <Link className="ui large inverted button orange" onClick={onLogout} to="/">Logout</Link>;
 
   // Navbar function
   const hamburgerMenuClicked = () => setApperance({ 
