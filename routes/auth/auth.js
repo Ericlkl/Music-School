@@ -40,7 +40,7 @@ router.post('/', [
 
         jwt.sign(payload,secretOrKey,{ expiresIn: 360000 },
             (err ,token) => {
-                if (err) throw err;
+                if (err) return res.status(400).json({ errors : "token error" });
                 res.json({token});
         })
 

@@ -27,7 +27,6 @@ const LoginForm = () => {
   };
 
   useEffect(() => {
-    console.log(errors);
     if(errors){
       showMsgBox("negative", errors, 4000);
     }
@@ -69,11 +68,16 @@ const Login = ({history}) => {
 
   // Context State
   const {isAuthenticated, loadUser} = useContext(AuthContext);
+  const { showMsgBox } = useContext(MsgboxContext);
 
   // ComponentDidMount
   useEffect(() => {
-    loadUser();
+
+    if (localStorage.getItem('token')){
+      loadUser();
+    }
     if (isAuthenticated){
+      showMsgBox("positive", "Login Successfully !");
       history.push("/");
     }
   },[isAuthenticated,history])

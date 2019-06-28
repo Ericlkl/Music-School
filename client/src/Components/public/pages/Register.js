@@ -32,6 +32,7 @@ const RegisterForm = () => {
     e.preventDefault();
     if (password === password2){
         register(form);
+        showMsgBox("positive", "Register Successfully !");
         setForm(formInitState);
     }
     else {
@@ -107,10 +108,14 @@ const Register = ({history}) => {
 
   // Context State
   const {isAuthenticated, loadUser} = useContext(AuthContext);
+  const { showMsgBox } = useContext(MsgboxContext);
 
   // ComponentDidMount
   useEffect(() => {
-    loadUser();
+    if (localStorage.getItem('token')){
+      loadUser();
+    }
+
     if (isAuthenticated){
       history.push("/");
     }
