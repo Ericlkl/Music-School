@@ -39,4 +39,42 @@ router.post('/', [
     }
 });
 
+// Update
+router.put('/:id',[
+    check('name', 'Please Insert Instrument name').not().isEmpty(),
+    check('status', 'Please Insert status').not().isEmpty(), 
+    check('description', 'Please Insert Description').isLength({ min: 4}), 
+    check('price', 'Please Insert Price').isInt(), 
+    check('instock', 'Please inStock').isInt(),
+], async (req,res) => {
+
+    const errors = validationResult(req);
+    
+    if (!errors.isEmpty()){
+        return res.status(400).json({ errors: errors.array() });
+    };
+
+    const id = req.params.id;
+    console.log(id);
+
+    try {
+        const instrument = await Instrument.findByIdAndUpdate(id,req.body);
+        res.json(instrument);
+    } catch (error) {
+        res.status(500).json({errors: "Server Error!"});
+    }
+});
+
+router.delete('/:id', async (req,res) => {
+    const id = req.params.id;
+    console.log(id);
+
+    try {
+        await Instrument.findByIdAndDelete(id);
+        res.json({msg: "Instrument deleted Success!"});
+    } catch (error) {
+        res.status(500).json({errors: "Server Error!"});
+    }
+});
+
 module.exports = router;

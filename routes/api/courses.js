@@ -39,4 +39,39 @@ router.post('/', [
 
 });
 
+// Update
+router.put('/:id',[
+    check('courseName', 'Please Insert Course name').isLength({ min: 4}),
+    check('description', 'Please Insert Description').isLength({ min: 4}), 
+    check('fee', 'Please Insert Fee').isInt(),
+], async (req,res) => {
+
+    const errors = validationResult(req);
+    
+    if (!errors.isEmpty()){
+        return res.status(400).json({ errors: errors.array() });
+    };
+
+    const id = req.params.id;
+    console.log(id);
+
+    try {
+        const course = await Course.findByIdAndUpdate(id,req.body);
+        res.json(course);
+    } catch (error) {
+        res.status(500).json({errors: "Server Error!"});
+    }
+})
+
+router.delete('/:id', async (req,res) => {
+    const id = req.params.id;
+    console.log(id);
+    // try {
+    //     await Course.findByIdAndDelete(id);
+    //     res.json({msg: "Courses deleted Success!"});
+    // } catch (error) {
+    //     res.status(500).json({errors: "Server Error!"});
+    // }
+})
+
 module.exports = router;

@@ -38,4 +38,16 @@ router.post('/',[
     }
 });
 
+// Delete
+router.delete('/:id', async (req,res) => {
+    const id = req.params.id;
+
+    try {
+        await Question.findByIdAndDelete(id);
+        res.json({msg: "Instrument deleted Success!"});
+    } catch (error) {
+        res.status(500).json({errors: "Server Error!"});
+    }
+});
+
 module.exports = router;
