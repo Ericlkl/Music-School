@@ -2,13 +2,13 @@ import React, {Fragment} from 'react';
 import Navbar from './Navbar';
 import Footer from '../../public/layout/Footer';
 
-const AdminPageFrame = ({children}) => {
+const AdminPageFrame = (props) => {
     return (
         <Fragment>
             <div className="admin-page">
-                <Navbar/>
+                <Navbar { ...props }/>
                 <div className="admin-page_content">
-                    { children }
+                    { props.children }
                 </div>
             </div>
         </Fragment>

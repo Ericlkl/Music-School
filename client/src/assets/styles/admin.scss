@@ -32,7 +32,9 @@
                 text-align: center;
             }
             
-            .nav-item{
+            .nav-item,
+            .nav-last-item
+            {
                 padding: 1rem 0;
                 width: 100%;
                 display: flex;
@@ -59,19 +61,8 @@
             }
             
             .nav-last-item{
-                display: flex;
-                justify-content: center;
-                align-items: flex-end;
+                padding: 2rem 0;
                 margin-top: auto;
-                padding: 1rem 0;
-                >i{
-                    margin-right: 1rem;
-                    margin-bottom: 0.5rem;
-                }
-    
-                &:hover{
-                    color: #e67e22;
-                }
             }
         }
         

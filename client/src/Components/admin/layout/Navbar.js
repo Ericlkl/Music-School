@@ -1,5 +1,5 @@
 import React, {useContext, useEffect} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import AuthContext from '../../../context/Auth/AuthContext';
 
 const Navbar = (props) => {
@@ -8,11 +8,8 @@ const Navbar = (props) => {
 
     const href = window.location.href;
 
-    console.log(href);
-    console.log(href.includes("courses"));
-
     const onLogout = () => {
-        logout();
+        console.log("Logout !");
     }
 
     useEffect(() => {
@@ -62,7 +59,7 @@ const Navbar = (props) => {
                 
                 <div className="nav-last-item">
                     <i className="fas fa-2x fa-sign-out-alt"></i>
-                    <h2>Logout</h2>
+                    <Link to="/"><h2 onClick={onLogout}>Logout</h2></Link>
                 </div>
             </div>
         </nav>
