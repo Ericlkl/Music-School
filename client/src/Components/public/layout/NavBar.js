@@ -13,6 +13,8 @@ const NavBar = (props) => {
     appendMenu: false
   });
 
+  const href = window.location.href;
+
   const guestLinks = <Fragment>
     <Link className="ui large inverted button orange" to="/register">Sign Up</Link>
     <Link className="ui large inverted button" to="/login">Login</Link>
@@ -68,7 +70,7 @@ const NavBar = (props) => {
   }
 
   useEffect(() => {
-    // ComponentDidMount
+      // ComponentDidMount
       updateWindowDimensions();
       window.addEventListener('scroll', handleScroll);
       window.addEventListener('resize', updateWindowDimensions);
@@ -106,11 +108,11 @@ const NavBar = (props) => {
 
           <div style={ apperance.appendMenu === false ? {display: 'none'} : {} } 
               className="page-links">
-            <Link className={props.pages === "home" ? "active route" : "route"} to="/">Home</Link>
-            <Link className={props.pages === "courses" ? "active route" : "route"} to="/courses">Course</Link>
-            <Link className={props.pages === "events" ? "active route" : "route"} to="/events">Events</Link>
-            <Link className={props.pages === "teachers" ? "active route" : "route"} to="/teachers">Teachers</Link>
-            <Link className={props.pages === "aboutus" ? "active route" : "route"} to="/aboutus">About Us</Link>
+            <Link className="route" to="/">Home</Link>
+            <Link className={href.includes("courses") ? "active route" : "route"} to="/courses">Course</Link>
+            <Link className={href.includes("events") ? "active route" : "route"} to="/events">Events</Link>
+            <Link className={href.includes("teachers")  ? "active route" : "route"} to="/teachers">Teachers</Link>
+            <Link className={href.includes("aboutus")  ? "active route" : "route"} to="/aboutus">About Us</Link>
           </div>
 
           <div style={ apperance.appendMenu === false ? {display: 'none'} : {} }

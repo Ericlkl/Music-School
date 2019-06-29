@@ -3,10 +3,10 @@ import NavBar from './NavBar';
 import Hero from './Hero';
 import Footer from './Footer';
 
-const PageFrame = ({children, page, heroImg, heroTitle, heroSubtitle }) => {
+const PageFrame = ({children, heroImg, heroTitle, heroSubtitle }) => {
     return (
         <Fragment>
-            <NavBar pages={page}/>
+            <NavBar />
             <Hero bg_img={heroImg} title={heroTitle} subtitle={heroSubtitle}/>
 
             {children}

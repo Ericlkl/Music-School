@@ -23,17 +23,16 @@ const Navbar = (props) => {
     return (
         <nav className="admin-page_navbar">
             <div className="nav-content">
-                
                 <div className="user-box">
                     <h3 style={{
                         fontSize: "2.5rem"
                     }} className="udl-heading logo">Pineland Music School</h3>
-                    <h3>Welcome Back! Eric!</h3>
+                    {/* <h3>Welcome Back! Eric!</h3> */}
                 </div>
                 
                 <div className="nav-item">
                     <i className="fas fa-2x fa-calendar-alt"/>
-                    <Link to="/admin/events"><h2>Events</h2></Link>
+                    <h2><Link to="/admin/events">Events</Link></h2>
                 </div>
                 
                 <div className="nav-item">
@@ -41,15 +40,15 @@ const Navbar = (props) => {
                     <Link to="/admin/courses"><h2>Courses</h2></Link>
                 </div>
                 
-                <div className="nav-item">
+                {/* <div className="nav-item">
                     <i className="fas fa-2x fa-user"></i>
                     <Link to="/admin/students"><h2>Students</h2></Link>
-                </div>
+                </div> */}
                 
-                <div className="nav-item active">
+                {/* <div className="nav-item active">
                     <i className="fas fa-2x fa-guitar"></i>
                     <Link to="/admin/instruments"><h2>Instruments</h2></Link>
-                </div>
+                </div> */}
                 
                 <div className="nav-item">
                     <i className="fas fa-2x fa-question-circle"></i>

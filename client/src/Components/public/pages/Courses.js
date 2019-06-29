@@ -49,7 +49,7 @@ const Courses = (props) => {
     }, [])
 
     return(
-        <PageFrame page="courses" 
+        <PageFrame
             heroImg={bg_img} 
             heroTitle="Courses"
             heroSubtitle="Make the change Today!" >
@@ -62,7 +62,7 @@ const Courses = (props) => {
                             instrument={course.instrument}
                             imageURI={course.imageURI}
                             fee = {course.fee}
-                        />)}
+                            key={course._id} />)}
                     
                 </div>
             </section>

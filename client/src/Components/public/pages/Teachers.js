@@ -54,7 +54,7 @@ const Teachers = () => {
     }, [])
 
     return(
-        <PageFrame page="teachers" heroImg={bg_img} heroTitle="Teachers" heroSubtitle="Professional Teachers in Australia">
+        <PageFrame heroImg={bg_img} heroTitle="Teachers" heroSubtitle="Professional Teachers in Australia">
             <div style={{ margin: "50px"}} className="ui container">
                 {/* {teachers.map(teacher => <TeacherCard teacher={teacher} /> )} */}
             </div>

@@ -38,7 +38,7 @@ const Events = (props) => {
     }, [])
 
     return(
-        <PageFrame page="events" 
+        <PageFrame
             heroImg={bg_img} 
             heroTitle="Events" 
             heroSubtitle="Jumb into Biggest Music Event in Aus">
@@ -47,7 +47,7 @@ const Events = (props) => {
                 <h1 className="udl-heading">Includes all events</h1>
                 <div className="events__content">
                     {events.map(event => 
-                        <EventCard event={event}/>)}
+                        <EventCard key={event._id} event={event}/>)}
                 </div>
             </section>              
         </PageFrame>

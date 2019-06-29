@@ -45,15 +45,15 @@
                 }
                 
                 &.active{
-                    color: #e67e22;
+                    color: inherit;
                     background-color: #222;
                 }
                 
                 &:hover{
-                    a:hover{
-                        color: #e67e22;    
-                    }
                     color: #e67e22;
+                    a{
+                        color: inherit;    
+                    }
                 }
                 
             }
