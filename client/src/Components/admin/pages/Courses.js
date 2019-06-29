@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import AdminPageFrame from '../layout/AdminPageFrame'
 import MsgboxContext from '../../../context/MsgBox/MsgboxContext';
@@ -40,14 +41,15 @@ const Row = (props) => {
             </td>
         </tr>
     )
-}
+};
+
+
 const Table = () => {
 
     const {courses, fetchCourses} = useContext(CoursesContext);
 
     useEffect(() => {
         if (courses.length === 0){
-            console.log("Run");
             fetchCourses();
         }
 
@@ -88,7 +90,7 @@ const Courses = () => {
                     Courses
                 </h1>
                 <h3 className="ui right floated header">
-                    <button className="ui primary button">Create</button>
+                    <Link to="/admin/add_course" className="ui primary button">Create</Link>
                 </h3>
             </div>
             <Table/>

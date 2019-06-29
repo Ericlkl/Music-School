@@ -23,6 +23,7 @@ import AdminQuestion from './Components/admin/pages/Questions';
 import AdminEvent from './Components/admin/pages/Events';
 
 import CreateEvent from './Components/admin/pages/Create/Event';
+import CreateCourse from './Components/admin/pages/Create/Course';
 
 import CoursesState from './context/Courses/CoursesState';
 import EventsState from './context/Events/EventsState';
@@ -67,6 +68,7 @@ const App = () => {
             <Route path="/admin/events" exact component={AdminEvent}/>
 
             <Route path="/admin/add_event" exact component={CreateEvent}/>
+            <Route path="/admin/add_course" exact component={CreateCourse}/>
 
 
           </Switch>
