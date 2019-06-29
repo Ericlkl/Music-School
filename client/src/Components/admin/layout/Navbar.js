@@ -25,17 +25,18 @@ const Navbar = (props) => {
             <div className="nav-content">
                 
                 <div className="user-box">
+                    <h3>Pineland Music School</h3>
                     <h3>Welcome Back! Eric!</h3>
                 </div>
                 
                 <div className="nav-item">
                     <i className="fas fa-2x fa-calendar-alt"/>
-                    <Link to="/admin/add_event"><h2>Events</h2></Link>
+                    <Link to="/admin/events"><h2>Events</h2></Link>
                 </div>
                 
                 <div className="nav-item">
                     <i className="fas fa-2x fa-book-open"></i>
-                    <Link to="/admin/add_course"><h2>Courses</h2></Link>
+                    <Link to="/admin/courses"><h2>Courses</h2></Link>
                 </div>
                 
                 <div className="nav-item">
@@ -50,7 +51,7 @@ const Navbar = (props) => {
                 
                 <div className="nav-item">
                     <i className="fas fa-2x fa-question-circle"></i>
-                    <h2>Questions</h2>
+                    <Link to="/admin/questions"><h2>Questions</h2></Link>
                 </div>
                 
                 <div className="nav-last-item">

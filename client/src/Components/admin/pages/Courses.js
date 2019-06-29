@@ -83,6 +83,14 @@ const Table = () => {
 const Courses = () => {
     return (
         <AdminPageFrame>
+            <div className="ui">
+                <h1 className="ui left floated header">
+                    Courses
+                </h1>
+                <h3 className="ui right floated header">
+                    <button className="ui primary button">Create</button>
+                </h3>
+            </div>
             <Table/>
         </AdminPageFrame>
     )
