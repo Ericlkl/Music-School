@@ -1,6 +1,6 @@
 .admin-page{
     display: grid;
-    grid-template-columns: 20% 80%;
+    grid-template-columns: 15% 85%;
 
     &_navbar{
         // Color Setting
@@ -8,6 +8,7 @@
         background-color: #333;
         min-width: 200px;
         height: 100vh;
+        z-index: 10;
 
         a, a:hover, a:visited, a:active, a:after{
             color: white;
@@ -36,7 +37,7 @@
                 width: 100%;
                 display: flex;
                 justify-content: center;
-                align-items: end;
+                align-items: flex-end;
     
                 >i{
                     margin-right: 1rem;
@@ -60,7 +61,7 @@
             .nav-last-item{
                 display: flex;
                 justify-content: center;
-                align-items: end;
+                align-items: flex-end;
                 margin-top: auto;
                 padding: 1rem 0;
                 >i{
@@ -78,5 +79,7 @@
 
     &_content{
         margin: 2rem;
+        overflow-x: scroll;
+        z-index: 1;
     }
 }
