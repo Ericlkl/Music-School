@@ -1,4 +1,4 @@
-import {FETCH_EVENT,FETCH_EVENTS} from '../types';
+import {FETCH_EVENT,FETCH_EVENTS, CLEAR_EVENTS} from '../types';
 
 export default (state, action) => {
     switch(action.type){
@@ -11,6 +11,11 @@ export default (state, action) => {
             return {
                 ...state,
                 events: action.payload
+            };
+        case CLEAR_EVENTS:
+            return {
+                events: [],
+                current: null
             };
         default:
             return state;

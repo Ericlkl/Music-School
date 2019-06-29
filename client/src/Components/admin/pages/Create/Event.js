@@ -1,17 +1,22 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
-import AdminPageFrame from '../../layout/AdminPageFrame';
+
 import Form from '../../Forms/Event';
+import AdminPageFrame from '../../layout/AdminPageFrame';
+import MsgboxContext from '../../../../context/MsgBox/MsgboxContext';
 
+const Events = (props) => {
 
-const Events = () => {
+    const {showMsgBox} = useContext(MsgboxContext);
 
     const addEvent = async (formData) => {
         try {
-            const res = await axios.post('/api/event', formData);
-            console.log(res.data);
+            await axios.post('/api/events', formData);
+            showMsgBox('positive', "Add Event Successfully !");
+            props.history.goBack();
         } catch (error) {
-            console.log(error.response.message.error);
+            showMsgBox('negative', "Error" );
         }
     }
 
@@ -19,7 +24,7 @@ const Events = () => {
         <AdminPageFrame>
             <div className="ui">
                 <h1 style={{ margin: "1rem 0rem" }} className="ui header breadcrumb">
-                    <a className="section">Event</a>
+                    <Link to="/admin/events" className="section">Event</Link>
                     <i className="right angle icon divider"></i>
                     <div className="active section">Create</div>
                 </h1>

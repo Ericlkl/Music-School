@@ -1,7 +1,7 @@
 import React, {useReducer} from 'react';
 import EventsContext from './EventsContext';
 import EventsReducer from './EventsReducer';
-import {FETCH_EVENT,FETCH_EVENTS} from '../types';
+import {FETCH_EVENT,FETCH_EVENTS, CLEAR_EVENTS} from '../types';
 import axios from 'axios';
 
 const EventsState = (props) => {
@@ -19,13 +19,20 @@ const EventsState = (props) => {
             type: FETCH_EVENTS,
             payload: res.data
         });
-    }
+    };
+
+    const clearEvents = () => {
+        dispatch({
+            type: CLEAR_EVENTS
+        })
+    };
 
     return (
         <EventsContext.Provider value = {{
             events: state.events,
             current: state.current,
-            fetchEvents
+            fetchEvents,
+            clearEvents
         }}>
             {props.children}
         </EventsContext.Provider>

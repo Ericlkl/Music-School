@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import AdminPageFrame from '../layout/AdminPageFrame';
 
@@ -44,7 +45,7 @@ const Row = ({event}) => {
 }
 const Table = () => {
 
-    const {events, fetchEvents} = useContext(EventsContext);
+    const { events, fetchEvents } = useContext(EventsContext);
 
     useEffect(() => {
         if (events.length === 0){
@@ -52,7 +53,6 @@ const Table = () => {
         }
 
         return () => {
-
         };
         // eslint-diable-next-line
     }, [events])
@@ -67,7 +67,6 @@ const Table = () => {
                     <th>Place</th>
                     <th>Date</th>
                     <th>Tag</th>
-                    <th>Intrument</th>
                     <th>Image URL</th>
                     <th>Action</th>
                 </tr>
@@ -81,6 +80,7 @@ const Table = () => {
 }
 
 const Events = () => {
+    const {clearEvents} = useContext(EventsContext);
     return (
         <AdminPageFrame>
             <div className="ui">
@@ -88,7 +88,7 @@ const Events = () => {
                     Events
                 </h1>
                 <h3 className="ui right floated header">
-                    <button className="ui primary button">Create</button>
+                    <Link to="/admin/add_event" onClick={clearEvents} className="ui primary button">Create</Link>
                 </h3>
             </div>
             <Table/>

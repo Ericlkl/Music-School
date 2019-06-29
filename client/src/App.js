@@ -24,10 +24,6 @@ import AdminEvent from './Components/admin/pages/Events';
 
 import CreateEvent from './Components/admin/pages/Create/Event';
 
-import EventForm from './Components/admin/Forms/Event';
-import TeacherForm from './Components/admin/Forms/Teacher';
-
-
 import CoursesState from './context/Courses/CoursesState';
 import EventsState from './context/Events/EventsState';
 import TeachersState from './context/Teachers/TeachersState';

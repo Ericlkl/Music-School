@@ -23,7 +23,6 @@ router.post('/',[
     check('company', 'Please Insert Company Name').not().isEmpty(), 
     check('description', 'Please Insert Description').isLength({ min: 4}), 
     check('place', 'Please Insert Description').not().isEmpty(), 
-    check('fee', 'Please Insert Fee').isInt(),
 ], async (req,res) => {
     const errors = validationResult(req);
     

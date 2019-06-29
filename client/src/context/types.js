@@ -6,6 +6,7 @@ export const FETCH_COURSE = "FETCH_COURSE";
 
 export const FETCH_EVENTS = "FETCH_EVENTS";
 export const FETCH_EVENT = "FETCH_EVENT";
+export const CLEAR_EVENTS = "CLEAR_EVENTS";
 
 export const REGISTER_FAIL = "REGISTER_FAIL";
 export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
