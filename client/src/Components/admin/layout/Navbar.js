@@ -25,7 +25,9 @@ const Navbar = (props) => {
             <div className="nav-content">
                 
                 <div className="user-box">
-                    <h3>Pineland Music School</h3>
+                    <h3 style={{
+                        fontSize: "2.5rem"
+                    }} className="udl-heading logo">Pineland Music School</h3>
                     <h3>Welcome Back! Eric!</h3>
                 </div>
                 
@@ -41,12 +43,12 @@ const Navbar = (props) => {
                 
                 <div className="nav-item">
                     <i className="fas fa-2x fa-user"></i>
-                    <h2>Students</h2>
+                    <Link to="/admin/students"><h2>Students</h2></Link>
                 </div>
                 
                 <div className="nav-item active">
                     <i className="fas fa-2x fa-guitar"></i>
-                    <h2>Instruments</h2>
+                    <Link to="/admin/instruments"><h2>Instruments</h2></Link>
                 </div>
                 
                 <div className="nav-item">
