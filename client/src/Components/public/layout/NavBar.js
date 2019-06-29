@@ -108,6 +108,7 @@ const NavBar = (props) => {
 
           <div style={ apperance.appendMenu === false ? {display: 'none'} : {} } 
               className="page-links">
+                
             <Link className="route" to="/">Home</Link>
             <Link className={href.includes("courses") ? "active route" : "route"} to="/courses">Course</Link>
             <Link className={href.includes("events") ? "active route" : "route"} to="/events">Events</Link>

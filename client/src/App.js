@@ -18,10 +18,11 @@ import MsgBox from './Components/public/layout/MsgBox';
 
 // Admin Pages Components
 import AdminHome from './Components/admin/pages/Home';
-import AdminPageFrame from './Components/admin/layout/AdminPageFrame';
 import AdminCourse from './Components/admin/pages/Courses';
 import AdminQuestion from './Components/admin/pages/Questions';
 import AdminEvent from './Components/admin/pages/Events';
+
+import CreateEvent from './Components/admin/pages/Create/Event';
 
 import EventForm from './Components/admin/Forms/Event';
 import TeacherForm from './Components/admin/Forms/Teacher';
@@ -69,20 +70,7 @@ const App = () => {
             <Route path="/admin/questions" exact component={AdminQuestion}/>
             <Route path="/admin/events" exact component={AdminEvent}/>
 
-            <Route path="/admin/add_event" exact component={(props) => 
-              <AdminPageFrame>
-                <EventForm/>
-              </AdminPageFrame>
-            }/>
-            <Route path="/admin/add_teacher" exact component={(props) => 
-              <div style={{
-                display: "flex"
-              }}>
-                <AdminPageFrame>
-                  <TeacherForm/>
-                </AdminPageFrame>
-              </div>
-            }/>
+            <Route path="/admin/add_event" exact component={CreateEvent}/>
 
 
           </Switch>
