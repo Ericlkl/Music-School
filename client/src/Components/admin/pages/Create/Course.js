@@ -4,17 +4,20 @@ import axios from 'axios';
 
 import Form from '../../Forms/Course';
 import AdminPageFrame from '../../layout/AdminPageFrame';
+import CoursesContext from '../../../../context/Courses/CoursesContext';
 import MsgboxContext from '../../../../context/MsgBox/MsgboxContext';
 
 const Course = (props) => {
 
     const {showMsgBox} = useContext(MsgboxContext);
+    const { fetchCourses } = useContext(CoursesContext);
 
     const addCourse = async (formData) => {
         try {
             await axios.post('/api/courses', formData);
+            fetchCourses();
             showMsgBox("positive", "Create Course Successfully ! ");
-            props.history.goBack();
+            props.history.push('/admin/courses');
         } catch (error) {
             showMsgBox("negative", "Error ! ");
         }

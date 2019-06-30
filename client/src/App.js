@@ -16,12 +16,14 @@ import MsgBox from './Components/public/layout/MsgBox';
 
 // Students Pages Components
 
-// Admin Pages Components
-import AdminHome from './Components/admin/pages/Home';
-import AdminCourse from './Components/admin/pages/Courses';
-import AdminQuestion from './Components/admin/pages/Questions';
-import AdminEvent from './Components/admin/pages/Events';
+// Admin Manage Pages Components
+import AdminHome from './Components/admin/pages/Manage/Home';
+import AdminUser from './Components/admin/pages/Manage/Users';
+import AdminCourse from './Components/admin/pages/Manage/Courses';
+import AdminQuestion from './Components/admin/pages/Manage/Questions';
+import AdminEvent from './Components/admin/pages/Manage/Events';
 
+// Admin Create Pages
 import CreateEvent from './Components/admin/pages/Create/Event';
 import CreateCourse from './Components/admin/pages/Create/Course';
 
@@ -62,7 +64,8 @@ const App = () => {
             <Route path="/register" component={Register}/>
             <Route path="/login" component={Login}/>
             <Route path="/admin/" exact component={AdminHome}/>
-
+            
+            <Route path="/admin/users" exact component={AdminUser}/>
             <Route path="/admin/courses" exact component={AdminCourse}/>
             <Route path="/admin/questions" exact component={AdminQuestion}/>
             <Route path="/admin/events" exact component={AdminEvent}/>

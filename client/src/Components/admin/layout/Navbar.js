@@ -42,10 +42,10 @@ const Navbar = (props) => {
                     <Link to="/admin/courses"><h2>Courses</h2></Link>
                 </div>
                 
-                {/* <div className={href.includes("/admin/students") ? "nav-item active" : "nav-item"}>
+                <div className={href.includes("/admin/users") ? "nav-item active" : "nav-item"}>
                     <i className="fas fa-2x fa-user"></i>
-                    <Link to="/admin/students"><h2>Students</h2></Link>
-                </div> */}
+                    <Link to="/admin/users"><h2>Users</h2></Link>
+                </div>
                 
                 {/* <div className={href.includes("/admin/instruments") ? "nav-item active" : "nav-item"}>
                     <i className="fas fa-2x fa-guitar"></i>
@@ -61,6 +61,7 @@ const Navbar = (props) => {
                     <i className="fas fa-2x fa-sign-out-alt"></i>
                     <Link to="/"><h2 onClick={onLogout}>Logout</h2></Link>
                 </div>
+
             </div>
         </nav>
     )

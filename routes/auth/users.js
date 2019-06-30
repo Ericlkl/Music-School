@@ -51,6 +51,29 @@ router.post('/',[
         console.error(error.message);
         res.status(500).json({errors: "Server Error !"});
     }
-})
+});
+
+router.get('/', async (req,res) => {
+    try {
+        const users = await User.find({});
+        res.json(users);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({errors : "Server Error !"});
+    }
+});
+
+router.delete('/:id', async (req,res) => {
+
+    const id = req.params.id;
+
+    try {
+        const user = await User.findByIdAndDelete(id);
+        res.json(user);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({errors : "Server Error !"});
+    }
+});
 
 module.exports = router;

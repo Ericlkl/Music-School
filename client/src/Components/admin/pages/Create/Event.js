@@ -4,17 +4,20 @@ import axios from 'axios';
 
 import Form from '../../Forms/Event';
 import AdminPageFrame from '../../layout/AdminPageFrame';
+import EventContext from '../../../../context/Events/EventsContext';
 import MsgboxContext from '../../../../context/MsgBox/MsgboxContext';
 
 const Events = (props) => {
 
-    const {showMsgBox} = useContext(MsgboxContext);
+    const { showMsgBox } = useContext(MsgboxContext);
+    const { fetchEvents } = useContext(EventContext);
 
     const addEvent = async (formData) => {
         try {
             await axios.post('/api/events', formData);
+            fetchEvents();
             showMsgBox('positive', "Add Event Successfully !");
-            props.history.goBack();
+            props.history.push('/admin/events');
         } catch (error) {
             showMsgBox('negative', "Error" );
         }

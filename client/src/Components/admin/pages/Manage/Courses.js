@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import AdminPageFrame from '../layout/AdminPageFrame'
-import MsgboxContext from '../../../context/MsgBox/MsgboxContext';
-import CoursesContext from '../../../context/Courses/CoursesContext';
+import AdminPageFrame from '../../layout/AdminPageFrame'
+import MsgboxContext from '../../../../context/MsgBox/MsgboxContext';
+import CoursesContext from '../../../../context/Courses/CoursesContext';
 
 const Row = (props) => {
 

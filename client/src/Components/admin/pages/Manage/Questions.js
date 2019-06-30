@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 
-import AdminPageFrame from '../layout/AdminPageFrame';
-import MsgboxContext from '../../../context/MsgBox/MsgboxContext';
+import AdminPageFrame from '../../layout/AdminPageFrame';
+import MsgboxContext from '../../../../context/MsgBox/MsgboxContext';
 
 const Row = ({question, fetchFunc}) => {
 
