@@ -1,8 +1,8 @@
-import React, {Fragment} from 'react';
-import { BrowserRouter, Route , Switch} from 'react-router-dom'
+import React, { Fragment } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 // Routing Components
-import AdminRoute from './Components/routing/AdminRoute';
+// import AdminRoute from './Components/routing/AdminRoute';
 
 // Public Pages Components
 import Home from './Components/public/pages/Home';
@@ -13,6 +13,8 @@ import AboutUs from './Components/public/pages/AboutUs';
 import Login from './Components/public/pages/Login';
 import Register from './Components/public/pages/Register';
 import MsgBox from './Components/public/layout/MsgBox';
+
+import CourseContent from './Components/public/contents/Course';
 
 // Students Pages Components
 
@@ -33,20 +35,18 @@ import TeachersState from './context/Teachers/TeachersState';
 import AuthState from './context/Auth/AuthState';
 import MsgboxState from './context/MsgBox/MsgboxState';
 
-const ContextState = (props) => {
-  return(
+const ContextState = props => {
+  return (
     <AuthState>
       <TeachersState>
         <CoursesState>
           <EventsState>
-            <MsgboxState>
-              {props.children}
-            </MsgboxState>
+            <MsgboxState>{props.children}</MsgboxState>
           </EventsState>
         </CoursesState>
       </TeachersState>
     </AuthState>
-  )
+  );
 };
 
 const App = () => {
@@ -54,32 +54,32 @@ const App = () => {
     <ContextState>
       <BrowserRouter>
         <Fragment>
-          <MsgBox/>
+          <MsgBox />
           <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/events" component={Events}/>
-            <Route path="/teachers" component={Teachers}/>
-            <Route path="/courses" component={Courses}/>
-            <Route path="/aboutus" component={AboutUs}/>
-            <Route path="/register" component={Register}/>
-            <Route path="/login" component={Login}/>
-            <Route path="/admin/" exact component={AdminHome}/>
-            
-            <Route path="/admin/users" exact component={AdminUser}/>
-            <Route path="/admin/courses" exact component={AdminCourse}/>
-            <Route path="/admin/questions" exact component={AdminQuestion}/>
-            <Route path="/admin/events" exact component={AdminEvent}/>
+            <Route path='/' exact component={Home} />
+            <Route path='/events' component={Events} />
+            <Route path='/teachers' component={Teachers} />
 
-            <Route path="/admin/add_event" exact component={CreateEvent}/>
-            <Route path="/admin/add_course" exact component={CreateCourse}/>
+            <Route path='/courses' exact component={Courses} />
+            <Route path='/courses/:id' component={CourseContent} />
 
+            <Route path='/aboutus' component={AboutUs} />
+            <Route path='/register' component={Register} />
+            <Route path='/login' component={Login} />
+            <Route path='/admin/' exact component={AdminHome} />
 
+            <Route path='/admin/users' exact component={AdminUser} />
+            <Route path='/admin/courses' exact component={AdminCourse} />
+            <Route path='/admin/questions' exact component={AdminQuestion} />
+            <Route path='/admin/events' exact component={AdminEvent} />
+
+            <Route path='/admin/add_event' exact component={CreateEvent} />
+            <Route path='/admin/add_course' exact component={CreateCourse} />
           </Switch>
         </Fragment>
       </BrowserRouter>
     </ContextState>
   );
-}
-
+};
 
 export default App;

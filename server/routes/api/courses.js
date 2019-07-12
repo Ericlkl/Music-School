@@ -15,6 +15,20 @@ router.get('/', async (req,res) => {
 
 });
 
+router.get('/:id', async (req,res) => {
+    const id = req.params.id;
+    try {
+        const course = await Course.findById(id);
+
+        if(!course) return res.status(400).json({errors: "Course not found !"});
+
+        res.json(course);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({errors: "Server Error!"});
+    }
+})
+
 // Add new Course route
 // { courseName,description,requirement,fee,
 //  startDate,endDate,instrument,imageURI }
@@ -60,6 +74,8 @@ router.put('/:id',[
         res.status(500).json({errors: "Server Error!"});
     }
 })
+
+
 
 router.delete('/:id', async (req,res) => {
     const id = req.params.id;
