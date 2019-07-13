@@ -11,7 +11,7 @@ const InstrumentSchema = new Schema(
       type: String,
       required: true
     },
-    description: {
+    desc: {
       type: String,
       required: true
     },
@@ -23,7 +23,7 @@ const InstrumentSchema = new Schema(
       type: Number,
       required: true
     },
-    imageURI: {
+    img: {
       type: String
     }
   },

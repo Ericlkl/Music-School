@@ -3,7 +3,12 @@ const router = express.Router();
 const Instrument = require('../../models/Instrument');
 
 const { check } = require('express-validator');
-const formValidationMiddleware = require('../../middleware/formValidation');
+
+const {
+  adminMiddleware,
+  authMiddleware,
+  formValidationMiddleware
+} = require('../../middleware/');
 
 // Get All Instruments Route
 router.get('/', async (req, res) => {
@@ -17,17 +22,19 @@ router.get('/', async (req, res) => {
 });
 
 // Add new Instrument route
-// {name,status,description,price,instock,imageURI}
+// {name,status,desc,price,instock,img}
 router.post(
   '/',
   [
+    authMiddleware,
+    adminMiddleware,
     check('name', 'Please Insert Instrument name')
       .not()
       .isEmpty(),
     check('status', 'Please Insert status')
       .not()
       .isEmpty(),
-    check('description', 'Please Insert Description').isLength({ min: 4 }),
+    check('desc', 'Please Insert Description').isLength({ min: 4 }),
     check('price', 'Please Insert Price').isInt(),
     check('instock', 'Please inStock').isInt(),
     formValidationMiddleware
@@ -47,13 +54,15 @@ router.post(
 router.put(
   '/:id',
   [
+    authMiddleware,
+    adminMiddleware,
     check('name', 'Please Insert Instrument name')
       .not()
       .isEmpty(),
     check('status', 'Please Insert status')
       .not()
       .isEmpty(),
-    check('description', 'Please Insert Description').isLength({ min: 4 }),
+    check('desc', 'Please Insert Description').isLength({ min: 4 }),
     check('price', 'Please Insert Price').isInt(),
     check('instock', 'Please inStock').isInt(),
     formValidationMiddleware
@@ -65,17 +74,17 @@ router.put(
       const instrument = await Instrument.findByIdAndUpdate(id, req.body);
       res.json(instrument);
     } catch (error) {
-      res.status(500).json({ errors: 'Server Error!' });
+      res.status(500).json({ errors: error.message });
     }
   }
 );
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', [authMiddleware, adminMiddleware], async (req, res) => {
   try {
-    await Instrument.findByIdAndDelete(id);
+    await Instrument.findByIdAndDelete({ _id: req.params.id });
     res.json({ msg: 'Instrument deleted Success!' });
   } catch (error) {
-    res.status(500).json({ errors: 'Server Error!' });
+    res.status(500).json({ errors: error.message });
   }
 });
 

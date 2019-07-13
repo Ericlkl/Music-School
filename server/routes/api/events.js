@@ -90,7 +90,7 @@ router.put(
   }
 );
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', [authMiddleware, adminMiddleware], async (req, res) => {
   try {
     await Event.findByIdAndDelete({ _id: req.params.id });
     res.json({ msg: 'Event deleted Success!' });
