@@ -7,7 +7,7 @@ const authMiddleware = require('../../middleware/auth');
 const User = require('../../models/User');
 
 // User Loaded Route
-router.get('/', authMiddleware, async (req, res) => {
+router.get('/auth/', authMiddleware, async (req, res) => {
   try {
     res.json(req.user.toJSON());
   } catch (error) {
@@ -18,7 +18,7 @@ router.get('/', authMiddleware, async (req, res) => {
 
 // Login
 router.post(
-  '/',
+  '/auth/',
   [
     check('email', 'Please insert valid email').isEmail(),
     check('password', 'password format invalid').isLength({ min: 8 }),
@@ -39,7 +39,7 @@ router.post(
 );
 
 // Logout Route
-router.delete('/', [authMiddleware], async (req, res) => {
+router.delete('/auth/', authMiddleware, async (req, res) => {
   try {
     req.user.tokens = req.user.tokens.filter(token => {
       return token.token != req.headers['x-auth-token'];
@@ -53,7 +53,7 @@ router.delete('/', [authMiddleware], async (req, res) => {
 });
 
 // Logout All Route
-router.delete('/all', [authMiddleware], async (req, res) => {
+router.delete('/auth/all', authMiddleware, async (req, res) => {
   try {
     req.user.tokens = [];
     await req.user.save();

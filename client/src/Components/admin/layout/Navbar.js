@@ -12,7 +12,7 @@ const Navbar = props => {
   };
 
   useEffect(() => {
-    if (localStorage.getItem('token')) {
+    if (localStorage.getItem('token') && !isAuthenticated) {
       loadUser();
     }
 

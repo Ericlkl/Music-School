@@ -32,6 +32,14 @@ const CourseSchema = new Schema(
       type: String,
       required: [true, 'Please insert the Instrument Type for this course !']
     },
+    students: {
+      type: [Schema.Types.ObjectId],
+      ref: 'users'
+    },
+    teacher: {
+      type: [Schema.Types.ObjectId],
+      ref: 'teachers'
+    },
     img: {
       type: String
     }

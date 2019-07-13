@@ -9,8 +9,27 @@ const {
   formValidationMiddleware
 } = require('../../middleware/');
 
+const adminValidator = [authMiddleware, adminMiddleware];
+const eventsFormValidator = [
+  check('name', 'Please Insert Event name')
+    .not()
+    .isEmpty(),
+  check('company', 'Please Insert Company Name')
+    .not()
+    .isEmpty(),
+  check('desc', 'Please Insert Event Description').isLength({ min: 4 }),
+  check('place', 'Please Insert Event Place')
+    .not()
+    .isEmpty(),
+  check('date', 'Please Insert Event Date')
+    .not()
+    .isEmpty(),
+  formValidationMiddleware
+];
+
 // Get All Event Route
-router.get('/', async (req, res) => {
+// GET /events/
+router.get('/events/', async (req, res) => {
   try {
     const events = await Event.find();
     res.json(events);
@@ -24,25 +43,8 @@ router.get('/', async (req, res) => {
 // { name, company, desc, place,
 // date, tag, img }
 router.post(
-  '/',
-  [
-    authMiddleware,
-    adminMiddleware,
-    check('name', 'Please Insert Event name')
-      .not()
-      .isEmpty(),
-    check('company', 'Please Insert Company Name')
-      .not()
-      .isEmpty(),
-    check('desc', 'Please Insert Event Description').isLength({ min: 4 }),
-    check('place', 'Please Insert Event Place')
-      .not()
-      .isEmpty(),
-    check('date', 'Please Insert Event Date')
-      .not()
-      .isEmpty(),
-    formValidationMiddleware
-  ],
+  '/events/',
+  [...adminValidator, ...eventsFormValidator],
   async (req, res) => {
     try {
       const newEvent = await new Event(req.body).save();
@@ -56,25 +58,8 @@ router.post(
 
 // Update
 router.put(
-  '/:id',
-  [
-    authMiddleware,
-    adminMiddleware,
-    check('name', 'Please Insert Event name')
-      .not()
-      .isEmpty(),
-    check('company', 'Please Insert Company Name')
-      .not()
-      .isEmpty(),
-    check('desc', 'Please Insert Event Description').isLength({ min: 4 }),
-    check('place', 'Please Insert Event Place')
-      .not()
-      .isEmpty(),
-    check('date', 'Please Insert Event Date')
-      .not()
-      .isEmpty(),
-    formValidationMiddleware
-  ],
+  '/events/:id',
+  [...adminValidator, ...eventsFormValidator],
   async (req, res) => {
     try {
       const event = await Event.findByIdAndUpdate({
@@ -90,7 +75,7 @@ router.put(
   }
 );
 
-router.delete('/:id', [authMiddleware, adminMiddleware], async (req, res) => {
+router.delete('/events/:id', adminValidator, async (req, res) => {
   try {
     await Event.findByIdAndDelete({ _id: req.params.id });
     res.json({ msg: 'Event deleted Success!' });

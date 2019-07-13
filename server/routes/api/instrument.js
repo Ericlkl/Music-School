@@ -10,8 +10,23 @@ const {
   formValidationMiddleware
 } = require('../../middleware/');
 
+const adminValidator = [authMiddleware, adminMiddleware];
+
+const instrumentFormValidator = [
+  check('name', 'Please Insert Instrument name')
+    .not()
+    .isEmpty(),
+  check('status', 'Please Insert status')
+    .not()
+    .isEmpty(),
+  check('desc', 'Please Insert Description').isLength({ min: 4 }),
+  check('price', 'Please Insert Price').isInt(),
+  check('instock', 'Please inStock').isInt(),
+  formValidationMiddleware
+];
+
 // Get All Instruments Route
-router.get('/', async (req, res) => {
+router.get('/instruments/', async (req, res) => {
   try {
     const instruments = await Instrument.find();
     res.send(instruments);
@@ -23,50 +38,20 @@ router.get('/', async (req, res) => {
 
 // Add new Instrument route
 // {name,status,desc,price,instock,img}
-router.post(
-  '/',
-  [
-    authMiddleware,
-    adminMiddleware,
-    check('name', 'Please Insert Instrument name')
-      .not()
-      .isEmpty(),
-    check('status', 'Please Insert status')
-      .not()
-      .isEmpty(),
-    check('desc', 'Please Insert Description').isLength({ min: 4 }),
-    check('price', 'Please Insert Price').isInt(),
-    check('instock', 'Please inStock').isInt(),
-    formValidationMiddleware
-  ],
-  async (req, res) => {
-    try {
-      const newInstrument = await new Instrument(req.body).save();
-      res.send(newInstrument);
-    } catch (error) {
-      console.error(error.message);
-      res.status(500).json({ errors: 'Server Error !' });
-    }
+router.post('/instruments/', adminValidator, async (req, res) => {
+  try {
+    const newInstrument = await new Instrument(req.body).save();
+    res.send(newInstrument);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ errors: 'Server Error !' });
   }
-);
+});
 
 // Update
 router.put(
-  '/:id',
-  [
-    authMiddleware,
-    adminMiddleware,
-    check('name', 'Please Insert Instrument name')
-      .not()
-      .isEmpty(),
-    check('status', 'Please Insert status')
-      .not()
-      .isEmpty(),
-    check('desc', 'Please Insert Description').isLength({ min: 4 }),
-    check('price', 'Please Insert Price').isInt(),
-    check('instock', 'Please inStock').isInt(),
-    formValidationMiddleware
-  ],
+  '/instruments/:id',
+  [...adminValidator, ...instrumentFormValidator],
   async (req, res) => {
     const id = req.params.id;
 
@@ -79,7 +64,7 @@ router.put(
   }
 );
 
-router.delete('/:id', [authMiddleware, adminMiddleware], async (req, res) => {
+router.delete('/instruments/:id', adminValidator, async (req, res) => {
   try {
     await Instrument.findByIdAndDelete({ _id: req.params.id });
     res.json({ msg: 'Instrument deleted Success!' });
