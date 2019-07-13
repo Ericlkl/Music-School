@@ -21,7 +21,7 @@ router.post(
   '/',
   [
     check('email', 'Please insert valid email').isEmail(),
-    check('password', 'password format invalid').isLength({ min: 6 }),
+    check('password', 'password format invalid').isLength({ min: 8 }),
     validationMiddleware
   ],
   async (req, res) => {

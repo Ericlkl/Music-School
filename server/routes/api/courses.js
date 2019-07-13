@@ -3,7 +3,12 @@ const router = express.Router();
 const Course = require('../../models/Course');
 
 const { check } = require('express-validator');
-const formValidationMiddleware = require('../../middleware/formValidation');
+
+const {
+  authMiddleware,
+  adminMiddleware,
+  formValidationMiddleware
+} = require('../../middleware/');
 
 // Get All Course route
 router.get('/', async (req, res) => {
@@ -17,9 +22,8 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:id', async (req, res) => {
-  const id = req.params.id;
   try {
-    const course = await Course.findById(id);
+    const course = await Course.findById({ _id: req.params.id });
 
     if (!course) return res.status(400).json({ errors: 'Course not found !' });
 
@@ -31,14 +35,25 @@ router.get('/:id', async (req, res) => {
 });
 
 // Add new Course route
-// { courseName,description,requirement,fee,
-//  startDate,endDate,instrument,imageURI }
+// { name,desc,require,price,
+//  startDate,endDate,instrument,img }
 router.post(
   '/',
   [
-    check('courseName', 'Please Insert Course name').isLength({ min: 4 }),
-    check('description', 'Please Insert Description').isLength({ min: 4 }),
-    check('fee', 'Please Insert Fee').isInt(),
+    authMiddleware,
+    adminMiddleware,
+    check('name', 'Please Insert Course name').isLength({ min: 4 }),
+    check('desc', 'Please Insert Description').isLength({ min: 4 }),
+    check('price', 'Please Insert Fee').isInt(),
+    check('startDate', 'Please Insert Start Date')
+      .not()
+      .isEmpty(),
+    check('endDate', 'Please Insert End Date')
+      .not()
+      .isEmpty(),
+    check('instrument', 'Please Insert Instrument Name')
+      .not()
+      .isEmpty(),
     formValidationMiddleware
   ],
   async (req, res) => {
@@ -47,7 +62,7 @@ router.post(
       res.json(newCourse);
     } catch (error) {
       console.error(error.message);
-      res.status(500).json({ errors: 'Server Error !' });
+      res.status(500).json({ errors: error.message });
     }
   }
 );
@@ -56,9 +71,20 @@ router.post(
 router.put(
   '/:id',
   [
-    check('courseName', 'Please Insert Course name').isLength({ min: 4 }),
-    check('description', 'Please Insert Description').isLength({ min: 4 }),
-    check('fee', 'Please Insert Fee').isInt(),
+    authMiddleware,
+    adminMiddleware,
+    check('name', 'Please Insert Course name').isLength({ min: 4 }),
+    check('desc', 'Please Insert Description').isLength({ min: 4 }),
+    check('price', 'Please Insert Fee').isInt(),
+    check('startDate', 'Please Insert Start Date')
+      .not()
+      .isEmpty(),
+    check('endDate', 'Please Insert End Date')
+      .not()
+      .isEmpty(),
+    check('instrument', 'Please Insert Instrument Name')
+      .not()
+      .isEmpty(),
     formValidationMiddleware
   ],
   async (req, res) => {
@@ -72,7 +98,7 @@ router.put(
   }
 );
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', [authMiddleware, adminMiddleware], async (req, res) => {
   const id = req.params.id;
   try {
     await Course.findByIdAndDelete(id);
