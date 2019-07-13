@@ -2,7 +2,11 @@ const express = require('express');
 const router = express.Router();
 const Question = require('../../models/Question');
 const { check } = require('express-validator');
-const formValidationMiddleware = require('../../middleware/formValidation');
+const {
+  adminMiddleware,
+  authMiddleware,
+  formValidationMiddleware
+} = require('../../middleware/');
 
 // Get all question route
 router.get('/', async (req, res) => {
@@ -20,6 +24,8 @@ router.get('/', async (req, res) => {
 router.post(
   '/',
   [
+    authMiddleware,
+    adminMiddleware,
     check('provider', 'Please Insert Provider name')
       .not()
       .isEmpty(),
@@ -45,7 +51,7 @@ router.post(
 );
 
 // Delete
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', [authMiddleware, adminMiddleware], async (req, res) => {
   try {
     await Question.findByIdAndDelete(req.params.id);
     res.json({ msg: 'Question deleted Success!' });
