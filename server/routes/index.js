@@ -7,11 +7,11 @@ const users = require('./auth/users');
 const auth = require('./auth/auth');
 
 module.exports = app => {
-    app.use('/api/courses', courses);
-    app.use('/api/events', events);
-    app.use('/api/users', users);
-    app.use('/api/auth', auth);
-    app.use('/api/teachers', teachers);
-    app.use('/api/questions', questions);
-    app.use('/api/instruments', instrument);
-}
+  app.use('/api/courses', courses);
+  app.use('/api/events', events);
+  app.use('/api/users', users);
+  app.use('/api/auth', auth);
+  app.use('/api/teachers', teachers);
+  app.use('/api/questions', questions);
+  app.use('/api/instruments', instrument);
+};

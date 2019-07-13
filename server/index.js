@@ -11,7 +11,8 @@ mongoose.connect(
   mongoURI,
   {
     useNewUrlParser: true,
-    useCreateIndex: true
+    useCreateIndex: true,
+    useFindAndModify: false
   },
   () => console.log('Mongo DB server connected!')
 );

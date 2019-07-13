@@ -16,13 +16,17 @@ router.get('/', async (req, res) => {
 });
 
 // Add question route
-// { provider, phoneNumber, email, message }
+// { provider, phone, email, message }
 router.post(
   '/',
   [
     check('provider', 'Please Insert Provider name')
       .not()
       .isEmpty(),
+    check('phone', 'phone is required')
+      .not()
+      .isEmpty(),
+    check('phone', 'Phone Field Only allows Integer Type').isInt(),
     check('email', 'Please Insert email').isEmail(),
     check('message', 'Please Insert Message')
       .not()
@@ -42,11 +46,9 @@ router.post(
 
 // Delete
 router.delete('/:id', async (req, res) => {
-  const id = req.params.id;
-
   try {
-    await Question.findByIdAndDelete(id);
-    res.json({ msg: 'Instrument deleted Success!' });
+    await Question.findByIdAndDelete(req.params.id);
+    res.json({ msg: 'Question deleted Success!' });
   } catch (error) {
     res.status(500).json({ errors: 'Server Error!' });
   }
