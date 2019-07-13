@@ -14,7 +14,8 @@ const Row = ({ user, onDelete }) => {
     facebook,
     parent,
     type,
-    date
+    date,
+    createdAt
   } = user;
 
   return (
@@ -26,7 +27,7 @@ const Row = ({ user, onDelete }) => {
       <td>{facebook}</td>
       <td>{parent}</td>
       <td>{type}</td>
-      <td>{date}</td>
+      <td>{createdAt.toString()}</td>
       <td>
         <div className='ui basic buttons'>
           <button className='ui blue basic button'>Update</button>
@@ -83,6 +84,7 @@ const Table = () => {
           <th>Parent</th>
           <th>Type</th>
           <th>Created At</th>
+          <th>Action</th>
         </tr>
       </thead>
 

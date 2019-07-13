@@ -81,7 +81,8 @@ UserSchema.methods.generateAuthToken = async function() {
   const user = this;
 
   const token = jwt.sign({ userID: user.id }, secretOrKey, {
-    expiresIn: 360000
+    // 10 Hours At the moment
+    expiresIn: 36000000
   });
 
   user.tokens = user.tokens.concat({ token });
