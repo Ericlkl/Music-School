@@ -8,16 +8,7 @@ import MsgboxContext from '../../../../context/MsgBox/MsgboxContext';
 import EventsContext from '../../../../context/Events/EventsContext';
 
 const Row = ({ event }) => {
-  const {
-    _id,
-    eventName,
-    description,
-    company,
-    place,
-    date,
-    tag,
-    imageURI
-  } = event;
+  const { _id, name, company, desc, place, date, tag, img } = event;
 
   const { fetchEvents } = useContext(EventsContext);
   const { showMsgBox } = useContext(MsgboxContext);
@@ -34,13 +25,13 @@ const Row = ({ event }) => {
 
   return (
     <tr>
-      <td>{eventName}</td>
-      <td>{description}</td>
+      <td>{name}</td>
       <td>{company}</td>
+      <td>{desc}</td>
       <td>{place}</td>
       <td>{date}</td>
       <td>{tag}</td>
-      <td>{imageURI}</td>
+      <td>{img}</td>
       <td>
         <div className='ui basic buttons'>
           <button className='ui blue basic button'>Update</button>
