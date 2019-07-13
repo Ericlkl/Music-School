@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 
 const EventSchema = new Schema(
   {
-    eventName: {
+    name: {
       type: String,
       required: true
     },
@@ -11,7 +11,7 @@ const EventSchema = new Schema(
       type: String,
       required: true
     },
-    description: {
+    desc: {
       type: String,
       required: true
     },
@@ -26,7 +26,7 @@ const EventSchema = new Schema(
     tag: {
       type: [String]
     },
-    imageURI: {
+    img: {
       type: String
     }
   },
