@@ -1,10 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
 const { check } = require('express-validator');
 const validationMiddleware = require('../../middleware/formValidation');
-const { secretOrKey } = require('../../config/keys');
 
 const authMiddleware = require('../../middleware/auth');
 const User = require('../../models/User');
@@ -12,8 +9,7 @@ const User = require('../../models/User');
 // User Loaded Route
 router.get('/', authMiddleware, async (req, res) => {
   try {
-    const user = await User.findById(req.user.id).select('-password');
-    res.json(user);
+    res.json(req.user.toJSON());
   } catch (error) {
     console.error(error.message);
     res.status(500).json({ errors: 'Server Error !' });
@@ -32,23 +28,40 @@ router.post(
     const { email, password } = req.body;
 
     try {
-      const user = await User.findOne({ email });
-      if (!user) res.status(400).json({ errors: 'Invalid Credentials' });
-
-      const isCorrectPW = await bcrypt.compare(password, user.password);
-      if (!isCorrectPW) res.status(400).json({ errors: 'Invalid Credentials' });
-
-      const payload = { user: { id: user.id } };
-
-      jwt.sign(payload, secretOrKey, { expiresIn: 360000 }, (err, token) => {
-        if (err) return res.status(400).json({ errors: 'token error' });
-        res.json({ token });
-      });
+      const user = await User.findByCredentials(email, password);
+      const token = await user.generateAuthToken();
+      res.json({ token });
     } catch (error) {
       console.error(error.message);
-      res.status(500).json({ errors: 'Server Error !' });
+      res.status(500).json({ errors: error.message });
     }
   }
 );
+
+// Logout Route
+router.delete('/', [authMiddleware], async (req, res) => {
+  try {
+    req.user.tokens = req.user.tokens.filter(token => {
+      return token.token != req.headers['x-auth-token'];
+    });
+    await req.user.save();
+    res.json({ msg: 'Logout Success!' });
+  } catch (error) {
+    console.error(error.message);
+    res.status(401).json({ errors: error.message });
+  }
+});
+
+// Logout All Route
+router.delete('/all', [authMiddleware], async (req, res) => {
+  try {
+    req.user.tokens = [];
+    await req.user.save();
+    res.json({ msg: 'Logout All Success!' });
+  } catch (error) {
+    console.error(error.message);
+    res.status(401).json({ errors: error.message });
+  }
+});
 
 module.exports = router;

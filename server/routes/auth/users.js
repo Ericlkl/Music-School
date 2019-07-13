@@ -1,18 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
 const { check } = require('express-validator');
-const { secretOrKey } = require('../../config/keys');
 
 const authMiddleware = require('../../middleware/auth');
 const formValidationMiddleware = require('../../middleware/formValidation');
 const User = require('../../models/User');
 
-// Register Route
 // { firstname, lastname, email, address,
 // facebook, parent, type, avator, password, tokens }
-
+// Register Route
 router.post(
   '/',
   [
@@ -46,6 +42,7 @@ router.post(
   }
 );
 
+// Admin Get ALL USERS
 router.get('/', async (req, res) => {
   try {
     const users = await User.find({});
@@ -56,12 +53,11 @@ router.get('/', async (req, res) => {
   }
 });
 
+// DELETE USER
 router.delete('/:id', async (req, res) => {
-  const id = req.params.id;
-
   try {
-    const user = await User.findByIdAndDelete(id);
-    res.json(user);
+    await User.findByIdAndDelete({ _id: req.params.id });
+    res.json({ msg: 'Delete Successfully' });
   } catch (error) {
     console.error(error.message);
     res.status(500).json({ errors: 'Server Error !' });

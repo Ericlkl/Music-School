@@ -32,8 +32,7 @@ const UserSchema = new Schema(
     password: {
       type: String,
       required: [true, 'password is required!'],
-      minlength: 8,
-      select: false
+      minlength: 8
     },
     address: {
       type: String
@@ -60,8 +59,7 @@ const UserSchema = new Schema(
             required: [true, 'token is required']
           }
         }
-      ],
-      select: false
+      ]
     }
   },
   {
@@ -93,12 +91,14 @@ UserSchema.methods.generateAuthToken = async function() {
 };
 
 // Schema Object Method
-UserSchema.static.findByCredentials = async (email, password) => {
+UserSchema.statics.findByCredentials = async (email, password) => {
   const user = await User.findOne({ email });
-  if (!user) throw new Error('User not found!');
+  if (!user) throw new Error('Invalid Credentials');
 
+  console.log(`Insert Pw ${password}`);
+  console.log(`User Pw ${user.password}`);
   const isValidPW = await bcrypt.compare(password, user.password);
-  if (!isValidPW) throw new Error('Incorrect Password');
+  if (!isValidPW) throw new Error('Invalid Credentials');
 
   return user;
 };
