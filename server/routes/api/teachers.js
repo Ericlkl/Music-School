@@ -20,8 +20,8 @@ router.get('/', async (req, res) => {
 });
 
 // Add teacher route
-// {firstname,lastname,gender,DoB,address,phoneNumber,
-// facebook,qualification,musicSkill,language}
+// {firstname,lastname,gender,DoB,address,phone,
+// facebook,qualification,skills,language}
 router.post(
   '/',
   [

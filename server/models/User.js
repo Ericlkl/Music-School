@@ -94,9 +94,6 @@ UserSchema.methods.generateAuthToken = async function() {
 UserSchema.statics.findByCredentials = async (email, password) => {
   const user = await User.findOne({ email });
   if (!user) throw new Error('Invalid Credentials');
-
-  console.log(`Insert Pw ${password}`);
-  console.log(`User Pw ${user.password}`);
   const isValidPW = await bcrypt.compare(password, user.password);
   if (!isValidPW) throw new Error('Invalid Credentials');
 
