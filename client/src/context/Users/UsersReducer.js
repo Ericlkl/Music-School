@@ -1,4 +1,4 @@
-import { FETCH_USER, FETCH_USERS, CLEAR_USER } from '../types';
+import { FETCH_USER, FETCH_USERS, CLEAR_USER, SET_CURRENT } from '../types';
 
 export default (state, action) => {
   switch (action.type) {
@@ -15,7 +15,23 @@ export default (state, action) => {
     case CLEAR_USER:
       return {
         users: [],
-        current: {}
+        current: {
+          firstname: '',
+          lastname: '',
+          email: '',
+          address: '',
+          facebook: '',
+          parent: '',
+          avator: undefined
+        }
+      };
+    case SET_CURRENT:
+      return {
+        ...state,
+        current: {
+          ...state.current,
+          ...action.payload
+        }
       };
     default:
       return state;

@@ -3,19 +3,37 @@ import axios from 'axios';
 
 import UsersReducer from './UsersReducer';
 import UsersContext from './UsersContext';
-import { FETCH_USER, FETCH_USERS, CLEAR_USER } from '../types';
+import { FETCH_USER, FETCH_USERS, CLEAR_USER, SET_CURRENT } from '../types';
+
+const uploadAvator = async avator => {
+  const formData = new FormData();
+  formData.append('avator', avator);
+
+  await axios.post('/api/users/avator', formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    }
+  });
+};
 
 const UsersState = props => {
   const initialState = {
     users: [],
-    current: {}
+    current: {
+      firstname: '',
+      lastname: '',
+      email: '',
+      address: '',
+      facebook: '',
+      parent: '',
+      avator: undefined
+    }
   };
 
   const [state, dispatch] = useReducer(UsersReducer, initialState);
 
   const fetchUser = async id => {
     const res = await axios.get(`/api/users/${id}`);
-    console.log(res.data);
     dispatch({
       type: FETCH_USER,
       payload: res.data
@@ -30,6 +48,23 @@ const UsersState = props => {
     });
   };
 
+  const updateUser = async () => {
+    const user = { ...state.current };
+
+    console.log('user Object');
+    console.log(user);
+
+    if (user.avator !== undefined) uploadAvator(user.avator);
+
+    delete user.avator;
+
+    await axios.put(`/api/users/${user._id}`, user);
+
+    clearUsers();
+  };
+
+  const setCurrent = field => dispatch({ type: SET_CURRENT, payload: field });
+
   const clearUsers = () => dispatch({ type: CLEAR_USER });
 
   return (
@@ -39,7 +74,9 @@ const UsersState = props => {
         current: state.current,
         fetchUser,
         fetchUsers,
-        clearUsers
+        clearUsers,
+        updateUser,
+        setCurrent
       }}
     >
       {props.children}

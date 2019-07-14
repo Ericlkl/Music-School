@@ -6,38 +6,32 @@ import _ from 'lodash';
 import Form from '../../Forms/User';
 import AdminPageFrame from '../../layout/AdminPageFrame';
 import UsersContext from '../../../../context/Users/UsersContext';
+import MsgBoxContext from '../../../../context/MsgBox/MsgboxContext';
 
 const User = props => {
-  const { current, fetchUser } = useContext(UsersContext);
+  const { current, fetchUser, updateUser, clearUsers } = useContext(
+    UsersContext
+  );
+
+  const { showMsgBox } = useContext(MsgBoxContext);
 
   useEffect(() => {
     const userId = props.match.params.id;
     fetchUser(userId);
+
+    return () => {
+      clearUsers();
+    };
     // eslint-disable-next-line
   }, []);
 
-  const onSubmit = async user => {
+  const onSubmit = async () => {
     try {
-      if (user.avator) {
-        const formData = new FormData();
-        formData.append('avator', user.avator);
-
-        const res = await axios.post('/api/users/avator', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-        });
-        console.log('Send Avator Success');
-        console.log(res.data);
-      }
-      delete user.avator;
-
-      const res = await axios.put(`/api/users/${user._id}`, user);
-      console.log('Update Success');
-      console.log(res.data);
+      await updateUser();
+      showMsgBox('positive', 'Update Successfully !');
       props.history.push('/admin/users');
     } catch (error) {
-      console.error(error.message);
+      showMsgBox('negative', error.message);
     }
   };
 
@@ -52,9 +46,7 @@ const User = props => {
           <div className='active section'>Update</div>
         </h1>
 
-        {_.isEmpty(current) ? null : (
-          <Form onSubmitAction={onSubmit} current={current} />
-        )}
+        {_.isEmpty(current) ? null : <Form onSubmitAction={onSubmit} />}
       </div>
     </AdminPageFrame>
   );

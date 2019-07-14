@@ -1,37 +1,24 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+import UsersContext from '../../../context/Users/UsersContext';
 import _ from 'lodash';
 
-export default ({ onSubmitAction, current }) => {
-  let initState = {
-    firstname: '',
-    lastname: '',
-    email: '',
-    address: '',
-    facebook: '',
-    parent: '',
-    avator: '',
-    ...current
-  };
-
-  const [user, setUser] = useState({ ...initState });
-
-  const { firstname, lastname, email, address, facebook, parent } = user;
+export default ({ onSubmitAction }) => {
+  const { current, setCurrent } = useContext(UsersContext);
+  const { firstname, lastname, email, address, facebook, parent } = current;
 
   const onSubmit = e => {
     e.preventDefault();
-    console.log(user);
-    onSubmitAction(user);
+    onSubmitAction();
   };
 
-  const onChange = e =>
-    setUser({
-      ...user,
+  const onChange = e => {
+    setCurrent({
       [e.target.name]: e.target.value
     });
+  };
 
   const onUpload = e =>
-    setUser({
-      ...user,
+    setCurrent({
       [e.target.name]: e.target.files[0]
     });
 

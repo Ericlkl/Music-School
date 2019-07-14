@@ -26,3 +26,4 @@ export const CLEAR_MSGBOX = 'CLEAR_MSGBOX';
 export const FETCH_USER = 'FETCH_USER';
 export const FETCH_USERS = 'FETCH_USERS';
 export const CLEAR_USER = 'CLEAR_USER';
+export const SET_CURRENT = 'SET_CURRENT';
