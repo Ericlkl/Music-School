@@ -42,7 +42,7 @@ const TeacherSchema = new Schema(
       default: ['English']
     },
     avator: {
-      type: String
+      type: Buffer
     }
   },
   { timestamps: true }

@@ -24,7 +24,7 @@ const InstrumentSchema = new Schema(
       required: true
     },
     img: {
-      type: String
+      type: Buffer
     }
   },
   {

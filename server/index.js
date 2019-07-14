@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const morgan = require('morgan');
 
 const { mongoURI } = require('./config/keys');
 const app = express();
@@ -17,6 +18,7 @@ mongoose.connect(
   () => console.log('Mongo DB server connected!')
 );
 
+app.use(morgan('dev'));
 app.use(bodyParser.json());
 
 // Plug the routes to the express routers
