@@ -1,7 +1,9 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import AdminPageFrame from '../../layout/AdminPageFrame';
+import UsersContext from '../../../../context/Users/UsersContext';
 import MsgboxContext from '../../../../context/MsgBox/MsgboxContext';
 
 const Row = ({ user, onDelete }) => {
@@ -14,7 +16,6 @@ const Row = ({ user, onDelete }) => {
     facebook,
     parent,
     type,
-    date,
     createdAt
   } = user;
 
@@ -30,7 +31,9 @@ const Row = ({ user, onDelete }) => {
       <td>{createdAt.toString()}</td>
       <td>
         <div className='ui basic buttons'>
-          <button className='ui blue basic button'>Update</button>
+          <Link className='ui blue basic button' to={`/admin/users/${_id}`}>
+            Update
+          </Link>
           <button onClick={() => onDelete(_id)} className='ui red basic button'>
             Delete
           </button>
@@ -41,17 +44,8 @@ const Row = ({ user, onDelete }) => {
 };
 
 const Table = () => {
-  const [users, setUsers] = useState([]);
+  const { users, fetchUsers } = useContext(UsersContext);
   const { showMsgBox } = useContext(MsgboxContext);
-
-  const fetchUsers = async () => {
-    try {
-      const res = await axios.get(`/api/users/`);
-      setUsers(res.data);
-    } catch (error) {
-      showMsgBox('negative', 'Error! Please try again later');
-    }
-  };
 
   const onDelete = async _id => {
     try {
@@ -64,13 +58,12 @@ const Table = () => {
   };
 
   useEffect(() => {
-    if (users.length === 0) {
-      fetchUsers();
-    }
+    console.log('Execute!');
+    fetchUsers();
 
     return () => {};
     // eslint-diable-next-line
-  }, [users, fetchUsers]);
+  }, []);
 
   return (
     <table className='ui orange striped table'>

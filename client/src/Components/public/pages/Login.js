@@ -76,7 +76,7 @@ const Login = ({ history }) => {
 
   // ComponentDidMount
   useEffect(() => {
-    if (localStorage.getItem('token')) {
+    if (localStorage.getItem('token') || isAuthenticated === false) {
       loadUser();
     }
     if (isAuthenticated) {

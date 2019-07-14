@@ -52,7 +52,7 @@ router.post('/users/', userFormValidator, async (req, res) => {
 router.get('/users/:id', adminValidator, async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
-    res.json(user.toJSON());
+    res.status(200).json(user.toJSON());
   } catch (error) {
     console.error(error.message);
     res.status(500).json({ errors: error.message });

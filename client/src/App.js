@@ -29,11 +29,15 @@ import AdminEvent from './Components/admin/pages/Manage/Events';
 import CreateEvent from './Components/admin/pages/Create/Event';
 import CreateCourse from './Components/admin/pages/Create/Course';
 
+// Admin Update Pages
+import UpdateUser from './Components/admin/pages/Update/User';
+
 import CoursesState from './context/Courses/CoursesState';
 import EventsState from './context/Events/EventsState';
 import TeachersState from './context/Teachers/TeachersState';
 import AuthState from './context/Auth/AuthState';
 import MsgboxState from './context/MsgBox/MsgboxState';
+import UsersState from './context/Users/UsersState';
 
 const ContextState = props => {
   return (
@@ -41,7 +45,9 @@ const ContextState = props => {
       <TeachersState>
         <CoursesState>
           <EventsState>
-            <MsgboxState>{props.children}</MsgboxState>
+            <UsersState>
+              <MsgboxState>{props.children}</MsgboxState>
+            </UsersState>
           </EventsState>
         </CoursesState>
       </TeachersState>
@@ -73,6 +79,7 @@ const App = () => {
             <Route path='/admin/questions' exact component={AdminQuestion} />
             <Route path='/admin/events' exact component={AdminEvent} />
 
+            <Route path='/admin/users/:id' component={UpdateUser} />
             <Route path='/admin/add_event' exact component={CreateEvent} />
             <Route path='/admin/add_course' exact component={CreateCourse} />
           </Switch>
