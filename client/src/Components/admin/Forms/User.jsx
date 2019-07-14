@@ -9,24 +9,13 @@ export default ({ onSubmitAction, current }) => {
     address: '',
     facebook: '',
     parent: '',
-    avator: ''
+    avator: '',
+    ...current
   };
-
-  if (!_.isEmpty(current)) {
-    initState = { ...current };
-  }
 
   const [user, setUser] = useState({ ...initState });
 
-  const {
-    firstname,
-    lastname,
-    email,
-    address,
-    facebook,
-    parent,
-    avator
-  } = user;
+  const { firstname, lastname, email, address, facebook, parent } = user;
 
   const onSubmit = e => {
     e.preventDefault();
@@ -38,6 +27,12 @@ export default ({ onSubmitAction, current }) => {
     setUser({
       ...user,
       [e.target.name]: e.target.value
+    });
+
+  const onUpload = e =>
+    setUser({
+      ...user,
+      [e.target.name]: e.target.files[0]
     });
 
   return (
@@ -77,13 +72,7 @@ export default ({ onSubmitAction, current }) => {
 
       <div className='field'>
         <label>Address</label>
-        <input
-          type='text'
-          name='address'
-          required
-          value={address}
-          onChange={onChange}
-        />
+        <input type='text' name='address' value={address} onChange={onChange} />
       </div>
 
       <div className='field'>
@@ -103,7 +92,7 @@ export default ({ onSubmitAction, current }) => {
 
       <div className='field'>
         <label>Avator</label>
-        <input type='text' name='avator' value={avator} onChange={onChange} />
+        <input type='file' name='avator' onChange={onUpload} />
       </div>
 
       <input className='ui button' type='submit' value='Submit' />

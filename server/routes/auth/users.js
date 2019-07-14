@@ -95,7 +95,7 @@ router.put('/users/:id', adminValidator, async (req, res) => {
 // GET User avator Image
 router.get('/users/:id/avator', async (req, res) => {
   try {
-    const user = User.findById(req.params.id);
+    const user = await User.findById(req.params.id);
     if (!user || !user.avator) {
       throw new Error('Avator Doesnt exist');
     }
