@@ -42,7 +42,7 @@ const Teachers = () => {
 
     return () => {};
     // eslint-disable-next-line
-  }, [fetchTeachers]);
+  }, []);
 
   return (
     <PageFrame

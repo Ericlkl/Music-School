@@ -49,7 +49,8 @@ const UserSchema = new Schema(
       default: 'Student'
     },
     avator: {
-      type: Buffer
+      type: Buffer,
+      select: false
     },
     tokens: {
       type: [

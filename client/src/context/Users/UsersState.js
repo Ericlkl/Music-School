@@ -5,11 +5,11 @@ import UsersReducer from './UsersReducer';
 import UsersContext from './UsersContext';
 import { FETCH_USER, FETCH_USERS, CLEAR_USER, SET_CURRENT } from '../types';
 
-const uploadAvator = async avator => {
+const uploadAvator = async (avator, id) => {
   const formData = new FormData();
   formData.append('avator', avator);
 
-  await axios.post('/api/users/avator', formData, {
+  await axios.put(`/api/users/${id}/avator`, formData, {
     headers: {
       'Content-Type': 'multipart/form-data'
     }
@@ -51,10 +51,7 @@ const UsersState = props => {
   const updateUser = async () => {
     const user = { ...state.current };
 
-    console.log('user Object');
-    console.log(user);
-
-    if (user.avator !== undefined) uploadAvator(user.avator);
+    if (user.avator !== undefined) uploadAvator(user.avator, user._id);
 
     delete user.avator;
 

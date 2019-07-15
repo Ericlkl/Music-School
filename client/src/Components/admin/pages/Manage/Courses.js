@@ -57,13 +57,11 @@ const Table = () => {
   const { courses, fetchCourses } = useContext(CoursesContext);
 
   useEffect(() => {
-    if (courses.length === 0) {
-      fetchCourses();
-    }
+    fetchCourses();
 
     return () => {};
     // eslint-diable-next-line
-  }, [courses]);
+  }, []);
 
   return (
     <table className='ui orange striped table'>

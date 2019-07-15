@@ -48,13 +48,11 @@ const Table = () => {
   };
 
   useEffect(() => {
-    if (ques.length === 0) {
-      fetchQuestions();
-    }
+    fetchQuestions();
 
     return () => {};
     // eslint-diable-next-line
-  }, [ques]);
+  }, []);
 
   return (
     <table className='ui orange striped table'>

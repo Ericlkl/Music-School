@@ -34,9 +34,14 @@ const Row = ({ user, onDelete }) => {
           <Link className='ui blue basic button' to={`/admin/users/${_id}`}>
             Update
           </Link>
-          <button onClick={() => onDelete(_id)} className='ui red basic button'>
-            Delete
-          </button>
+          {type !== 'Admin' ? (
+            <button
+              onClick={() => onDelete(_id)}
+              className='ui red basic button'
+            >
+              Delete
+            </button>
+          ) : null}
         </div>
       </td>
     </tr>
