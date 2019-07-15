@@ -1,18 +1,8 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect } from 'react';
+import CoursesContext from '../../../context/Courses/CoursesContext';
 
 export default ({ onSubmitAction }) => {
-  const initState = {
-    name: '',
-    desc: '',
-    require: '',
-    price: 0,
-    startDate: undefined,
-    endDate: undefined,
-    instrument: '',
-    img: ''
-  };
-
-  const [course, setCourse] = useState({ ...initState });
+  const { current, setCurrent, clearCurrent } = useContext(CoursesContext);
 
   const {
     name,
@@ -23,18 +13,20 @@ export default ({ onSubmitAction }) => {
     endDate,
     instrument,
     img
-  } = course;
+  } = current;
 
   const onSubmit = e => {
     e.preventDefault();
-    onSubmitAction(course);
+    onSubmitAction();
   };
 
-  const onChange = e =>
-    setCourse({
-      ...course,
-      [e.target.name]: e.target.value
-    });
+  useEffect(
+    () => () => clearCurrent(),
+    // eslint-disable-next-line
+    []
+  );
+
+  const onChange = e => setCurrent({ [e.target.name]: e.target.value });
 
   return (
     <form onSubmit={onSubmit} className='ui form'>
@@ -110,8 +102,8 @@ export default ({ onSubmitAction }) => {
       </div>
 
       <div className='field'>
-        <label>Image URI</label>
-        <input type='text' name='img' value={img} onChange={onChange} />
+        <label>Image</label>
+        <input type='file' name='img' value={img} onChange={onChange} />
       </div>
 
       <input className='ui button' type='submit' value='submit' />

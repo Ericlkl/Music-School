@@ -12,7 +12,16 @@ import axios from 'axios';
 const CoursesState = props => {
   const initialState = {
     courses: [],
-    current: null
+    current: {
+      name: '',
+      desc: '',
+      require: '',
+      price: 0,
+      startDate: '2019-01-01',
+      endDate: '2019-12-30',
+      instrument: '',
+      img: ''
+    }
   };
 
   const [state, dispatch] = useReducer(CoursesReducer, initialState);

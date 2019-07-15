@@ -29,7 +29,7 @@ const Row = ({ event }) => {
       <td>{company}</td>
       <td>{desc}</td>
       <td>{place}</td>
-      <td>{date}</td>
+      <td>{new Date(date).toUTCString()}</td>
       <td>{tag}</td>
       <td>Image</td>
       <td>

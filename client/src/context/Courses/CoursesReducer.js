@@ -8,7 +8,16 @@ import {
 
 const initialState = {
   courses: [],
-  current: null
+  current: {
+    name: '',
+    desc: '',
+    require: '',
+    price: 0,
+    startDate: '2019-01-01',
+    endDate: '2019-12-30',
+    instrument: '',
+    img: ''
+  }
 };
 
 export default (state, action) => {
@@ -29,7 +38,16 @@ export default (state, action) => {
     case CLEAR_CURRENT:
       return {
         ...state,
-        current: null
+        current: {
+          name: '',
+          desc: '',
+          require: '',
+          price: 0,
+          startDate: '2019-01-01',
+          endDate: '2019-12-30',
+          instrument: '',
+          img: ''
+        }
       };
 
     case SET_CURRENT:

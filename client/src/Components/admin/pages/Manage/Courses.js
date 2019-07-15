@@ -11,7 +11,7 @@ const Row = props => {
     name,
     desc,
     require,
-    fee,
+    price,
     startDate,
     endDate,
     instrument,
@@ -36,11 +36,11 @@ const Row = props => {
       <td>{name}</td>
       <td>{desc}</td>
       <td>{require}</td>
-      <td>{fee}</td>
-      <td>{startDate}</td>
-      <td>{endDate}</td>
+      <td>{price}</td>
+      <td>{new Date(startDate).toUTCString()}</td>
+      <td>{new Date(endDate).toUTCString()}</td>
       <td>{instrument}</td>
-      <td>{img}</td>
+      <td>Image</td>
       <td>
         <div className='ui basic buttons'>
           <button className='ui blue basic button'>Update</button>
@@ -70,7 +70,7 @@ const Table = () => {
           <th>Course Name</th>
           <th>Description</th>
           <th>Requirement</th>
-          <th>Fee</th>
+          <th>Price</th>
           <th>Start Date</th>
           <th>End Date</th>
           <th>Intrument</th>
