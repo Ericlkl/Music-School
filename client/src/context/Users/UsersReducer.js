@@ -1,7 +1,7 @@
 import {
   FETCH_USER,
   FETCH_USERS,
-  CLEAR_USER,
+  CLEAR_STATE,
   SET_CURRENT,
   CLEAR_CURRENT
 } from '../types';
@@ -18,7 +18,7 @@ export default (state, action) => {
         ...state,
         users: [...action.payload]
       };
-    case CLEAR_USER:
+    case CLEAR_STATE:
       return {
         users: [],
         current: {

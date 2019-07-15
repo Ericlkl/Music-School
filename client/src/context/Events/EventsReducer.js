@@ -1,4 +1,15 @@
-import { FETCH_EVENT, FETCH_EVENTS, CLEAR_EVENTS } from '../types';
+import {
+  FETCH_EVENT,
+  FETCH_EVENTS,
+  CLEAR_CURRENT,
+  SET_CURRENT,
+  CLEAR_STATE
+} from '../types';
+
+const initialState = {
+  events: [],
+  current: null
+};
 
 export default (state, action) => {
   switch (action.type) {
@@ -12,10 +23,22 @@ export default (state, action) => {
         ...state,
         events: action.payload
       };
-    case CLEAR_EVENTS:
+    case CLEAR_STATE:
+      return initialState;
+
+    case CLEAR_CURRENT:
       return {
-        events: [],
+        ...state,
         current: null
+      };
+
+    case SET_CURRENT:
+      return {
+        ...state,
+        current: {
+          ...state.current,
+          ...action.payload
+        }
       };
     default:
       return state;

@@ -1,8 +1,14 @@
 import React, { useReducer } from 'react';
 import EventsContext from './EventsContext';
 import EventsReducer from './EventsReducer';
-import { FETCH_EVENTS, CLEAR_EVENTS } from '../types';
 import axios from 'axios';
+
+import {
+  FETCH_EVENTS,
+  SET_CURRENT,
+  CLEAR_CURRENT,
+  CLEAR_STATE
+} from '../types';
 
 const EventsState = props => {
   const initialState = {
@@ -20,11 +26,11 @@ const EventsState = props => {
     });
   };
 
-  const clearEvents = () => {
-    dispatch({
-      type: CLEAR_EVENTS
-    });
-  };
+  const clearEvents = () => dispatch({ type: CLEAR_STATE });
+
+  const setCurrent = field => dispatch({ type: SET_CURRENT, payload: field });
+
+  const clearCurrent = () => dispatch({ type: CLEAR_CURRENT });
 
   return (
     <EventsContext.Provider
@@ -32,7 +38,9 @@ const EventsState = props => {
         events: state.events,
         current: state.current,
         fetchEvents,
-        clearEvents
+        clearEvents,
+        setCurrent,
+        clearCurrent
       }}
     >
       {props.children}

@@ -1,7 +1,12 @@
 import React, { useReducer } from 'react';
 import CoursesContext from './CoursesContext';
 import CoursesReducer from './CoursesReducer';
-import { FETCH_COURSES } from '../types';
+import {
+  FETCH_COURSES,
+  CLEAR_CURRENT,
+  SET_CURRENT,
+  CLEAR_STATE
+} from '../types';
 import axios from 'axios';
 
 const CoursesState = props => {
@@ -20,12 +25,21 @@ const CoursesState = props => {
     });
   };
 
+  const clearCourses = () => dispatch({ type: CLEAR_STATE });
+
+  const setCurrent = field => dispatch({ type: SET_CURRENT, payload: field });
+
+  const clearCurrent = () => dispatch({ type: CLEAR_CURRENT });
+
   return (
     <CoursesContext.Provider
       value={{
         courses: state.courses,
         current: state.current,
-        fetchCourses
+        fetchCourses,
+        setCurrent,
+        clearCourses,
+        clearCurrent
       }}
     >
       {props.children}

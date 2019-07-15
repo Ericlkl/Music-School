@@ -6,7 +6,7 @@ import UsersContext from './UsersContext';
 import {
   FETCH_USER,
   FETCH_USERS,
-  CLEAR_USER,
+  CLEAR_STATE,
   SET_CURRENT,
   CLEAR_CURRENT
 } from '../types';
@@ -55,8 +55,9 @@ const UsersState = props => {
   };
 
   const createUser = async () => {
+    // It needed to develop later, currently post route not allow create user
+    // without password
     const user = { ...state.current, avator: undefined };
-    console.log(user);
     const res = await axios.post('/api/users', user);
 
     if (state.current.avator !== undefined)
@@ -79,7 +80,7 @@ const UsersState = props => {
 
   const setCurrent = field => dispatch({ type: SET_CURRENT, payload: field });
 
-  const clearUsers = () => dispatch({ type: CLEAR_USER });
+  const clearUsers = () => dispatch({ type: CLEAR_STATE });
   const clearCurrent = () => dispatch({ type: CLEAR_CURRENT });
 
   return (
