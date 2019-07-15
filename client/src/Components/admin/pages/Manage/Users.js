@@ -100,6 +100,11 @@ const Users = () => {
     <AdminPageFrame>
       <div className='ui'>
         <h1 className='ui left floated header'>Users</h1>
+        <h3 className='ui right floated header'>
+          <Link to='/admin/add_user' className='ui primary button'>
+            Create
+          </Link>
+        </h3>
       </div>
       <Table />
     </AdminPageFrame>

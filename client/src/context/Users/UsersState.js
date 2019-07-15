@@ -3,7 +3,13 @@ import axios from 'axios';
 
 import UsersReducer from './UsersReducer';
 import UsersContext from './UsersContext';
-import { FETCH_USER, FETCH_USERS, CLEAR_USER, SET_CURRENT } from '../types';
+import {
+  FETCH_USER,
+  FETCH_USERS,
+  CLEAR_USER,
+  SET_CURRENT,
+  CLEAR_CURRENT
+} from '../types';
 
 const uploadAvator = async (avator, id) => {
   const formData = new FormData();
@@ -48,6 +54,17 @@ const UsersState = props => {
     });
   };
 
+  const createUser = async () => {
+    const user = { ...state.current, avator: undefined };
+    console.log(user);
+    const res = await axios.post('/api/users', user);
+
+    if (state.current.avator !== undefined)
+      uploadAvator(state.current.avator, res.data.user._id);
+
+    clearUsers();
+  };
+
   const updateUser = async () => {
     const user = { ...state.current };
 
@@ -63,6 +80,7 @@ const UsersState = props => {
   const setCurrent = field => dispatch({ type: SET_CURRENT, payload: field });
 
   const clearUsers = () => dispatch({ type: CLEAR_USER });
+  const clearCurrent = () => dispatch({ type: CLEAR_CURRENT });
 
   return (
     <UsersContext.Provider
@@ -71,9 +89,11 @@ const UsersState = props => {
         current: state.current,
         fetchUser,
         fetchUsers,
-        clearUsers,
+        createUser,
         updateUser,
-        setCurrent
+        clearUsers,
+        setCurrent,
+        clearCurrent
       }}
     >
       {props.children}
