@@ -31,7 +31,7 @@ const Row = ({ event }) => {
       <td>{place}</td>
       <td>{date}</td>
       <td>{tag}</td>
-      <td>{img}</td>
+      <td>Image</td>
       <td>
         <div className='ui basic buttons'>
           <button className='ui blue basic button'>Update</button>

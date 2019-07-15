@@ -1,28 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useContext } from 'react';
+import EventContext from '../../../context/Events/EventsContext';
 
 export default ({ onSubmitAction }) => {
-  const initState = {
-    name: '',
-    company: '',
-    desc: '',
-    place: '',
-    date: null,
-    tag: '',
-    img: ''
-  };
+  const { setCurrent, clearCurrent, current } = useContext(EventContext);
 
-  const [event, setEvent] = useState({ ...initState });
+  const { name, company, desc, place, date, tag, img } = current;
 
-  const { name, company, desc, place, date, tag, img } = event;
+  useEffect(
+    () => () => clearCurrent(),
+    // eslint-disable-next-line
+    []
+  );
 
   const onSubmit = e => {
     e.preventDefault();
-    onSubmitAction(event);
+    onSubmitAction();
   };
 
   const onChange = e =>
-    setEvent({
-      ...event,
+    setCurrent({
       [e.target.name]: e.target.value
     });
 
@@ -90,11 +86,11 @@ export default ({ onSubmitAction }) => {
       </div>
 
       <div className='field'>
-        <label>Image URI</label>
-        <input type='text' name='img' value={img} onChange={onChange} />
+        <label>Image</label>
+        <input type='file' name='img' value={img} onChange={onChange} />
       </div>
 
-      <input class='ui button' type='submit' value='Submit' />
+      <input className='ui button' type='submit' value='Submit' />
     </form>
   );
 };

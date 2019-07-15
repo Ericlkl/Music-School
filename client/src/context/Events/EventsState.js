@@ -13,13 +13,22 @@ import {
 const EventsState = props => {
   const initialState = {
     events: [],
-    current: null
+    current: {
+      name: '',
+      company: '',
+      desc: '',
+      place: '',
+      date: '2019-01-01',
+      tag: '',
+      img: ''
+    }
   };
 
   const [state, dispatch] = useReducer(EventsReducer, initialState);
 
   const fetchEvents = async () => {
     const res = await axios.get('/api/events');
+    console.log(res.data);
     dispatch({
       type: FETCH_EVENTS,
       payload: res.data

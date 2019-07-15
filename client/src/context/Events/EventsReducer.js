@@ -8,7 +8,15 @@ import {
 
 const initialState = {
   events: [],
-  current: null
+  current: {
+    name: '',
+    company: '',
+    desc: '',
+    place: '',
+    date: '2019-01-01',
+    tag: '',
+    img: ''
+  }
 };
 
 export default (state, action) => {
@@ -23,13 +31,22 @@ export default (state, action) => {
         ...state,
         events: action.payload
       };
+
     case CLEAR_STATE:
-      return initialState;
+      return { ...initialState };
 
     case CLEAR_CURRENT:
       return {
         ...state,
-        current: null
+        current: {
+          name: '',
+          company: '',
+          desc: '',
+          place: '',
+          date: '2019-01-01',
+          tag: '',
+          img: ''
+        }
       };
 
     case SET_CURRENT:
