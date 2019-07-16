@@ -75,10 +75,7 @@ router.put(
   [...adminValidator, ...eventsFormValidator],
   async (req, res) => {
     try {
-      const event = await Event.findByIdAndUpdate({
-        _id: req.params.id,
-        ...req.body
-      });
+      const event = await Event.findByIdAndUpdate(req.params.id, req.body);
 
       res.json(event);
     } catch (error) {

@@ -5,6 +5,7 @@ import axios from 'axios';
 import moment from 'moment';
 
 import {
+  FETCH_EVENT,
   FETCH_EVENTS,
   SET_CURRENT,
   CLEAR_CURRENT,
@@ -45,8 +46,9 @@ const EventsState = props => {
 
     // Convert Date as YYYY-MM-DD format from binary date type
     event.date = moment(event.date).format('YYYY-MM-DD');
+    event.img = '';
     dispatch({
-      type: FETCH_EVENTS,
+      type: FETCH_EVENT,
       payload: event
     });
   };
