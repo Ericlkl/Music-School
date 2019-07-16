@@ -32,6 +32,8 @@ import CreateUser from './Components/admin/pages/Create/User';
 
 // Admin Update Pages
 import UpdateUser from './Components/admin/pages/Update/User';
+import UpdateEvent from './Components/admin/pages/Update/Event';
+import UpdateCourse from './Components/admin/pages/Update/Course';
 
 import CoursesState from './context/Courses/CoursesState';
 import EventsState from './context/Events/EventsState';
@@ -82,7 +84,9 @@ const App = () => {
             <Route path='/admin/events' exact component={AdminEvent} />
 
             {/* Admin Update */}
-            <Route path='/admin/users/:id' component={UpdateUser} />
+            <Route path='/admin/users/update/:id' component={UpdateUser} />
+            <Route path='/admin/courses/update/:id' component={UpdateCourse} />
+            <Route path='/admin/events/update/:id' component={UpdateEvent} />
 
             {/* Admin Create */}
             <Route path='/admin/add_user' exact component={CreateUser} />

@@ -37,13 +37,18 @@ const Row = props => {
       <td>{desc}</td>
       <td>{require}</td>
       <td>{price}</td>
-      <td>{new Date(startDate).toUTCString()}</td>
-      <td>{new Date(endDate).toUTCString()}</td>
+      <td>{startDate}</td>
+      <td>{endDate}</td>
       <td>{instrument}</td>
       <td>Image</td>
       <td>
         <div className='ui basic buttons'>
-          <button className='ui blue basic button'>Update</button>
+          <Link
+            to={`/admin/courses/update/${_id}`}
+            className='ui blue basic button'
+          >
+            Update
+          </Link>
           <button onClick={onDelete} className='ui red basic button'>
             Delete
           </button>

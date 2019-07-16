@@ -1,7 +1,9 @@
 import React, { useReducer } from 'react';
 import CoursesContext from './CoursesContext';
 import CoursesReducer from './CoursesReducer';
+import moment from 'moment';
 import {
+  FETCH_COURSE,
   FETCH_COURSES,
   CLEAR_CURRENT,
   SET_CURRENT,
@@ -26,11 +28,32 @@ const CoursesState = props => {
 
   const [state, dispatch] = useReducer(CoursesReducer, initialState);
 
+  const fetchCourse = async courseID => {
+    const res = await axios.get(`/api/courses/${courseID}`);
+    const course = res.data;
+
+    course.startDate = moment(course.startDate).format('YYYY-MM-DD');
+    course.endDate = moment(course.endDate).format('YYYY-MM-DD');
+
+    course.img = '';
+    dispatch({
+      type: FETCH_COURSE,
+      payload: course
+    });
+  };
+
   const fetchCourses = async () => {
     const res = await axios.get('/api/courses');
+    const courses = res.data;
+
+    courses.map(course => {
+      course.startDate = moment(course.startDate).format('YYYY-MM-DD');
+      course.endDate = moment(course.endDate).format('YYYY-MM-DD');
+    });
+
     dispatch({
       type: FETCH_COURSES,
-      payload: res.data
+      payload: courses
     });
   };
 
@@ -45,6 +68,7 @@ const CoursesState = props => {
       value={{
         courses: state.courses,
         current: state.current,
+        fetchCourse,
         fetchCourses,
         setCurrent,
         clearCourses,

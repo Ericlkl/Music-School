@@ -31,7 +31,10 @@ const Row = ({ user, onDelete }) => {
       <td>{createdAt.toString()}</td>
       <td>
         <div className='ui basic buttons'>
-          <Link className='ui blue basic button' to={`/admin/users/${_id}`}>
+          <Link
+            className='ui blue basic button'
+            to={`/admin/users/update/${_id}`}
+          >
             Update
           </Link>
           {type !== 'Admin' ? (

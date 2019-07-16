@@ -2,6 +2,7 @@ import React, { useReducer } from 'react';
 import EventsContext from './EventsContext';
 import EventsReducer from './EventsReducer';
 import axios from 'axios';
+import moment from 'moment';
 
 import {
   FETCH_EVENTS,
@@ -28,10 +29,25 @@ const EventsState = props => {
 
   const fetchEvents = async () => {
     const res = await axios.get('/api/events');
-    console.log(res.data);
+    const events = res.data;
+
+    // Convert Date as YYYY-MM-DD format from binary date type
+    events.map(event => (event.date = moment(event.date).format('YYYY-MM-DD')));
     dispatch({
       type: FETCH_EVENTS,
-      payload: res.data
+      payload: events
+    });
+  };
+
+  const fetchEvent = async id => {
+    const res = await axios.get(`/api/events/${id}`);
+    const event = res.data;
+
+    // Convert Date as YYYY-MM-DD format from binary date type
+    event.date = moment(event.date).format('YYYY-MM-DD');
+    dispatch({
+      type: FETCH_EVENTS,
+      payload: event
     });
   };
 
@@ -46,6 +62,7 @@ const EventsState = props => {
       value={{
         events: state.events,
         current: state.current,
+        fetchEvent,
         fetchEvents,
         clearEvents,
         setCurrent,

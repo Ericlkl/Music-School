@@ -29,12 +29,14 @@ const registerFormValidator = [
   ...userFormValidator
 ];
 
+console.log();
+
 const adminValidator = [authMiddleware, adminMiddleware];
 
 // { firstname, lastname, email, address,
 // facebook, parent, type, avator, password, tokens }
 // Register Route
-router.post('/users/', registerFormValidator, async (req, res) => {
+router.post('/users', async (req, res) => {
   try {
     // Check Exist User, If true, not allow create
     let user = await User.findOne({ email: req.body.email });

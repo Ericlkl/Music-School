@@ -4,7 +4,6 @@ import axios from 'axios';
 import AdminPageFrame from '../../layout/AdminPageFrame';
 
 import MsgboxContext from '../../../../context/MsgBox/MsgboxContext';
-
 import EventsContext from '../../../../context/Events/EventsContext';
 
 const Row = ({ event }) => {
@@ -29,12 +28,17 @@ const Row = ({ event }) => {
       <td>{company}</td>
       <td>{desc}</td>
       <td>{place}</td>
-      <td>{new Date(date).toUTCString()}</td>
+      <td>{date}</td>
       <td>{tag}</td>
       <td>Image</td>
       <td>
         <div className='ui basic buttons'>
-          <button className='ui blue basic button'>Update</button>
+          <Link
+            to={`/admin/events/update/${_id}`}
+            className='ui blue basic button'
+          >
+            Update
+          </Link>
           <button onClick={onDelete} className='ui red basic button'>
             Delete
           </button>

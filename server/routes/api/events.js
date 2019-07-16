@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const moment = require('moment');
 const Event = require('../../models/Event');
 const { check } = require('express-validator');
 
@@ -33,6 +34,18 @@ router.get('/events/', async (req, res) => {
   try {
     const events = await Event.find();
     res.json(events);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ errors: 'Server Error !' });
+  }
+});
+
+// Get Event Route
+// GET /events/
+router.get('/events/:id', async (req, res) => {
+  try {
+    const event = await Event.findById(req.params.id);
+    res.json(event);
   } catch (error) {
     console.error(error.message);
     res.status(500).json({ errors: 'Server Error !' });
