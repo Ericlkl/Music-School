@@ -28,7 +28,8 @@ const EventSchema = new Schema(
       type: [String]
     },
     img: {
-      type: Buffer
+      type: Buffer,
+      select: false
     }
   },
   {

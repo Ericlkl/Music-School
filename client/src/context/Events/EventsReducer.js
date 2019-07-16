@@ -21,11 +21,6 @@ const initialState = {
 
 export default (state, action) => {
   switch (action.type) {
-    case FETCH_EVENT:
-      return {
-        ...state,
-        current: action.payload
-      };
     case FETCH_EVENTS:
       return {
         ...state,
@@ -48,7 +43,7 @@ export default (state, action) => {
           img: ''
         }
       };
-
+    case FETCH_EVENT:
     case SET_CURRENT:
       return {
         ...state,

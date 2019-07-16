@@ -29,7 +29,7 @@ const LoginForm = () => {
     if (errors) {
       showMsgBox('negative', errors, 4000);
     }
-  }, [errors, showMsgBox]);
+  }, [errors]);
 
   return (
     <form onSubmit={onSubmit} className='ui form login-form'>

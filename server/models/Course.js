@@ -41,7 +41,8 @@ const CourseSchema = new Schema(
       ref: 'teachers'
     },
     img: {
-      type: Buffer
+      type: Buffer,
+      select: false
     }
   },
   {

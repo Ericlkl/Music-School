@@ -35,7 +35,6 @@ const CoursesState = props => {
     course.startDate = moment(course.startDate).format('YYYY-MM-DD');
     course.endDate = moment(course.endDate).format('YYYY-MM-DD');
 
-    course.img = '';
     dispatch({
       type: FETCH_COURSE,
       payload: course

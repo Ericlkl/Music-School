@@ -22,11 +22,6 @@ const initialState = {
 
 export default (state, action) => {
   switch (action.type) {
-    case FETCH_COURSE:
-      return {
-        ...state,
-        current: action.payload
-      };
     case FETCH_COURSES:
       return {
         ...state,
@@ -49,7 +44,7 @@ export default (state, action) => {
           img: ''
         }
       };
-
+    case FETCH_COURSE:
     case SET_CURRENT:
       return {
         ...state,

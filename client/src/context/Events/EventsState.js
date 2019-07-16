@@ -46,7 +46,6 @@ const EventsState = props => {
 
     // Convert Date as YYYY-MM-DD format from binary date type
     event.date = moment(event.date).format('YYYY-MM-DD');
-    event.img = '';
     dispatch({
       type: FETCH_EVENT,
       payload: event

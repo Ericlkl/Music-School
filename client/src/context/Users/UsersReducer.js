@@ -9,9 +9,13 @@ import {
 export default (state, action) => {
   switch (action.type) {
     case FETCH_USER:
+    case SET_CURRENT:
       return {
         ...state,
-        current: { ...action.payload }
+        current: {
+          ...state.current,
+          ...action.payload
+        }
       };
     case FETCH_USERS:
       return {
@@ -42,14 +46,6 @@ export default (state, action) => {
           facebook: '',
           parent: '',
           avator: undefined
-        }
-      };
-    case SET_CURRENT:
-      return {
-        ...state,
-        current: {
-          ...state.current,
-          ...action.payload
         }
       };
     default:
