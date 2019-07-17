@@ -1,12 +1,12 @@
 import React, { useContext, useEffect } from 'react';
-
+import { Link } from 'react-router-dom';
 import PageFrame from '../layout/PageFrame';
 
 import bg_img from '../../../assets/img/course_bg.jpg';
 import CoursesContext from '../../../context/Courses/CoursesContext';
 
 const CourseCard = ({ course }) => {
-  const { name, price, instrument, require, teacher, img } = course;
+  const { _id, name, price, instrument, require, teacher, img } = course;
   let icon = '';
 
   if (instrument.trim() === 'Piano') icon = 'flaticon-grand-piano';
@@ -14,34 +14,41 @@ const CourseCard = ({ course }) => {
   else if (instrument.trim() === 'violin') icon = 'flaticon-violin';
 
   return (
-    <div
-      style={{
-        background: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("https://cdn.lynda.com/course/510645/510645-636431592504296952-16x9.jpg") center center/cover`
-      }}
-      className='course-card'
-    >
-      <div className='course-card__top'>
-        <h4>Level1</h4>
-        <div className='course-card__top_classbox'>
-          <h4>
-            <i className='fas fa-dollar-sign' />
-            {price}
-          </h4>
-        </div>
-      </div>
-
-      <div className='course-card__content'>
-        <div className='course-card__content_titlebox'>
-          <h2>{name}</h2>
-          <h3>
-            <i className='fas fa-user-tie' />
-            {teacher}
-          </h3>
+    <Link to={`/courses/${_id}`}>
+      <div
+        style={{
+          background: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("https://cdn.lynda.com/course/510645/510645-636431592504296952-16x9.jpg") center center/cover`
+        }}
+        className='course-card'
+      >
+        <div className='course-card__top'>
+          <h4>Level1</h4>
+          <div className='course-card__top_classbox'>
+            <h4>
+              <i className='fas fa-dollar-sign' />
+              {price}
+            </h4>
+          </div>
         </div>
 
-        <i className={' logo ' + icon} />
+        <div className='course-card__content'>
+          <div className='course-card__content_titlebox'>
+            <h2>{name}</h2>
+            <h3>
+              <i className='fas fa-user-tie' />
+              {teacher}
+            </h3>
+
+            <h3>
+              <i className='fas fa-user-tie' />
+              {teacher}
+            </h3>
+          </div>
+
+          <i className={' logo ' + icon} />
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

@@ -1,57 +1,56 @@
-
-:root{
-    --primary-color: #e67e22;
+:root {
+  --primary-color: #e67e22;
 }
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
-[class^="flaticon-"]:after, [class*=" flaticon-"]:after {
-
-font-size: 1em;
-
+[class^='flaticon-']:before,
+[class*=' flaticon-']:before,
+[class^='flaticon-']:after,
+[class*=' flaticon-']:after {
+  font-size: 1em;
 }
 
 // Utilities class
-.container{
-    max-width: 1100px;
-    margin: auto;
-    overflow: hidden;
-    padding: 0 1rem;
+.container {
+  max-width: 1100px;
+  margin: auto;
+  overflow: hidden;
+  padding: 0 1rem;
 }
 
-.logo{
-    font-family: 'Miss Fajardose', cursive;
-    font-size: 3.5rem;
-    font-weight: 100;
+.logo {
+  font-family: 'Miss Fajardose', cursive;
+  font-size: 3.5rem;
+  font-weight: 100;
 }
 
-.py-1{
-    padding: 1.5rem 0;
+.py-1 {
+  padding: 1.5rem 0;
 }
-.py-2{
-    padding: 2rem 0;
+.py-2 {
+  padding: 2rem 0;
 }
-.py-3{
-    padding: 3rem 0;
+.py-3 {
+  padding: 3rem 0;
 }
-.py-4{
-    padding: 4rem 0;
+.py-4 {
+  padding: 4rem 0;
 }
-.py-5{
-    padding: 5rem 0;
+.py-5 {
+  padding: 5rem 0;
 }
 
-.udl-heading:after{
-    display: block;
-    height: 2px;
-    background-color: #e67e22;
-    content: "";
-    width: 10rem;
-    margin: 1rem auto;
+.udl-heading:after {
+  display: block;
+  height: 2px;
+  background-color: #e67e22;
+  content: '';
+  width: 10rem;
+  margin: 1rem auto;
 }
 @import './animations.scss';
 @import './navbar.scss';
@@ -65,5 +64,5 @@ font-size: 1em;
 @import './signup.scss';
 @import './messagebox.scss';
 @import './admin.scss';
-
+@import './courseDescription.scss';
 @import url('https://fonts.googleapis.com/css?family=Miss+Fajardose');

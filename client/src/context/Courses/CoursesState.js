@@ -34,7 +34,8 @@ const CoursesState = props => {
 
     course.startDate = moment(course.startDate).format('YYYY-MM-DD');
     course.endDate = moment(course.endDate).format('YYYY-MM-DD');
-
+    course.createdAt = moment(course.createdAt).format('YYYY-MM-DD');
+    course.updatedAt = moment(course.updatedAt).format('YYYY-MM-DD');
     dispatch({
       type: FETCH_COURSE,
       payload: course
@@ -48,6 +49,8 @@ const CoursesState = props => {
     courses.map(course => {
       course.startDate = moment(course.startDate).format('YYYY-MM-DD');
       course.endDate = moment(course.endDate).format('YYYY-MM-DD');
+      course.createdAt = moment(course.createdAt).format('YYYY-MM-DD');
+      course.updatedAt = moment(course.updatedAt).format('YYYY-MM-DD');
     });
 
     dispatch({
