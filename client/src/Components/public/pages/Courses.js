@@ -5,7 +5,8 @@ import PageFrame from '../layout/PageFrame';
 import bg_img from '../../../assets/img/course_bg.jpg';
 import CoursesContext from '../../../context/Courses/CoursesContext';
 
-const CourseCard = ({ courseName, fee, instrument, imageURI }) => {
+const CourseCard = ({ course }) => {
+  const { name, price, instrument, require, teacher, img } = course;
   let icon = '';
 
   if (instrument.trim() === 'Piano') icon = 'flaticon-grand-piano';
@@ -15,16 +16,27 @@ const CourseCard = ({ courseName, fee, instrument, imageURI }) => {
   return (
     <div
       style={{
-        background: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(${imageURI}) center center/cover`
+        background: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("https://cdn.lynda.com/course/510645/510645-636431592504296952-16x9.jpg") center center/cover`
       }}
       className='course-card'
     >
-      <p className='course-card__level'>Level1</p>
+      <div className='course-card__top'>
+        <h4>Level1</h4>
+        <div className='course-card__top_classbox'>
+          <h4>
+            <i className='fas fa-dollar-sign' />
+            {price}
+          </h4>
+        </div>
+      </div>
 
       <div className='course-card__content'>
         <div className='course-card__content_titlebox'>
-          <h3>{courseName}</h3>
-          <p>{fee}</p>
+          <h2>{name}</h2>
+          <h3>
+            <i className='fas fa-user-tie' />
+            {teacher}
+          </h3>
         </div>
 
         <i className={' logo ' + icon} />
@@ -53,13 +65,7 @@ const Courses = props => {
         <h1 className='udl-heading'>Includes all Course</h1>
         <div className='courses__content'>
           {courses.map(course => (
-            <CourseCard
-              courseName={course.courseName}
-              instrument={course.instrument}
-              imageURI={course.imageURI}
-              fee={course.fee}
-              key={course._id}
-            />
+            <CourseCard course={course} />
           ))}
         </div>
       </section>

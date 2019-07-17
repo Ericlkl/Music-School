@@ -5,31 +5,35 @@ import bg_img from '../../../assets/img/event_bg.jpg';
 import EventsContext from '../../../context/Events/EventsContext';
 
 const EventCard = props => {
-  const { eventName, imageURI, place, description, tag, company } = props.event;
+  const { name, img, place, desc, tag, company, date } = props.event;
 
   return (
     <div className='event-card'>
       <div className='event-card__header'>
         <h3 className='event-card__header_host'>
-          <i className='fas fa-users' /> {company}
+          <i className='music icon' />
+          {name}
         </h3>
       </div>
+
+      <img
+        className='event-card_img'
+        src='https://d3vhc53cl8e8km.cloudfront.net/hello-staging/wp-content/uploads/2017/12/22223742/Events-1200x630.jpg'
+        alt='event-img'
+      />
       <div className='event-card__content'>
-        <img className='event-card_img' src={imageURI} alt='event-img' />
         <h3 className='event-card__content_title'>
-          <i className='music icon' />
-          {eventName}
+          <i className='fas fa-users' /> {company}
         </h3>
         <h3 className='event-card__content_location'>
           <i className='building outline icon' />
           {place}
         </h3>
-        <h3 className='event-card__footer_city'>{tag}</h3>
         <h3 className='event-card__content_date'>
           <i className='clock outline icon' />
-          {Date().current}
+          {date}
         </h3>
-        <p className='event-card__content_description'>{description}</p>
+        <p className='event-card__content_description'>{desc}</p>
       </div>
     </div>
   );
