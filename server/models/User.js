@@ -2,7 +2,9 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const { secretOrKey } = require('../config/keys');
+const path = require('path');
+// Read Environment variable
+require('dotenv').config(path.resolve(__dirname, '../'));
 
 const { Schema } = mongoose;
 
@@ -81,7 +83,7 @@ UserSchema.methods.toJSON = function() {
 UserSchema.methods.generateAuthToken = async function() {
   const user = this;
 
-  const token = jwt.sign({ userID: user.id }, secretOrKey, {
+  const token = jwt.sign({ userID: user.id }, SECRET_OR_KEY, {
     // 10 Hours At the moment
     expiresIn: 36000000
   });

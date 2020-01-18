@@ -1,6 +1,8 @@
 const jwt = require('jsonwebtoken');
-const { secretOrKey } = require('../config/keys');
 const User = require('../models/User');
+const path = require('path');
+// Read Environment variable
+require('dotenv').config(path.resolve(__dirname, '../'));
 
 module.exports = async (req, res, next) => {
   // Get Token from header
@@ -12,7 +14,7 @@ module.exports = async (req, res, next) => {
 
   try {
     // Decode JWT token
-    const decoded = jwt.verify(token, secretOrKey);
+    const decoded = jwt.verify(token, process.env.SECRET_OR_KEY);
 
     const user = await User.findOne({
       _id: decoded.userID,

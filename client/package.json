@@ -6,11 +6,11 @@
     "axios": "^0.19.0",
     "lodash": "^4.17.14",
     "moment": "^2.24.0",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1"
+    "react-scripts": "^3.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -33,5 +33,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:5000"
+  "proxy": "http://localhost:7000"
 }
